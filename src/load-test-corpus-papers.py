@@ -32,7 +32,7 @@ with open(base_dir + '/papers/first10000papers') as f:
         for record in records:
             writer.writerow(record)
 
-with open(base_dir+'/first10000papers.csv','r') as csvf:
+with open(base_dir+'/papers/first10000papers.csv','r') as csvf:
     with connection.cursor() as cursor:
         cursor.copy_from(csvf, 'papers', sep=',', null='')
     connection.commit()
