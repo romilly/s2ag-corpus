@@ -1,2 +1,2 @@
-INSERT_PAPER_SQL = 'INSERT INTO papers(corpusid, sha, paper_json) VALUES (%s, %s, %s) on conflict do nothing'
+INSERT_PAPER_SQL = 'INSERT INTO papers(corpusid, paper_json) VALUES (%s, %s) on conflict(corpusid) do nothing'
 INSERT_PAPER_IDS_SQL = 'INSERT INTO paperids(sha, corpusid, is_primary) VALUES (%s, %s, %s) on conflict do nothing'
