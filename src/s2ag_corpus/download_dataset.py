@@ -22,6 +22,7 @@ def download(release_id: str, dataset_name: str):
         print(f"Downloading {file_name}")
         response = requests.get(link)
         if response.status_code != 200:
+            print(f"could not download {file_name} from {link}")
             break
         file_path = f"{base_dir}/{release_id}/{dataset_name}/{file_name}.gz"
         if os.path.exists(file_path):
