@@ -142,3 +142,6 @@ test/test/data/generated
 Link.md
 
 /data/
+/_build/
+/_static/
+/_templates/
