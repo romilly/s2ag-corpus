@@ -21,7 +21,7 @@ def download(release_id: str, dataset_name: str):
     if not os.path.exists(base_path):
         print(f"directory {base_path} does not exist")
         return
-    print(f"about to download{release_id} of {dataset_name}: {len(download_links)} files.")
+    print(f"about to download release {release_id} of {dataset_name}: {len(download_links)} files.")
     for (i, link) in enumerate(download_links):
         file_name = f"{dataset_name}{i}.gz"
         print(f"Downloading {file_name}")
