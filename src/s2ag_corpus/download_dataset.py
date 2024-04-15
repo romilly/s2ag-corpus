@@ -12,6 +12,7 @@ api_key = os.getenv('S2_API_KEY')
 headers = {"x-api-key": api_key}
 base_dir = os.getenv('BASE_DIR')
 
+
 def download(release_id: str, dataset_name: str):
     download_links_response = requests.get(base_url + release_id + '/dataset/' + dataset_name, headers=headers)
     if download_links_response.status_code != 200:
