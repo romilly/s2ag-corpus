@@ -18,16 +18,19 @@ catalogue = CorpusDatabaseCatalogue(connection)
 release_id = '2024-04-02'
 papers_dir = f"{base_dir}/{release_id}/papers/"
 
+
 def read_lines_from_file(file_path):
     """A generator function that reads a file line by line."""
     with open(file_path, 'r') as file:
         for line in file:
             yield line.strip()
 
+
 def read_lad_from_file(file_path):
     for line in read_lines_from_file(file_path):
         lad = (line, json.loads(line))
         yield  lad
+
 
 def read_records_from_file(file_path):
     for line, jd in read_lad_from_file(file_path):
@@ -36,8 +39,7 @@ def read_records_from_file(file_path):
 
 
 for filename in sorted(os.listdir(papers_dir)):
-    # if filename.startswith("file"):
-    if filename == "file":
+    if filename.startswith("file"):
         print(f"processing: {filename}")
         transfer_file = f"{papers_dir}/transfer.csv"
         with open(transfer_file,'w') as csvf:
