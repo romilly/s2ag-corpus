@@ -27,8 +27,12 @@ for filename in sorted(os.listdir(papers_dir)):
             transfer_file = f"{papers_dir}/transfer.csv"
             with open(transfer_file,'w') as csvf:
                 writer = csv.writer(csvf, delimiter=',', quoting=csv.QUOTE_NONE, escapechar='\\')
+                count = 0
                 for record in records:
                     writer.writerow(record)
+                    count += 1
+                    if 0 == count%10000:
+                        print(count)
         with open(transfer_file,'r') as csvf:
             with connection.cursor() as cursor:
                 cursor.copy_from(csvf, 'papers', sep=',', null='')
