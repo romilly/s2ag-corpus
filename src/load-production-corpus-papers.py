@@ -21,10 +21,10 @@ papers_dir = f"{base_dir}/{release_id}/papers/"
 for filename in sorted(os.listdir(papers_dir)):
     if filename.startswith("file"):
         print(f"processing: {filename}")
-        with open("{papers_dir}{filename}") as f:
+        with open(f"{papers_dir}/{filename}") as f:
             jason_dictionaries = [(line, json.loads(line)) for line in f.readlines()]
             records = [(jd['corpusid'], line.strip()) for  line, jd in jason_dictionaries]
-            transfer_file = f'{papers_dir}/transfer.csv'
+            transfer_file = f"{papers_dir}/transfer.csv"
             with open(transfer_file,'w') as csvf:
                 writer = csv.writer(csvf, delimiter=',', quoting=csv.QUOTE_NONE, escapechar='\\')
                 for record in records:
