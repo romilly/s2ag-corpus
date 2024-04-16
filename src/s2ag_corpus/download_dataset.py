@@ -26,7 +26,7 @@ def download(release_id: str, dataset_name: str):
     for (i, link) in enumerate(download_links):
         file_name = f"{dataset_name}{i}.gz"
         print(f"Downloading {file_name}")
-        file_path = f"{base_dir}/{release_id}/{dataset_name}/{file_name}.gz"
+        file_path = f"{base_dir}/{release_id}/{dataset_name}/{file_name}"
         if os.path.exists(file_path):
             print (f"skipping {file_path}")
             continue

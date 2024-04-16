@@ -24,15 +24,15 @@ def delete_papers_from_test_db():
 
 delete_papers_from_test_db()
 
-with open(base_dir + '/papers/first10000papers') as f:
+with open(base_dir + '/2024-04-02/papers/first10000papers') as f:
     jason_dictionaries = [(line, json.loads(line)) for line in f.readlines()]
     records = [(jd['corpusid'], line.strip()) for  line, jd in jason_dictionaries]
-    with open(base_dir+'/papers/first10000papers.csv','w') as csvf:
+    with open(base_dir+'/2024-04-02/papers/first10000papers.csv','w') as csvf:
         writer = csv.writer(csvf, delimiter=',', quoting=csv.QUOTE_NONE, escapechar='\\')
         for record in records:
             writer.writerow(record)
 
-with open(base_dir+'/papers/first10000papers.csv','r') as csvf:
+with open(base_dir+'/2024-04-02/papers/first10000papers.csv','r') as csvf:
     with connection.cursor() as cursor:
         cursor.copy_from(csvf, 'papers', sep=',', null='')
     connection.commit()
