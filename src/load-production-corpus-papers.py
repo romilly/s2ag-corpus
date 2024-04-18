@@ -50,6 +50,8 @@ for filename in sorted(os.listdir(papers_dir)):
                 count += 1
                 if 0 == count%10000:
                     print(count)
+        print(f"processed: {count}")
+        print(f"copying from csv file {transfer_file}")
         with open(transfer_file,'r') as csvf:
             with connection.cursor() as cursor:
                 cursor.copy_from(csvf, 'papers', sep=',', null='')

@@ -11,6 +11,11 @@ def test_connection():
         get_connection_string('TEST_DB'))
 
 
+def local_connection():
+    return psycopg2.connect(
+        get_connection_string('LOCAL_TEST_DB'))
+
+
 def production_connection():
     return psycopg2.connect(
         get_connection_string('PROD_DB'))
