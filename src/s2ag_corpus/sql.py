@@ -8,3 +8,14 @@ CREATE_PAPERS_TABLE_WITHOUT_KEYS = """
 CREATE TABLE IF NOT EXISTS papers
     (corpusid int4  not null, paper_json jsonb not null)
 """
+CREATE_CITATIONS_TABLE_WITH_INDICES = """
+create table public.citations (
+  citationid bigint not null,
+  citingcorpusid integer not null,
+  citedcorpusid integer,
+  isinfluential boolean
+);
+create index citations_citationid_index on citations using btree (citationid);
+create index citations_citedcorpusid_index on citations using btree (citedcorpusid);
+create index citations_citingcorpusid_index on citations using btree (citingcorpusid);
+"""
