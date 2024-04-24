@@ -1,3 +1,10 @@
+# Semanctic Scholar AG Datasets
+
+as of 2024-04-02
+
+NB: All the sizes and numbers for files are approximate, and the citations dataset consists of many more smaller files.
+
+I have built some JSON schemas for the datasets from sample data. Use with caution. 
 
 ## abstracts
 
@@ -14,10 +21,10 @@ The "abstracts" dataset provides abstract text for selected papers.
  - `openAccessInfo`:  
    - `externalIds`: IDs of this paper in different catalogs  
    - `license`: terms under which the paper is licensed
-   - `url`: location from which the papser can be downloaded
+   - `url`: location from which the paper can be downloaded
    - `status: "GOLD", "HYBRID", ...
   
-
+[JSON Schema for abstract](abstract.json)
 
 ## authors
 
@@ -33,8 +40,7 @@ The "authors" dataset provides summary information about authors.
 See https://api.semanticscholar.org/api-docs/graph#tag/Author-Data  
   
 This dataset does not contain information about an author's papers.  
-Instead, join with authors.authorId from the "papers" dataset.  
-  
+Instead, join with authors.authorId from the "papers" dataset.
 
 
 ## citations

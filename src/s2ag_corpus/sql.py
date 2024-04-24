@@ -8,6 +8,10 @@ CREATE_PAPERS_TABLE_WITHOUT_KEYS = """
 CREATE TABLE IF NOT EXISTS papers
     (corpusid int4  not null, paper_json jsonb not null)
 """
+ADD_KEY_TO_PAPERS = """
+alter table papers
+    add constraint papers_pk
+        primary key (corpusid);"""
 CREATE_CITATIONS_TABLE_WITH_INDICES = """
 create table public.citations (
   citationid bigint not null,

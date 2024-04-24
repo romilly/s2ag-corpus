@@ -1,0 +1,88 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Abstract",
+    "definitions": {
+        "Abstract": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "corpusid": {
+                    "type": "integer"
+                },
+                "openaccessinfo": {
+                    "$ref": "#/definitions/Openaccessinfo"
+                },
+                "abstract": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "abstract",
+                "corpusid",
+                "openaccessinfo"
+            ],
+            "title": "Abstract"
+        },
+        "Openaccessinfo": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "externalids": {
+                    "$ref": "#/definitions/Externalids"
+                },
+                "license": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".202304151"
+                    ]
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "externalids",
+                "license",
+                "status",
+                "url"
+            ],
+            "title": "Openaccessinfo"
+        },
+        "Externalids": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "MAG": {
+                    "type": ["string","null"]
+                },
+                "ACL": {
+                    "type": ["string","null"]
+                },
+                "DOI": {
+                    "type": ["string","null"]
+                },
+                "PubMedCentral": {
+                    "type": ["string","null"]
+                },
+                "ArXiv": {
+                    "type": ["string","null"]
+                }
+            },
+            "required": [
+                "ACL",
+                "ArXiv",
+                "DOI",
+                "MAG",
+                "PubMedCentral"
+            ],
+            "title": "Externalids"
+        }
+    }
+}
