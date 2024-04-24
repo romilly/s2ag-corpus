@@ -73,7 +73,7 @@ def copy_json_to_papers(source_file):
     print(f'done {source_file}')
 
 
-for source_file in papers_dir:
+for source_file in os.listdir(papers_dir):
     print(papers_dir, source_file)
     full_path = f"{papers_dir}/{source_file}"
     print(full_path)
