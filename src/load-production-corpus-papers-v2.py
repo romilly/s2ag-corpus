@@ -65,12 +65,12 @@ class GeneratorFileAdapter:
 
 
 def copy_json_to_papers(source_file):
-    print('starting {source_file}')
+    print(f'starting {source_file}')
     adapter = GeneratorFileAdapter(read_records_from_file(source_file))
     with connection.cursor() as cursor:
         cursor.copy_from(adapter, 'papers', sep=',', null='')
         connection.commit()
-    print('done {source_file}')
+    print(f'done {source_file}')
 
 
 for source_file in papers_dir:
