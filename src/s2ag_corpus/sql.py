@@ -19,3 +19,26 @@ create index citations_citationid_index on citations using btree (citationid);
 create index citations_citedcorpusid_index on citations using btree (citedcorpusid);
 create index citations_citingcorpusid_index on citations using btree (citingcorpusid);
 """
+CREATE_EXTENDED_CITATIONS_TABLE_WITH_INDICES = """
+create table public.citations (
+  citationid bigint not null,
+  citingcorpusid integer not null,
+  citedcorpusid integer,
+  isinfluential boolean,
+  contexts text,
+  intents text
+);
+create index citations_citationid_index on citations using btree (citationid);
+create index citations_citedcorpusid_index on citations using btree (citedcorpusid);
+create index citations_citingcorpusid_index on citations using btree (citingcorpusid);
+"""
+CREATE_EXTENDED_CITATIONS_TABLE_WITHOUT_INDICES = """
+create table public.citations (
+  citationid bigint not null,
+  citingcorpusid integer not null,
+  citedcorpusid integer,
+  isinfluential boolean,
+  contexts text,
+  intents text
+);
+"""
