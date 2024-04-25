@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
 import os
 import json
 import csv
@@ -11,21 +10,13 @@ from dotenv import load_dotenv
 
 from s2ag_corpus.sql import CREATE_PAPERS_TABLE_WITHOUT_KEYS, ADD_KEY_TO_PAPERS
 
-
 load_dotenv()
 base_dir = os.getenv("BASE_DIR")
 
 
-from s2ag_corpus.database_catalogue import production_connection
+from s2ag_corpus.database_catalogue import local_connection
 
-connection = production_connection()
-
-release_id = '2024-04-02'
-papers_dir = f"{base_dir}/{release_id}/papers/"
-
-
-with connection.cursor() as cursor:
-    cursor.execute(CREATE_PAPERS_TABLE_WITHOUT_KEYS)
+connection = local_connection()
 
 def read_records_from_file(file_path):
     """A generator function that returns reformatted lines in a file."""
@@ -63,22 +54,15 @@ class GeneratorFileAdapter:
         return to_return
 
 
-
-def copy_json_to_papers(source_file):
-    print(f'starting {source_file}')
-    adapter = GeneratorFileAdapter(read_records_from_file(source_file))
+def copy_json_to_papers(test_file):
+    adapter = GeneratorFileAdapter(read_records_from_file(test_file))
     with connection.cursor() as cursor:
         cursor.copy_from(adapter, 'papers', sep=',', null='')
         connection.commit()
-    print(f'done {source_file}')
+    print('done')
 
 
-for source_file in os.listdir(papers_dir):
-    full_path = f"{papers_dir}/{source_file}"
-    copy_json_to_papers(full_path)
-
-
-with connection.cursor() as cursor:
-    cursor.execute(ADD_KEY_TO_PAPERS)
-    cursor.commit()
+# with connection.cursor() as cursor:
+#     cursor.execute(ADD_KEY_TO_PAPERS)
+#     connection.commit()
 
