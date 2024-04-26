@@ -13,11 +13,6 @@ from s2ag_corpus.sql import CREATE_PAPERS_TABLE_WITHOUT_KEYS, ADD_KEY_TO_PAPERS
 load_dotenv()
 base_dir = os.getenv("BASE_DIR")
 
-
-from s2ag_corpus.database_catalogue import local_connection
-
-connection = local_connection()
-
 def read_records_from_file(file_path):
     """A generator function that returns reformatted lines in a file."""
     output = StringIO()
@@ -54,7 +49,7 @@ class GeneratorFileAdapter:
         return to_return
 
 
-def copy_json_to_papers(test_file):
+def copy_json_to_papers(test_file, connection):
     adapter = GeneratorFileAdapter(test_file)
     with connection.cursor() as cursor:
         cursor.copy_from(adapter, 'papers', sep=',', null='')

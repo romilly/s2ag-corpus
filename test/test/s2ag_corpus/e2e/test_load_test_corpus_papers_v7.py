@@ -14,6 +14,7 @@ connection = local_connection()
 
 test_file = base_dir+'/test-data/e2e/papers10'
 
+
 def drop_and_replace_papers_table():
     with connection.cursor() as cursor:
         cursor.execute('drop table if exists papers')
@@ -24,7 +25,7 @@ def drop_and_replace_papers_table():
 def test_copy_json_to_papers():
     drop_and_replace_papers_table()
     check_papers_count(0)
-    copy_json_to_papers(test_file)
+    copy_json_to_papers(test_file, connection)
     check_papers_count(10)
     connection.close()
 
