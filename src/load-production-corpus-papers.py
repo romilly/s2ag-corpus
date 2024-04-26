@@ -28,6 +28,7 @@ dataset = DATASETS['papers']
 
 with connection.cursor() as cursor:
     cursor.execute(CREATE_PAPERS_TABLE_WITHOUT_KEYS)
+    connection.commit()
 
 
 for source_file in os.listdir(papers_dir):
