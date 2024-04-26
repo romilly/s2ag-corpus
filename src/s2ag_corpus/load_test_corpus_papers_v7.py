@@ -8,6 +8,7 @@ from io import StringIO
 
 from dotenv import load_dotenv
 
+from s2ag_corpus.datasets import Dataset
 from s2ag_corpus.sql import CREATE_PAPERS_TABLE_WITHOUT_KEYS, ADD_KEY_TO_PAPERS
 
 load_dotenv()
@@ -15,14 +16,16 @@ base_dir = os.getenv("BASE_DIR")
 
 
 
-def paper_json_to_tuple(line):
-    jd = json.loads(line)
-    record = (jd['corpusid'], line)
-    return record
+# def paper_json_to_tuple(line):
+#     jd = json.loads(line)
+#     record = (jd['corpusid'], line)
+#     return record
 
 
 class JsonFileInserter:
-    def __init__(self, file_path):
+    def __init__(self, file_path, dataset: Dataset, connection):
+        self.connection = connection
+        self.dataset = dataset
         self.generator = self.read_records_from_file(file_path)
         self.buffer = ''
         self.count = 0
@@ -34,7 +37,7 @@ class JsonFileInserter:
         with open(file_path, 'r') as file:
             for line in file:
                 line = line.strip()
-                record = paper_json_to_tuple(line)
+                record = self.dataset.json_to_tuple(line)
                 output.seek(0)
                 output.truncate(0)
                 writer.writerow(record)
@@ -53,13 +56,11 @@ class JsonFileInserter:
 
         return to_return
 
-
-def copy_json_to_papers(test_file, connection):
-    adapter = JsonFileInserter(test_file)
-    with connection.cursor() as cursor:
-        cursor.copy_from(adapter, 'papers', sep=',', null='')
-        connection.commit()
-    print('done')
+    def copy_json_to_papers(self):
+        with self.connection.cursor() as cursor:
+            cursor.copy_from(self, self.dataset.table, sep=',', null='')
+            self.connection.commit()
+        print('done')
 
 
 # with connection.cursor() as cursor:
