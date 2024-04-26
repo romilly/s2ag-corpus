@@ -14,4 +14,15 @@ def paper_json_to_tuple(line):
     return record
 
 
-DATASETS = {"papers" : Dataset(table="papers", json_to_tuple = paper_json_to_tuple)}
+def citation_json_to_tuple(line):
+    jd = json.loads(line)
+    return (jd['citationid'],
+              jd['citingcorpusid'],
+              jd['citedcorpusid'],
+              jd['isinfluential'],
+              jd['contexts'],
+              jd['intents'])
+
+
+DATASETS = {"papers" : Dataset(table="papers", json_to_tuple = paper_json_to_tuple),
+            "citations" : Dataset(table="citations", json_to_tuple = citation_json_to_tuple)}
