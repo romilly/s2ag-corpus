@@ -34,8 +34,8 @@ def read_records_from_file(file_path):
 
 
 class GeneratorFileAdapter:
-    def __init__(self, generator):
-        self.generator = generator
+    def __init__(self, file_path):
+        self.generator = read_records_from_file(file_path)
         self.buffer = ''
         self.count = 0
 
@@ -55,7 +55,7 @@ class GeneratorFileAdapter:
 
 
 def copy_json_to_papers(test_file):
-    adapter = GeneratorFileAdapter(read_records_from_file(test_file))
+    adapter = GeneratorFileAdapter(test_file)
     with connection.cursor() as cursor:
         cursor.copy_from(adapter, 'papers', sep=',', null='')
         connection.commit()
