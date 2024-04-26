@@ -13,27 +13,32 @@ from s2ag_corpus.sql import CREATE_PAPERS_TABLE_WITHOUT_KEYS, ADD_KEY_TO_PAPERS
 load_dotenv()
 base_dir = os.getenv("BASE_DIR")
 
-def read_records_from_file(file_path):
-    """A generator function that returns reformatted lines in a file."""
-    output = StringIO()
-    writer = csv.writer(output, delimiter=',', quoting=csv.QUOTE_NONE, escapechar='\\')
-    with open(file_path, 'r') as file:
-        for line in file:
-            line = line.strip()
-            jd = json.loads(line)
-            record = (jd['corpusid'], line)
-            output.seek(0)
-            output.truncate(0)
-            writer.writerow(record)
-            yield output.getvalue()
+
+
+def paper_json_to_tuple(line):
+    jd = json.loads(line)
+    record = (jd['corpusid'], line)
+    return record
 
 
 class JsonFileInserter:
     def __init__(self, file_path):
-        self.generator = read_records_from_file(file_path)
+        self.generator = self.read_records_from_file(file_path)
         self.buffer = ''
         self.count = 0
 
+    def read_records_from_file(self, file_path):
+        """A generator function that returns reformatted lines in a file."""
+        output = StringIO()
+        writer = csv.writer(output, delimiter=',', quoting=csv.QUOTE_NONE, escapechar='\\')
+        with open(file_path, 'r') as file:
+            for line in file:
+                line = line.strip()
+                record = paper_json_to_tuple(line)
+                output.seek(0)
+                output.truncate(0)
+                writer.writerow(record)
+                yield output.getvalue()
     def read(self, size=-1):
         # Fill the buffer to meet the size requirement or if size is -1 then try to exhaust the generator
         while (size < 0 or len(self.buffer) < size) and (chunk := next(self.generator, None)) is not None:
