@@ -12,7 +12,7 @@ base_dir = os.getenv("BASE_DIR")
 connection = local_connection()
 
 
-test_file = base_dir+'/test-data/papers10'
+test_file = base_dir+'/test-data/e2e/papers10'
 
 def drop_and_replace_papers_table():
     with connection.cursor() as cursor:
