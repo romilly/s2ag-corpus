@@ -34,8 +34,8 @@ with connection.cursor() as cursor:
 for source_file in sorted(os.listdir(papers_dir)):
     full_path = f"{papers_dir}/{source_file}"
     print(full_path)
-    inserter = JsonFileInserter(full_path, dataset, connection)
-    inserter.copy_json_to_table()
+    inserter = JsonFileInserter(dataset, connection)
+    inserter.copy_json_to_table(full_path)
 
 
 # with connection.cursor() as cursor:

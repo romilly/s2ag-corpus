@@ -23,10 +23,10 @@ base_dir = os.getenv("BASE_DIR")
 
 
 class JsonFileInserter:
-    def __init__(self, file_path, dataset: Dataset, connection):
+    def __init__(self, dataset: Dataset, connection):
         self.connection = connection
         self.dataset = dataset
-        self.generator = self.read_records_from_file(file_path)
+        self.generator = None
         self.buffer = ''
         self.count = 0
 
@@ -42,21 +42,19 @@ class JsonFileInserter:
                 output.truncate(0)
                 writer.writerow(record)
                 yield output.getvalue()
+
     def read(self, size=-1):
         # Fill the buffer to meet the size requirement or if size is -1 then try to exhaust the generator
         while (size < 0 or len(self.buffer) < size) and (chunk := next(self.generator, None)) is not None:
             self.buffer += chunk
-            if not self.buffer.endswith('\n'):
-                self.buffer += '\n'  # Ensure each chunk ends with a newline
-
         if size < 0 or len(self.buffer) <= size:
             to_return, self.buffer = self.buffer, ''
         else:
             to_return, self.buffer = self.buffer[:size], self.buffer[size:]
-
         return to_return
 
-    def copy_json_to_table(self, file_path=None):
+    def copy_json_to_table(self, file_path):
+        self.generator = self.read_records_from_file(file_path)
         with self.connection.cursor() as cursor:
             cursor.copy_from(self, self.dataset.table, sep=',', null='')
             self.connection.commit()

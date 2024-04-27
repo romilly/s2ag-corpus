@@ -26,8 +26,8 @@ def drop_and_replace_papers_table():
 def test_copy_json_to_papers():
     drop_and_replace_papers_table()
     check_papers_count(0)
-    inserter = JsonFileInserter(test_file, dataset, connection)
-    inserter.copy_json_to_table()
+    inserter = JsonFileInserter(dataset, connection)
+    inserter.copy_json_to_table(test_file)
     check_papers_count(10)
     connection.close()
 
