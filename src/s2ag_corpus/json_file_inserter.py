@@ -56,7 +56,7 @@ class JsonFileInserter:
 
         return to_return
 
-    def copy_json_to_table(self):
+    def copy_json_to_table(self, file_path=None):
         with self.connection.cursor() as cursor:
             cursor.copy_from(self, self.dataset.table, sep=',', null='')
             self.connection.commit()
