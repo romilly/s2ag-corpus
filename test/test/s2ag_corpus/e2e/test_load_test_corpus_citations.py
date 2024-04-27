@@ -5,7 +5,7 @@ from s2ag_corpus.database_catalogue import local_connection
 from s2ag_corpus.datasets import DATASETS
 from s2ag_corpus.json_file_inserter import JsonFileInserter
 
-from s2ag_corpus.sql import CREATE_EXTENDED_CITATIONS_TABLE_WITHOUT_INDICES
+from s2ag_corpus.sql import CREATE_CITATIONS_TABLE_WITHOUT_INDICES
 
 load_dotenv()
 base_dir = os.getenv("BASE_DIR")
@@ -19,11 +19,11 @@ dataset = DATASETS['citations']
 def drop_and_replace_citations_table():
     with connection.cursor() as cursor:
         cursor.execute('drop table if exists citations')
-        cursor.execute(CREATE_EXTENDED_CITATIONS_TABLE_WITHOUT_INDICES)
+        cursor.execute(CREATE_CITATIONS_TABLE_WITHOUT_INDICES)
         connection.commit()
 
 
-def test_copy_json_to_papers():
+def test_copy_json_to_citations_table():
     drop_and_replace_citations_table()
     check_papers_count(0)
     inserter = JsonFileInserter(test_file, dataset, connection)
