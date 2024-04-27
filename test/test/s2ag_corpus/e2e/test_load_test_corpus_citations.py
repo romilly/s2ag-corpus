@@ -24,7 +24,7 @@ def drop_table():
 def test_copy_json_to_papers():
     drop_table()
     insert_dataset('citations', test_dir,connection)
-    check_papers_count(1000)
+    check_papers_count(21000)
     connection.close()
 
 

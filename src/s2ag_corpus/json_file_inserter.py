@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+import gzip
 import os
 import json
 import csv
@@ -30,21 +30,20 @@ class JsonFileInserter:
         self.buffer = ''
         self.count = 0
 
-    def read_records_from_file(self, file_path):
+    def read_records_from_file(self, input_file):
         """A generator function that returns reformatted lines in a file."""
         output = StringIO()
         writer = csv.writer(output, delimiter=',', quoting=csv.QUOTE_NONE, escapechar='\\')
-        with open(file_path, 'r') as file:
-            for line in file:
-                line = line.strip()
-                record = self.dataset.json_to_tuple(line)
-                output.seek(0)
-                output.truncate(0)
-                writer.writerow(record)
-                self.count += 1
-                if self.count % 1000000 == 0:
-                    print('loaded', self.count)
-                yield output.getvalue()
+        for line in input_file:
+            line = line.strip()
+            record = self.dataset.json_to_tuple(line)
+            output.seek(0)
+            output.truncate(0)
+            writer.writerow(record)
+            self.count += 1
+            if self.count % 1000000 == 0:
+                print('loaded', self.count)
+            yield output.getvalue()
 
     def read(self, size=-1):
         # Fill the buffer to meet the size requirement or if size is -1 then try to exhaust the generator
@@ -57,10 +56,15 @@ class JsonFileInserter:
         return to_return
 
     def copy_json_to_table(self, file_path):
-        self.generator = self.read_records_from_file(file_path)
-        with self.connection.cursor() as cursor:
-            cursor.copy_from(self, self.dataset.table, sep=',', null='')
-            self.connection.commit()
+        if file_path.endswith('.gz'):
+            input_file = gzip.open(file_path, 'rt')
+        else:
+            input_file = open(file_path,'rt')
+        with input_file:
+            self.generator = self.read_records_from_file(input_file)
+            with self.connection.cursor() as cursor:
+                cursor.copy_from(self, self.dataset.table, sep=',', null='')
+                self.connection.commit()
         print('done')
 
     def create_table(self):
@@ -73,10 +77,4 @@ class JsonFileInserter:
             cursor.execute(self.dataset.add_indices)
             self.connection.commit()
 
-
-
-
-# with connection.cursor() as cursor:
-#     cursor.execute(ADD_KEY_TO_PAPERS)
-#     connection.commit()
 
