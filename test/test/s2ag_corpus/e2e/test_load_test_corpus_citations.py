@@ -16,18 +16,19 @@ connection = local_connection()
 test_file = base_dir+'/test-data/e2e/citations1000'
 dataset = DATASETS['citations']
 
-def drop_and_replace_citations_table():
+def drop_citations_table():
     with connection.cursor() as cursor:
         cursor.execute('drop table if exists citations')
-        cursor.execute(CREATE_CITATIONS_TABLE_WITHOUT_INDICES)
         connection.commit()
 
 
 def test_copy_json_to_citations_table():
-    drop_and_replace_citations_table()
-    check_papers_count(0)
+    drop_citations_table()
     inserter = JsonFileInserter(dataset, connection)
+    inserter.create_table()
+    check_papers_count(0)
     inserter.copy_json_to_table(test_file)
+    inserter.index_table()
     check_papers_count(1000)
     connection.close()
 

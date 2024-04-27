@@ -60,6 +60,18 @@ class JsonFileInserter:
             self.connection.commit()
         print('done')
 
+    def create_table(self):
+        with self.connection.cursor() as cursor:
+            cursor.execute(self.dataset.create_table)
+            self.connection.commit()
+
+    def index_table(self):
+        with self.connection.cursor() as cursor:
+            cursor.execute(self.dataset.add_indices)
+            self.connection.commit()
+
+
+
 
 # with connection.cursor() as cursor:
 #     cursor.execute(ADD_KEY_TO_PAPERS)
