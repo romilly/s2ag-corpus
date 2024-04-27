@@ -3,9 +3,7 @@ from dotenv import load_dotenv
 
 from s2ag_corpus.database_catalogue import local_connection
 from s2ag_corpus.datasets import DATASETS
-from s2ag_corpus.json_file_inserter import JsonFileInserter
-
-from s2ag_corpus.sql import CREATE_CITATIONS_TABLE_WITHOUT_INDICES
+from s2ag_corpus.import_dataset import insert_dataset
 
 load_dotenv()
 base_dir = os.getenv("BASE_DIR")
@@ -13,22 +11,19 @@ base_dir = os.getenv("BASE_DIR")
 connection = local_connection()
 
 
-test_file = base_dir+'/test-data/e2e/citations1000'
-dataset = DATASETS['citations']
+test_dir = base_dir+'/test-data/e2e'
+dataset = DATASETS['papers']
 
-def drop_citations_table():
+
+def drop_table():
     with connection.cursor() as cursor:
         cursor.execute('drop table if exists citations')
         connection.commit()
 
 
-def test_copy_json_to_citations_table():
-    drop_citations_table()
-    inserter = JsonFileInserter(dataset, connection)
-    inserter.create_table()
-    check_papers_count(0)
-    inserter.copy_json_to_table(test_file)
-    inserter.index_table()
+def test_copy_json_to_papers():
+    drop_table()
+    insert_dataset('citations', test_dir,connection)
     check_papers_count(1000)
     connection.close()
 

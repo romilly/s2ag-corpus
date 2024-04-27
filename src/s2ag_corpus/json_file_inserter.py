@@ -41,6 +41,9 @@ class JsonFileInserter:
                 output.seek(0)
                 output.truncate(0)
                 writer.writerow(record)
+                self.count += 1
+                if self.count % 1000000 == 0:
+                    print('loaded', self.count)
                 yield output.getvalue()
 
     def read(self, size=-1):
