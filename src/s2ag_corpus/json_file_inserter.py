@@ -15,14 +15,31 @@ load_dotenv()
 base_dir = os.getenv("BASE_DIR")
 
 
-
-# def paper_json_to_tuple(line):
-#     jd = json.loads(line)
-#     record = (jd['corpusid'], line)
-#     return record
-
-
 class JsonFileInserter:
+    class JsonFileInserter:
+        """
+        This class is responsible for inserting the data in a dataset from a JSON file into a database table.
+
+        Methods
+        -------
+        __init__(self, dataset: Dataset, connection)
+            Initializes the JsonFileInserter with the provided dataset and database connection.
+
+        read_records_from_file(self, input_file)
+            Iterates over the lines (records) in a input_file, converts them into the expected tuple format, and yields each line.
+
+        read(self, size=-1)
+            Reads 'size' amount of data from the buffer, filling it up from the generator if necessary.
+
+        copy_json_to_table(self, file_path)
+            Copies data from a JSON file specified by file_path into a database table.
+
+        create_table(self)
+            Creates a new table in the database using the dataset's create table specification.
+
+        index_table(self)
+            Adds indices to the table in the database using the dataset's index specification.
+        """
     def __init__(self, dataset: Dataset, connection):
         self.connection = connection
         self.dataset = dataset
