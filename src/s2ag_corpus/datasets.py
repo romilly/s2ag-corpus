@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 from s2ag_corpus.sql import CREATE_PAPERS_TABLE_WITHOUT_KEYS, ADD_KEY_TO_PAPERS
 from s2ag_corpus.sql import CREATE_CITATIONS_TABLE_WITHOUT_INDICES, ADD_KEYS_TO_CITATIONS
+from s2ag_corpus.sql import CREATE_PAPER_IDS_TABLE_WITHOUT_KEYS, ADD_KEYS_TO_PAPER_IDS
 
 
 @dataclass(frozen=True)
@@ -26,8 +27,16 @@ def citation_json_to_tuple(line):
               jd['citedcorpusid'],
               jd['isinfluential'],
               jd['contexts'],
-              jd['intents'])
+              jd['intents']
+            )
 
+def paper_ids_json_to_tuple(line):
+    jd = json.loads(line)
+    return (
+        jd['sha'],
+        jd['corpusid'],
+        jd['primary']
+    )
 
 papers_dataset = Dataset(table="papers",
                          json_to_tuple=paper_json_to_tuple,
@@ -40,5 +49,12 @@ citations_dataset = Dataset(table="citations",
                             create_table=CREATE_CITATIONS_TABLE_WITHOUT_INDICES,
                             add_indices=ADD_KEYS_TO_CITATIONS
                     )
+
+paper_ids_dataset = Dataset(table="paper_ids",
+                            json_to_tuple= paper_ids_json_to_tuple,
+                            create_table=CREATE_PAPER_IDS_TABLE_WITHOUT_KEYS,
+                            add_indices=ADD_KEYS_TO_PAPER_IDS
+                    )
 DATASETS = {"papers" : papers_dataset,
-            "citations" : citations_dataset}
+            "citations" : citations_dataset,
+            "paper_ids" : paper_ids_dataset}

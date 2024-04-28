@@ -52,3 +52,15 @@ create index citations_citedcorpusid_index
 create index citations_citingcorpusid_index
     on citations (citingcorpusid);
 """
+
+CREATE_PAPER_IDS_TABLE_WITHOUT_KEYS = """
+create table public.paper_ids (
+    sha text not null,
+    corpusid integer not null,
+    "primary" boolean not null)
+"""
+
+ADD_KEYS_TO_PAPER_IDS = """
+create index sha_index on public.paper_ids (sha);
+create index corpus_index on public.paper_ids using btree(corpusid);
+"""
