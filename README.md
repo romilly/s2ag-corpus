@@ -31,6 +31,7 @@ The datasets supported are:
 ### Summary:
 
 1. Clone this repository into a directory of your choice.
+2. Create and activate Python virtual environment.
 2. Install the required Python packages.
 2. Create a base directory for the files that the software will download fromm Semantic Scholar.
 3. Obtain an API key for Semantic Scholar.
