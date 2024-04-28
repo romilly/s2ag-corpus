@@ -4,10 +4,14 @@ It has been developed in a Linux environment, and I do not have the resources to
 
 It is a personal project, and it has no official connection with the Allen Institute for AI.
 
-The data that it downloads is subject to the [Semantic Scholar Academic Graph Licence]()
+The data that it downloads is subject to the Semantic Scholar Academic Graph Licence.
 
-The code is under active development, and the APi may change.
-The current version supports downloading and inserting complete datasets.
+The first iteration is almost complete, but the documentation needs more work.
+
+For now, if you're interested, examine the code but don't attempt to create and populate a database
+unless you love to experiment and are willing to redo work if things change!
+
+The code is under active development, and the API may change.
 
 Future releases will support updating the database from the diffs created by the Semantic Scholar API. 
 
