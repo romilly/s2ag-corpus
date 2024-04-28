@@ -77,5 +77,6 @@ class JsonFileInserter:
         with self.connection.cursor() as cursor:
             cursor.execute(self.dataset.add_indices)
             self.connection.commit()
+        print('done indexing')
 
 
