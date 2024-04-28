@@ -17,7 +17,7 @@ connection = production_connection()
 release_id = '2024-04-02'
 
 datasets_dir = f"{base_dir}/{release_id}/"
-dataset_name = 'paper_ids'
+dataset_name = 'paper-ids'
 
 insert_dataset(dataset_name, datasets_dir, connection)
 
