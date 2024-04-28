@@ -20,6 +20,8 @@ class JsonFileInserter:
         """
         This class is responsible for inserting the data in a dataset from a JSON file into a database table.
 
+        The file can be plain text or gzipped.
+
         Methods
         -------
         __init__(self, dataset: Dataset, connection)
@@ -74,6 +76,7 @@ class JsonFileInserter:
 
     def copy_json_to_table(self, file_path):
         print("Copying json file to table", file_path)
+        # Use a gzip readere if the file is zipped
         if file_path.endswith('.gz'):
             input_file = gzip.open(file_path, 'rt')
         else:
