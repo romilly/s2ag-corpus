@@ -48,13 +48,13 @@ citations_dataset = Dataset(table="citations",
                             json_to_tuple=citation_json_to_tuple,
                             create_table=CREATE_CITATIONS_TABLE_WITHOUT_INDICES,
                             add_indices=ADD_KEYS_TO_CITATIONS
-                    )
+                        )
 
-paper_ids_dataset = Dataset(table="paper_ids",
+paper_ids_dataset = Dataset(table="paperids",
                             json_to_tuple= paper_ids_json_to_tuple,
                             create_table=CREATE_PAPER_IDS_TABLE_WITHOUT_KEYS,
                             add_indices=ADD_KEYS_TO_PAPER_IDS
                     )
 DATASETS = {"papers" : papers_dataset,
             "citations" : citations_dataset,
-            "paper_ids" : paper_ids_dataset}
+            "paper-ids" : paper_ids_dataset}
