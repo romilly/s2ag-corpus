@@ -29,6 +29,7 @@ The datasets supported are:
 1. Clone this repository into a directory of your choice.
 2. Install the required Python packages.
 2. Create a base directory for the files that the software will download fromm Semantic Scholar.
+3. Obtain an API key for Semantic Scholar.
 3. Create and populate a .env file in the root directory of the downloaded repository.
 4. If necessary, install PostgreSQL.
 5. Create a Postgres database to hold the production data.
@@ -43,7 +44,7 @@ git clone https://github.com/romilly/s2ag-corpus.git
 cd s2ag-corpus
 ```
 
-
+**NB:** Much more to come, as fast as I can write it :)
 
 Thanks to the Allen Institute for AI for making the Semantic Scholar data freely available.
 
