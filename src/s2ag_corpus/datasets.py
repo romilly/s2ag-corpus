@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from s2ag_corpus.sql import CREATE_PAPERS_TABLE_WITHOUT_KEYS, ADD_KEY_TO_PAPERS
 from s2ag_corpus.sql import CREATE_CITATIONS_TABLE_WITHOUT_INDICES, ADD_KEYS_TO_CITATIONS
 from s2ag_corpus.sql import CREATE_PAPER_IDS_TABLE_WITHOUT_KEYS, ADD_KEYS_TO_PAPER_IDS
+from s2ag_corpus.sql import CREATE_TABLE_ABSTRACTS, ADD_KEYS_TO_ABSTRACTS
 
 
 @dataclass(frozen=True)
@@ -38,6 +39,10 @@ def paper_ids_json_to_tuple(line):
         jd['primary']
     )
 
+def abstract_json_to_tuple(line):
+    jd = json.loads(line)
+    return jd['corpusid'], json.dumps(jd['openaccessinfo']),jd['abstract']
+
 papers_dataset = Dataset(table="papers",
                          json_to_tuple=paper_json_to_tuple,
                          create_table= CREATE_PAPERS_TABLE_WITHOUT_KEYS,
@@ -55,6 +60,16 @@ paper_ids_dataset = Dataset(table="paperids",
                             create_table=CREATE_PAPER_IDS_TABLE_WITHOUT_KEYS,
                             add_indices=ADD_KEYS_TO_PAPER_IDS
                     )
-DATASETS = {"papers" : papers_dataset,
-            "citations" : citations_dataset,
-            "paper-ids" : paper_ids_dataset}
+
+abstractsd_dataset = Dataset(table="abstracts",
+                             json_to_tuple=abstract_json_to_tuple,
+                             create_table=CREATE_TABLE_ABSTRACTS,
+                             add_indices=ADD_KEYS_TO_ABSTRACTS)
+
+
+DATASETS = {
+    "abstracts": abstractsd_dataset,
+    "citations" : citations_dataset,
+    "papers" : papers_dataset,
+    "paper-ids" : paper_ids_dataset
+}

@@ -64,3 +64,16 @@ ADD_KEYS_TO_PAPER_IDS = """
 create index sha_index on public.paperids (sha);
 create index corpus_index on public.paperids using btree(corpusid);
 """
+
+CREATE_TABLE_ABSTRACTS = """
+create table abstracts
+(
+    corpusid       integer not null,
+    openaccessinfo jsonb   not null,
+    abstract       text    not null
+);
+"""
+
+ADD_KEYS_TO_ABSTRACTS = """
+create index abstracts_idx on abstracts using btree(corpusid);
+"""
