@@ -1,3 +1,5 @@
 from s2ag_corpus.download_dataset import download
 
-download('2024-04-02','authors')
+# TODO: define the release-id and fix code appropriately.
+
+download('authors')

@@ -22,7 +22,7 @@ The datasets supported are:
 - `paper-ids`
 - `papers`
 - `publication-venues` and 
-- `tldrs`.
+- `tldrs`
 
 
 
@@ -30,17 +30,24 @@ The datasets supported are:
 
 ### Summary:
 
-1. Clone this repository into a directory of your choice.
-2. Create and activate Python virtual environment.
-2. Install the required Python packages.
-2. Create a base directory for the files that the software will download fromm Semantic Scholar.
-3. Obtain an API key for Semantic Scholar.
-3. Create and populate a .env file in the root directory of the downloaded repository.
-4. If necessary, install PostgreSQL.
-5. Create a Postgres database to hold the production data.
-6. If you plan on modifying or extending the code, create a database to hold test data,
+1.  Clone this repository into a directory of your choice.
+2.  Create and activate a Python virtual environment.
+3.  Install the required Python packages.
+4.  Create a base directory for the files that the software will download fromm Semantic Scholar.
+5.  Obtain an API key for Semantic Scholar.
+6.  Create and populate a `.env` file in the root directory of the downloaded repository.
+7.  If necessary, install PostgreSQL.
+8.  Create a Postgres database to hold the production data.
+9.  If you plan on modifying or extending the code, create a database to hold test data.
+10. Update the .env file to include credentials for the database(s). 
+11. Download a dataset from Semantic Scholar. 
+12. Import the dataset into the production database.
+13. Repeat stages 11 and 12 for the remaining datasets.
+14. Query the database. 
 
-#### Clone this repository into a directory of your choice
+
+
+#### Clone this repository into a directory of your choice.
 
 Within the directory, run
 
@@ -48,6 +55,110 @@ Within the directory, run
 git clone https://github.com/romilly/s2ag-corpus.git
 cd s2ag-corpus
 ```
+
+#### Create and activate a Python virtual environment.
+
+```shell
+python -m venv venv
+```
+
+#### Install the required Python packages.
+
+```shell
+pip install -r requirements.txt
+```
+
+#### Create a base directory for the files that the software will download fromm Semantic Scholar.
+
+You'll need at least 1 TB to allow for the initial downloads and future diffs. 
+
+```shell
+mdkir <path-to-your-data-directory>
+```
+
+#### Obtain an API key for Semantic Scholar.
+
+See [Do I  need an API key](https://www.semanticscholar.org/product/api#api-key) on the  Semantic Scholar website.
+
+You *will* need a key to download the datasets you'll need.
+
+#### Create and populate a `.env` file in the root directory of the downloaded repository.
+
+The code in this repository assumes that you have created a `.env` file in the root directory of the project.
+This will contain various credentials.
+Initially you'll just need the private Semantic Scholar API key that you obtained in the previous step. 
+
+The initial contents of the `.env` file should look like this:
+
+```text
+BASE_DIR = path-to-your-data-directory
+S2_API_KEY = api-key-from-semantic-scholar
+```
+
+#### If necessary, install PostgreSQL.
+
+You should be able to find installation instructions for your flavour of Linux on the internet.
+Make sure that you install `postgres` and `postgresql-contrib`.
+
+#### Create a Postgres database to hold the production data.
+
+You'll need to create a database to hold the data.
+
+Again, you'll need a lot of room on the volume that contains the database.
+
+That may mean that you need to create the database with a tablespace on a volume that's not the default.
+Consult the Postgres documentation for how to do this.
+
+I'm running the application on a Raspberry Pi 5 computer, using a dedicated 4 TB nvme drive for downloaded data
+and the database tablespace. That works well.
+
+#### If you plan on modifying or extending the code, create a database to hold test data.
+
+This needs much less space: 250 GB should be ample.
+
+#### Update the .env file to include credentials for the database(s).
+
+You'll need to add one or two rows to the `.env` file that you created earlier.
+
+The first row contains login credentials for the production database.
+The second row should contain credentials for the test database if you are using one.
+
+Here are example entries:
+
+```text
+BASE_DIR = path-to-your-data-directory
+S2_API_KEY = api-key-from-semantic-scholar
+PROD_DB = "postgres://romilly:semantic@pi5-postgres/ss_corpus"
+TEST_DB = "postgres://romilly:semantic@pi5-postgres/corpus_test"
+```
+In the entries for the production database, `romilly` is the Postgres username who owns the database.
+You should replace that by the name of the Postgres user who owns the database that you set up earlier.
+`semantic` is the password for the database. gain, replace that with the password for the database that you created.
+`pi5-postgres` is the hostname where your Postgres server is installed.
+If you are running the software on the same computer, you can replace that by `localhost`
+`ss-corpus` is the name of the database. Replace it y the name of the database that you create earlier.
+
+The entry for the optional test database follows a similar format.
+
+#### Download a dataset from Semantic Scholar.
+
+# TODO: define the release-id and fix code appropriately.
+
+Change directory to the `src` directory for the project and run `download-papers.py`.
+
+You'll need to run it using python.
+For some Linus distributions you may need to replace `python` by `python3` in the entries below.
+
+```shell
+cd src
+python download-papers.py
+```
+
+This may take some time to run, depending on the speed of your computer and your internet connection.
+
+#### 
+
+## Updating the database
 
 **NB:** Much more to come, as fast as I can write it :)
 

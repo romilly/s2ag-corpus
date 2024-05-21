@@ -1,0 +1,5 @@
+{
+    "name": "tldrs",
+    "description": "A short natural-language summary of the contents of a paper.\n58M records in 30 200MB files.",
+    "README": "Semantic Scholar Academic Graph Datasets\n\nThe \"tldrs\" dataset provides short natural-language summaries of a paper's content.\n\nThe model is based on the SciTLDR model available at https://github.com/allenai/scitldr.\n\nLICENSE\nThis collection is licensed under ODC-BY. (https://opendatacommons.org/licenses/by/1.0/)\n\nBy downloading this data you acknowledge that you have read and agreed to all the terms in this license.\n\nATTRIBUTION\nWhen using this data in a product or service, or including data in a redistribution, please cite the following paper:\n\nBibTex format:\n@article{cachola2020tldr,\n  title={{TLDR}: Extreme Summarization of Scientific Documents},\n  author={Isabel Cachola and Kyle Lo and Arman Cohan and Daniel S. Weld},\n  journal={arXiv:2004.15011},\n  year={2020},\n}\n\n\n"
+}
