@@ -22,7 +22,10 @@ def download(dataset_name: str):
     base_path = f"{base_dir}/{release_id}/{dataset_name}"
     if not os.path.exists(base_path):
         print(f"directory {base_path} does not exist")
-        return
+        try:
+            os.mkdir(base_path)
+        except Exception as e:
+            print(f"could not create {base_path} - exception {e}")
     print(f"about to download release {release_id} of {dataset_name}: {len(download_links)} files.")
     for (i, link) in enumerate(download_links):
         file_name = f"{dataset_name}{i:03}.gz"
