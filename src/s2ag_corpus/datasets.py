@@ -39,6 +39,7 @@ def paper_ids_json_to_tuple(line):
         jd['primary']
     )
 
+
 def abstract_json_to_tuple(line):
     jd = json.loads(line)
     return jd['corpusid'], json.dumps(jd['openaccessinfo']),jd['abstract']
@@ -61,14 +62,14 @@ paper_ids_dataset = Dataset(table="paperids",
                             add_indices=ADD_KEYS_TO_PAPER_IDS
                     )
 
-abstractsd_dataset = Dataset(table="abstracts",
-                             json_to_tuple=abstract_json_to_tuple,
-                             create_table=CREATE_TABLE_ABSTRACTS,
-                             add_indices=ADD_KEYS_TO_ABSTRACTS)
+abstracts_dataset = Dataset(table="abstracts",
+                            json_to_tuple=abstract_json_to_tuple,
+                            create_table=CREATE_TABLE_ABSTRACTS,
+                            add_indices=ADD_KEYS_TO_ABSTRACTS)
 
 
 DATASETS = {
-    "abstracts": abstractsd_dataset,
+    "abstracts": abstracts_dataset,
     "citations" : citations_dataset,
     "papers" : papers_dataset,
     "paper-ids" : paper_ids_dataset
