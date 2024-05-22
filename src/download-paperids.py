@@ -1,3 +1,2 @@
 from s2ag_corpus.download_dataset import download
-
-download('authors')
+download('paper-ids')
