@@ -14,9 +14,9 @@ base_dir = os.getenv("BASE_DIR")
 
 
 connection = production_connection()
-release_id = '2024-04-02'
+release_id = os.getenv('RELEASE_ID')
 
-datasets_dir = f"{base_dir}/{release_id}/"
+datasets_dir = f"{base_dir}/{release_id}"
 dataset_name = 'papers'
 
 insert_dataset(dataset_name, datasets_dir, connection)
