@@ -27,7 +27,7 @@ def insert_dataset(dataset_name, datasets_dir, connection):
     -------
     None
     """
-    data_dir = f"{datasets_dir}/{dataset_name}/"
+    data_dir = f"{datasets_dir}/{dataset_name}"
     dataset = DATASETS[dataset_name]
     inserter = JsonFileInserter(dataset, connection)
     inserter.create_table()
