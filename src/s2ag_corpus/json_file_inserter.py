@@ -94,6 +94,7 @@ class JsonFileInserter:
             self.connection.commit()
 
     def index_table(self):
+        print('starting indexing')
         with self.connection.cursor() as cursor:
             cursor.execute(self.dataset.add_indices)
             self.connection.commit()
