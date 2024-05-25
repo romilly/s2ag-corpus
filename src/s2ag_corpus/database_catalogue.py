@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from abc import ABC, abstractmethod
 from typing import List, Tuple, Set, Optional
 
@@ -21,6 +22,13 @@ def production_connection():
     return psycopg2.connect(
         get_connection_string('PROD_DB'))
 
+
+@dataclass(frozen=True)
+class Paper:
+    corpusid: int
+    title: str
+    year: int
+    url: str
 
 
 class DatabaseCatalogue(ABC):
@@ -46,7 +54,9 @@ class CorpusDatabaseCatalogue(DatabaseCatalogue):
     PAPER_DETAILS_SQL="""
     select corpusid, 
     papers.paper_json->>'title' as title,
-    papers.paper_json->> 'year' from papers where corpusid = %s"""
+    papers.paper_json->> 'year',
+    papers.paper_json->> 'url'
+    from papers where corpusid = %s"""
 
     def __init__(self, connection):
         self.connection = connection
@@ -103,13 +113,31 @@ class CorpusDatabaseCatalogue(DatabaseCatalogue):
 
         return links
 
-    def enriched_links(self, corpusid: int, influential = True) -> Set:
-        links = self.find_links(corpusid, corpusid, influential)
-        enriched = [(self.find_paper_details(corpusid1),
-                     self.find_paper_details(corpusid2))
+    def enriched_links(self, corpusid: int, influential = True) -> Set[Tuple[Paper, Paper]]:
+        links = self.find_links(corpusid, influential)
+        enriched = [(Paper(*self.find_paper_details(corpusid1)),
+                     Paper(*self.find_paper_details(corpusid2)))
                             for (corpusid1, corpusid2) in links]
         return enriched
 
+    def write_dot_file(self, enriched_links: Set[Tuple[Paper, Paper]], file_path: str):
+        with open(file_path, "w") as f:
+            f.write("digraph {\n")
+            papers = set()
+            # Add node definitions
+            for p1, p2 in enriched_links:
+                papers.add(p1)
+                papers.add(p2)
+
+            for paper in papers:
+                label1 = f"{paper.title[:60]}\\n({paper.corpusid})\\n{p1.year}"
+                f.write(f'    "{paper.corpusid}" [label="{label1}", shape="rectangle", URL="{paper.url}"];\n')
+
+            # Add edges
+            for p1, p2 in enriched_links:
+                f.write(f'    "{p2.corpusid}" -> "{p1.corpusid}";\n')
+
+            f.write("}\n")
 
     def find_paper_details(self, corpusid: int) -> tuple | None:
         rows = self.fetch(self.PAPER_DETAILS_SQL, (corpusid,))
