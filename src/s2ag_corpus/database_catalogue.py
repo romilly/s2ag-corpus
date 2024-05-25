@@ -1,10 +1,11 @@
-from dataclasses import dataclass
+import json
 from abc import ABC, abstractmethod
-from typing import List, Tuple, Set, Optional
+from typing import List, Tuple, Set
 
 import psycopg2
 from psycopg2.extras import execute_batch
 
+from s2ag_corpus.paper import Paper
 from s2ag_corpus.parser import get_connection_string
 
 
@@ -21,14 +22,6 @@ def local_connection():
 def production_connection():
     return psycopg2.connect(
         get_connection_string('PROD_DB'))
-
-
-@dataclass(frozen=True)
-class Paper:
-    corpusid: int
-    title: str
-    year: int
-    url: str
 
 
 class DatabaseCatalogue(ABC):
@@ -54,6 +47,7 @@ class CorpusDatabaseCatalogue(DatabaseCatalogue):
     PAPER_DETAILS_SQL="""
     select corpusid, 
     papers.paper_json->>'title' as title,
+    papers.paper_json->>'authors' as authors,
     papers.paper_json->> 'year',
     papers.paper_json->> 'url'
     from papers where corpusid = %s"""
@@ -120,31 +114,16 @@ class CorpusDatabaseCatalogue(DatabaseCatalogue):
                             for (corpusid1, corpusid2) in links]
         return enriched
 
-    def write_dot_file(self, enriched_links: Set[Tuple[Paper, Paper]], file_path: str):
-        with open(file_path, "w") as f:
-            f.write("digraph {\n")
-            papers = set()
-            # Add node definitions
-            for p1, p2 in enriched_links:
-                papers.add(p1)
-                papers.add(p2)
-
-            for paper in papers:
-                label1 = f"{paper.title[:60]}\\n({paper.corpusid})\\n{p1.year}"
-                f.write(f'    "{paper.corpusid}" [label="{label1}", shape="rectangle", URL="{paper.url}"];\n')
-
-            # Add edges
-            for p1, p2 in enriched_links:
-                f.write(f'    "{p2.corpusid}" -> "{p1.corpusid}";\n')
-
-            f.write("}\n")
-
     def find_paper_details(self, corpusid: int) -> tuple | None:
         rows = self.fetch(self.PAPER_DETAILS_SQL, (corpusid,))
         if len(rows) == 0:
             return None
         else:
-            return rows[0]
+            corpusid, title, raw_authors, year, url  = rows[0]
+            authors = ', '.join(author['name'] for author in json.loads(raw_authors))
+            return corpusid, title, authors, year, url
+
+
 
     def fetch(self, sql: str, params=None) -> List[Tuple]:
         with self.connection.cursor() as cursor:
