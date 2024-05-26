@@ -1,6 +1,17 @@
 from collections import defaultdict
 from typing import List, Tuple, Set
+from dataclasses import dataclass, field
 from s2ag_corpus.paper import Paper
+
+
+@dataclass(frozen=True)
+class ClusteredPapers:
+    papers: Set[Paper] = field(default_factory=set)
+    clusters: defaultdict[int, List[int]] = field(default_factory=lambda: defaultdict(list))
+
+    def add_paper(self, paper: Paper) -> None:
+        self.papers.add(paper)
+        self.clusters[paper.year].append(paper.corpusid)
 
 
 def shorten(title: List[str]) -> str:
@@ -8,32 +19,32 @@ def shorten(title: List[str]) -> str:
     return ' '.join(first_line_words[:3])
 
 
-def write_dot_file(enriched_links: Set[Tuple[Paper, Paper]], file_path: str):
+def write_dot_file(enriched_links: Set[Tuple[Paper, Paper]],
+                   file_path: str,
+                   show_labels: bool = False) -> None:
     with open(file_path, "w") as dot_file:
         dot_file.write("digraph {\n")
         dot_file.write("     rankdir=BT;\n")
-        papers = set()
-        clusters = defaultdict(list)
-        # TODO: I sense an emerging class <clustered_structure> containing papers and clusters
+        cp = ClusteredPapers()
         for p1, p2 in enriched_links:
-            papers.add(p1)
-            clusters[p1.year].append(p1.corpusid)
-            papers.add(p2)
-            clusters[p2.year].append(p2.corpusid)
+            cp.add_paper(p1)
+            cp.add_paper(p2)
 
-        for paper in papers:
+        for paper in cp.papers:
             title = wrap_text(paper.title, 50)
-            st = shorten(title) # short title
-            # mlt = '\n'.join(title) # multi-line title
-            hover = f"title: {paper.title} \\nauthors: {paper.authors}\\npublished: {paper.year}"
-            node_spec = f'[label="{st} ...", shape="rectangle", href="{paper.url}", target="_blank", tooltip="{hover}"]'
+
+            st = shorten(title) if show_labels else '' # short title if wanted
+            wt = '\n'.join(wrap_text(paper.title, 80))
+            hover = f"title: {wt} \\nauthors: {paper.authors}\\npublished: {paper.year}"
+            shape = "rectangle" if show_labels else "circle"
+            node_spec = f'[label="{st} ...", shape={shape}, href="{paper.url}", target="_blank", tooltip="{hover}"]'
             dot_file.write(f'    "{paper.corpusid}" {node_spec};\n')
 
-        for i, cluster in enumerate(sorted(clusters.keys())):
+        for i, cluster in enumerate(sorted(cp.clusters.keys())):
             dot_file.write(f"     subgraph cluster_{i} "+"{\n")
             dot_file.write(f"           rank=same;\n")
             dot_file.write(f'           label="{cluster}";\n')
-            for corpusid in clusters[cluster]:
+            for corpusid in cp.clusters[cluster]:
                 dot_file.write(f"      {corpusid};\n")
             dot_file.write("     }")
 

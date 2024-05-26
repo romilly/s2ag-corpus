@@ -76,7 +76,7 @@ class JsonFileInserter:
 
     def copy_json_to_table(self, file_path):
         print("Copying json file to table", file_path)
-        # Use a gzip readere if the file is zipped
+        # Use a gzip reader if the file is zipped
         if file_path.endswith('.gz'):
             input_file = gzip.open(file_path, 'rt')
         else:
