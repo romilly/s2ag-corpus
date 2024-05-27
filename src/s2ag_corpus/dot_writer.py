@@ -11,7 +11,8 @@ class ClusteredPapers:
 
     def add_paper(self, paper: Paper) -> None:
         self.papers.add(paper)
-        self.clusters[paper.year].append(paper.corpusid)
+        year = paper.year if paper.year is not None else 'Unknown'
+        self.clusters[year].append(paper.corpusid)
 
 
 def shorten(title: List[str]) -> str:
@@ -32,10 +33,10 @@ def write_dot_file(enriched_links: Set[Tuple[Paper, Paper]],
 
         for paper in cp.papers:
             title = wrap_text(paper.title, 50)
-
+            year = paper.year if paper.year is not None else 'Unknown'
             st = shorten(title) if show_labels else '' # short title if wanted
             wt = '\n'.join(wrap_text(paper.title, 80))
-            hover = f"title: {wt} \\nauthors: {paper.authors}\\npublished: {paper.year}"
+            hover = f"title: {wt} \\nauthors: {paper.authors}\\npublished: {year}"
             shape = "rectangle" if show_labels else "circle"
             node_spec = f'[label="{st} ...", shape={shape}, href="{paper.url}", target="_blank", tooltip="{hover}"]'
             dot_file.write(f'    "{paper.corpusid}" {node_spec};\n')
