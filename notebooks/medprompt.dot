@@ -1,0 +1,77 @@
+digraph {
+     rankdir=BT;
+    "268248661" [label="To Generate or ...", shape=rectangle, href="https://www.semanticscholar.org/paper/d66282661e999660d76414b2cc689c14e8c3b4ae", target="_blank", tooltip="title: To Generate or to Retrieve? On the Effectiveness of Artificial Contexts for
+Medical Open-Domain Question Answering \nauthors: Giacomo Frisoni, Alessio Cocchieri, Alex Presepi, Gianluca Moro, Zaiqiao Meng\npublished: 2024"];
+    "266436402" [label="Multimodal Large Language ...", shape=rectangle, href="https://www.semanticscholar.org/paper/cf1d6701a19c44dd352a8e146884ed800888adac", target="_blank", tooltip="title: Multimodal Large Language Models are Generalist Medical Image Interpreters \nauthors: T. Han, L. C. Adams, S. Nebelung, J. N. Kather, K. Bressem, D. Truhn\npublished: 2023"];
+    "269605152" [label="Agent Hospital: A ...", shape=rectangle, href="https://www.semanticscholar.org/paper/0d69f44a47babaa522dee90baf632d9a8419bca3", target="_blank", tooltip="title: Agent Hospital: A Simulacrum of Hospital with Evolvable Medical Agents \nauthors: Junkai Li, Siyu Wang, Meng Zhang, Weitao Li, Yunghwei Lai, Xinhui Kang, Weizhi Ma, Yang Liu\npublished: 2024"];
+    "265067484" [label="A Survey of ...", shape=rectangle, href="https://www.semanticscholar.org/paper/bca0bbd01ea917b7a9fe369288ea3ba03d3b1ff3", target="_blank", tooltip="title: A Survey of Large Language Models in Medicine: Progress, Application, and
+Challenge \nauthors: Hongjian Zhou, Boyang Gu, Xinyu Zou, Yiru Li, Sam S. Chen, Peilin Zhou, Junling Liu, Y. Hua, Chengfeng Mao, Xian Wu, Zheng Li, Fenglin Liu\npublished: 2023"];
+    "266933212" [label="Towards Conversational Diagnostic ...", shape=rectangle, href="https://www.semanticscholar.org/paper/021e6c5892347287182b405228fb22923691e3f0", target="_blank", tooltip="title: Towards Conversational Diagnostic AI \nauthors: Tao Tu, Anil Palepu, M. Schaekermann, Khaled Saab, Jan Freyberg, Ryutaro Tanno, Amy Wang, Brenna Li, Mohamed Amin, Nenad Tomašev, Shekoofeh Azizi, Karan Singhal, Yong Cheng, Le Hou, Albert Webson, Kavita Kulkarni, S. Mahdavi, Christopher Semturs, Juraj Gottweis, Joelle Barral, Katherine Chou, Greg S. Corrado, Yossi Matias, A. Karthikesalingam, Vivek Natarajan\npublished: 2024"];
+    "269004975" [label="Conversational Disease Diagnosis ...", shape=rectangle, href="https://www.semanticscholar.org/paper/db858bd3e62d652b772958a4646019e12751d1e1", target="_blank", tooltip="title: Conversational Disease Diagnosis via External Planner-Controlled Large Language
+Models \nauthors: Zhoujian Sun, Cheng Luo, Zheng-Wei Huang\npublished: 2024"];
+    "268091253" [label="OpenMedLM: Prompt engineering ...", shape=rectangle, href="https://www.semanticscholar.org/paper/45314de9beef18dcce99f0bc5e067446a0196505", target="_blank", tooltip="title: OpenMedLM: Prompt engineering can out-perform fine-tuning in medical
+question-answering with open-source large language models \nauthors: Jenish Maharjan, A. Garikipati, N. Singh, Leo Cyrus, Mayank Sharma, M. Ciobanu, G. Barnes, R. Thapa, Q. Mao, R. Das\npublished: 2024"];
+    "269356899" [label="Large Language Models ...", shape=rectangle, href="https://www.semanticscholar.org/paper/3d5b18c93649faffe538bda523e92e51f86f8c7f", target="_blank", tooltip="title: Large Language Models in Healthcare: A Comprehensive Benchmark \nauthors: Andrew Liu, Hongjian Zhou, Yining Hua, Omid Rohanian, Lei A. Clifton, David A. Clifton\npublished: 2024"];
+    "268724339" [label="Large Language Models ...", shape=rectangle, href="https://www.semanticscholar.org/paper/5a28d82bf7f5beabfeb0974829e8da878aca1636", target="_blank", tooltip="title: Large Language Models Produce Responses Perceived to be Empathic \nauthors: Yoon Kyung Lee, Jina Suh, Hongli Zhan, Junyi Jessy Li, Desmond C. Ong\npublished: 2024"];
+    "269587885" [label="CRCL at SemEval-2024 ...", shape=rectangle, href="https://www.semanticscholar.org/paper/6a617c48793e3ca895d971ecc18a47602ad25588", target="_blank", tooltip="title: CRCL at SemEval-2024 Task 2: Simple prompt optimizations \nauthors: Cl'ement Brutti-Mairesse, L. Verlingue\npublished: 2024"];
+    "267253983" [label="Evaluating and Mitigating ...", shape=rectangle, href="https://www.semanticscholar.org/paper/806f504fee3550f697124a5ce91cac2b0b483614", target="_blank", tooltip="title: Evaluating and Mitigating Limitations of Large Language Models in Clinical
+Decision Making \nauthors: P. Hager, F. Jungmann, K. Bhagat, I. Hubrecht, M. Knauer, J. Vielhauer, R. Holland, R. Braren, M. Makowski, G. Kaisis, D. Rueckert\npublished: 2024"];
+    "268876504" [label="All You Need ...", shape=rectangle, href="https://www.semanticscholar.org/paper/5694a171cb93fe9b9932c236bcba1351c2d5af53", target="_blank", tooltip="title: All You Need Is Context: Clinician Evaluations of various iterations of a Large
+Language Model-Based First Aid Decision Support Tool in Ghana \nauthors: Paulina Boadiwaa Mensah, Nana Serwaa Quao, Sesinam Dagadu\npublished: 2024"];
+    "268819983" [label="Small Language Models ...", shape=rectangle, href="https://www.semanticscholar.org/paper/59543d42558ce64d889284bff368ed9f020dde81", target="_blank", tooltip="title: Small Language Models Learn Enhanced Reasoning Skills from Medical Textbooks \nauthors: Hyunjae Kim, Hyeon Hwang, Jiwoo Lee, Sihyeon Park, Dain Kim, Taewhoo Lee, Chanwoong Yoon, Jiwoong Sohn, Donghee Choi, Jaewoo Kang\npublished: 2024"];
+    "269362893" [label="Assessing The Potential ...", shape=rectangle, href="https://www.semanticscholar.org/paper/6fc48cc949cfe22b719cdc0c5eaa68526f02d555", target="_blank", tooltip="title: Assessing The Potential Of Mid-Sized Language Models For Clinical QA \nauthors: Elliot Bolton, Betty Xiong, V. Muralidharan, J. Schamroth, Vivek Muralidharan, Christopher D. Manning, R. Daneshjou\npublished: 2024"];
+    "265466787" [label="Can Generalist Foundation ...", shape=rectangle, href="https://www.semanticscholar.org/paper/bde9da9a39a065588d7f4573936731510d6f4f29", target="_blank", tooltip="title: Can Generalist Foundation Models Outcompete Special-Purpose Tuning? Case Study
+in Medicine \nauthors: Harsha Nori, Yin Tat Lee, Sheng Zhang, Dean Carignan, Richard Edgar, Nicoló Fusi, Nicholas King, Jonathan Larson, Yuanzhi Li, Weishung Liu, Renqian Luo, S. McKinney, Robert Osazuwa Ness, Hoifung Poon, Tao Qin, Naoto Usuyama, Chris White, Eric Horvitz\npublished: 2023"];
+    "267637243" [label="Addressing cognitive bias ...", shape=rectangle, href="https://www.semanticscholar.org/paper/75f184e0918036f2309ba60fcfe642d7052d3745", target="_blank", tooltip="title: Addressing cognitive bias in medical language models \nauthors: Samuel Schmidgall, Carl Harris, Ime Essien, Daniel Olshvang, Tawsifur Rahman, Ji Woong Kim, Rojin Ziaei, Jason Eshraghian, Peter Abadir, Rama Chellappa\npublished: 2024"];
+     subgraph cluster_0 {
+           rank=same;
+           label="2023";
+      265466787;
+      265466787;
+      265466787;
+      265466787;
+      266436402;
+      265466787;
+      265466787;
+      265466787;
+      265466787;
+      265466787;
+      265067484;
+      265466787;
+      265466787;
+      265466787;
+      265466787;
+     }     subgraph cluster_1 {
+           rank=same;
+           label="2024";
+      268091253;
+      268819983;
+      266933212;
+      268724339;
+      269587885;
+      269356899;
+      269362893;
+      269605152;
+      268248661;
+      266933212;
+      269004975;
+      266933212;
+      267253983;
+      267637243;
+      268876504;
+     }    "268091253" -> "265466787";
+    "268819983" -> "265466787";
+    "268724339" -> "266933212";
+    "269587885" -> "265466787";
+    "266436402" -> "265466787";
+    "269356899" -> "265466787";
+    "269362893" -> "265466787";
+    "269605152" -> "265466787";
+    "268248661" -> "265466787";
+    "269004975" -> "266933212";
+    "265067484" -> "265466787";
+    "266933212" -> "265466787";
+    "267253983" -> "265466787";
+    "267637243" -> "265466787";
+    "268876504" -> "265466787";
+}

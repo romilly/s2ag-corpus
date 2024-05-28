@@ -34,11 +34,12 @@ class DatabaseCatalogue(ABC):
         pass
 
 
+# TODO: rename this and parent class, and move methods up where appropriate
 class CorpusDatabaseCatalogue(DatabaseCatalogue):
     CITATION_SQL = """
     select citingcorpusid from citations
                         where citedcorpusid = %s
-
+                        order by citingcorpusid
                         """
     REFERENCE_SQL = """
     select citedcorpusid from citations
@@ -62,18 +63,21 @@ class CorpusDatabaseCatalogue(DatabaseCatalogue):
         else:
             return rows[0][0]
 
-    def find_references_for(self, corpus_id: int, filter: str = None) -> List[int]:
-        if filter is None:
-            filter = ''
-        rows = self.fetch(self.REFERENCE_SQL + filter, (corpus_id,))
+    # TODO: eliminate repeated code
+    def find_references_for(self, corpus_id: int, constraint: str = None) -> List[int]:
+        if constraint is None:
+            constraint = ''
+        rows = self.fetch(self.REFERENCE_SQL + constraint, (corpus_id,))
         return [row[0] for row in rows]
 
-    def find_citations_for(self, corpus_id: int, filter: str = None) -> List[int]:
-        if filter is None:
-            filter = ''
-        rows = self.fetch(self.CITATION_SQL + filter, (corpus_id,))
+    def find_citations_for(self, corpus_id: int, constraint: str = None) -> List[int]:
+        # print(corpus_id)
+        if constraint is None:
+            constraint = ''
+        rows = self.fetch(self.CITATION_SQL + constraint, (corpus_id,))
         return [row[0] for row in rows]
 
+    # TODO: remove or refactor
     def transitive_closure(self, corpus_id: int) -> Set[int]:
         visited = set()
         to_visit = [corpus_id]
@@ -86,20 +90,20 @@ class CorpusDatabaseCatalogue(DatabaseCatalogue):
                 for citation in citations:
                     if citation not in visited:
                         to_visit.append(citation)
-
         return visited
 
     def find_links(self, corpusid: int, influential=True) -> Set[Tuple[int, int]]:
         visited = set()
         to_visit = [corpusid]
         links = set()
-        filter = 'and isinfluential = True' if influential else ''
+        constraint = 'and isinfluential = True' if influential else ''
 
         while to_visit:
             current_id = to_visit.pop()
+            # print(current_id)
             if current_id not in visited:
                 visited.add(current_id)
-                citations = self.find_citations_for(current_id, filter=filter)
+                citations = self.find_citations_for(current_id, constraint=constraint)
                 for citation in citations:
                     links.add((current_id, citation))
                     if citation not in visited:
@@ -122,8 +126,6 @@ class CorpusDatabaseCatalogue(DatabaseCatalogue):
             corpusid, title, raw_authors, year, url  = rows[0]
             authors = ', '.join(author['name'] for author in json.loads(raw_authors))
             return corpusid, title, authors, year, url
-
-
 
     def fetch(self, sql: str, params=None) -> List[Tuple]:
         with self.connection.cursor() as cursor:

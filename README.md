@@ -13,7 +13,10 @@ unless you love to experiment and are willing to redo work if things change!
 
 The code is under active development, and the API may change.
 
-Future releases will support updating the database from the diffs created by the Semantic Scholar API. 
+Future releases will support updating the database from the
+diffs created by the Semantic Scholar API, and I am investigsting the idea of
+providing the application via docker. 
+
 
 The datasets supported are:
 - `abstracts`
@@ -23,8 +26,6 @@ The datasets supported are:
 - `papers`
 - `publication-venues` and 
 - `tldrs`
-
-
 
 ## Installation
 
@@ -39,12 +40,13 @@ The datasets supported are:
 7.  If necessary, install PostgreSQL.
 8.  Create a Postgres database to hold the production data.
 9.  If you plan on modifying or extending the code, create a database to hold test data.
-10. Update the .env file to include credentials for the database(s). 
-11. Download a dataset from Semantic Scholar. 
-12. Import the dataset into the production database.
-13. Repeat stages 11 and 12 for the remaining datasets.
-14. Query the database. 
-
+10. Update the .env file to include credentials for the database(s).
+11. Decide which weekly dataset snapshot you'll use.
+12. Update the .env file to specify the weekly snapshot that you chose.
+13. Download a dataset from Semantic Scholar. 
+14. Import the dataset into the production database.
+15. Repeat stages 11 and 12 for the remaining datasets.
+16. Query the database. 
 
 
 #### Clone this repository into a directory of your choice.
@@ -140,9 +142,23 @@ If you are running the software on the same computer, you can replace that by `l
 
 The entry for the optional test database follows a similar format.
 
-#### Download a dataset from Semantic Scholar.
+#### Decide which weekly dataset snapshot you'll use.
 
-# TODO: define the release-id and fix code appropriately.
+With the virtual environment still activated, start Jupyter.
+Navigate to the notebooks directory and run `explore-datasets.ipynb`.
+It should list the datasets available. They are named by the date on which they were created.
+You'll almost certainly want the latest dataset which wll be the last in the list.
+Remember the name of the dataset you've decided to use.
+
+#### Update the .env file to specify the weekly snapshot that you chose.
+
+Edit the .env file, add a line like this. and save the updated file.
+
+```text
+RELEASE_ID = 2024-04-02
+```
+
+#### Download the `papers` dataset.
 
 Change directory to the `src` directory for the project and run `download-papers.py`.
 
@@ -156,11 +172,40 @@ python download-papers.py
 
 This may take some time to run, depending on the speed of your computer and your internet connection.
 
-#### 
+The download links will eventually expire. If this happens, just repeat the download program
+which wil skip over the files that you have already downloaded.
 
-## Updating the database
+#### Update the database
 
-**NB:** Much more to come, as fast as I can write it :)
+Run `load-production-corpus-papers.py`
+
+#### Repeat the previous steps for each dataset.
+
+#### Query the database
+
+You'll find some example code in the notebooks.
+
+The notebook that I find most useful is the `citations.ipynb` notebook.
+
+To use it, you'll need to know the `sha` for the paper you're interested in.
+
+You can find that using the Semantic Scholar web interface.
+
+![](img/citations-eg.png)
+
+In that example, the sha is at the end of the URL: ìt's `a2266a06e752df98615787746599dc81440c0ae1`.
+
+Enter the `sha` in the line that starts `sha = 'paper of interest'`,
+and then specify the name you want to use for the generated dot file and svg.
+Don't add the dot or svg extension as these are added by the notebook.
+The files will be created in the citations subdirectory of the notebooks directory.
+
+Now run the notebook.
+
+You can open the generated svg file in a browser. Hover over a node to see the details of the paper,
+or click on the node to open Semantic Scholar on the page for that paper.
+
+## Thanks
 
 Thanks to the Allen Institute for AI for making the Semantic Scholar data freely available.
 
