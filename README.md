@@ -14,7 +14,7 @@ unless you love to experiment and are willing to redo work if things change!
 The code is under active development, and the API may change.
 
 Future releases will support updating the database from the
-diffs created by the Semantic Scholar API, and I am investigsting the idea of
+diffs created by the Semantic Scholar API, and I am investigating the idea of
 providing the application via docker. 
 
 
@@ -34,7 +34,7 @@ The datasets supported are:
 1.  Clone this repository into a directory of your choice.
 2.  Create and activate a Python virtual environment.
 3.  Install the required Python packages.
-4.  Create a base directory for the files that the software will download fromm Semantic Scholar.
+4.  Create a base directory for the files that the software will download from Semantic Scholar.
 5.  Obtain an API key for Semantic Scholar.
 6.  Create and populate a `.env` file in the root directory of the downloaded repository.
 7.  If necessary, install PostgreSQL.
