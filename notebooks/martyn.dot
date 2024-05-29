@@ -1,16 +1,16 @@
 digraph {
      rankdir=BT;
+    "268348425" [label="Mid-infrared dual-comb spectroscopy ...", shape=rectangle, href="https://www.semanticscholar.org/paper/b8003f5669c1719ebd86d70f0ff0d31d659482e9", target="_blank", tooltip="title: Mid-infrared dual-comb spectroscopy with quantum cascade lasers \nauthors: J. Hayden, M. Geiser, M. Gianella, Raphael Horvath, A. Hugi, L. Sterczewski, Markus Mangold\npublished: 2024"];
+    "249710437" [label="Photochemistry of transition ...", shape=rectangle, href="https://www.semanticscholar.org/paper/a2266a06e752df98615787746599dc81440c0ae1", target="_blank", tooltip="title: Photochemistry of transition metal carbonyls. \nauthors: J. J. Turner, M. George, M. Poliakoff, R. Perutz\npublished: 2022"];
+    "268040009" [label="Unveiling Mechanistic Complexity ...", shape=rectangle, href="https://www.semanticscholar.org/paper/974865acb588c06b3b4d587f81c7f56259ad4774", target="_blank", tooltip="title: Unveiling Mechanistic Complexity in Manganese-Catalyzed C–H Bond
+Functionalization Using IR Spectroscopy Over 16 Orders of Magnitude in Time \nauthors: I. Fairlamb, Jason M. Lynam\npublished: 2024"];
     "267446961" [label="Preference of C2v ...", shape=rectangle, href="https://www.semanticscholar.org/paper/e3ba79aa32a1148dca4a7f52108259344fdc4711", target="_blank", tooltip="title: Preference of C2v Symmetry in Low-Spin Hexacarbonyls of Rare-Earth and f
 Elements \nauthors: Attila Kovács, Werner Klotzbücher\npublished: 2024"];
-    "268348425" [label="Mid-infrared dual-comb spectroscopy ...", shape=rectangle, href="https://www.semanticscholar.org/paper/b8003f5669c1719ebd86d70f0ff0d31d659482e9", target="_blank", tooltip="title: Mid-infrared dual-comb spectroscopy with quantum cascade lasers \nauthors: J. Hayden, M. Geiser, M. Gianella, Raphael Horvath, A. Hugi, L. Sterczewski, Markus Mangold\npublished: 2024"];
     "259739018" [label="A DFT and ...", shape=rectangle, href="https://www.semanticscholar.org/paper/8119b95e9c475d7959fae26c2e70d8d71fcb03b6", target="_blank", tooltip="title: A DFT and Matrix–Isolation IR/UV-Visible Study of High-Coordinated
 Lanthanide-CO Complexes \nauthors: A. Kovács, W. Klotzbücher\npublished: 2023"];
     "267630595" [label="Effect of extraction ...", shape=rectangle, href="https://www.semanticscholar.org/paper/c4c3b191a2b33164b5526aa27e32936550c71402", target="_blank", tooltip="title: Effect of extraction parameters on the synergistic reaction mechanism for
 arsenic and mercury removal from natural gas condensate via LLE, vibrational
 spectroscopy and DFT calculations \nauthors: Teerapon Pirom, Kasidit Nootong, Wikorn Punyain, K. Maneeintr, U. Pancharoen\npublished: 2024"];
-    "249710437" [label="Photochemistry of transition ...", shape=rectangle, href="https://www.semanticscholar.org/paper/a2266a06e752df98615787746599dc81440c0ae1", target="_blank", tooltip="title: Photochemistry of transition metal carbonyls. \nauthors: J. J. Turner, M. George, M. Poliakoff, R. Perutz\npublished: 2022"];
-    "268040009" [label="Unveiling Mechanistic Complexity ...", shape=rectangle, href="https://www.semanticscholar.org/paper/974865acb588c06b3b4d587f81c7f56259ad4774", target="_blank", tooltip="title: Unveiling Mechanistic Complexity in Manganese-Catalyzed C–H Bond
-Functionalization Using IR Spectroscopy Over 16 Orders of Magnitude in Time \nauthors: I. Fairlamb, Jason M. Lynam\npublished: 2024"];
      subgraph cluster_0 {
            rank=same;
            label="2022";

@@ -1,0 +1,307 @@
+digraph {
+     rankdir=BT;
+    "98115214" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/61734d84a5395fc45f2c2233096666af3ca5281c", target="_blank", tooltip="title: Principles of green chemistry: PRODUCTIVELY \nauthors: Samantha Tang, R. Smith, M. Poliakoff\npublished: 2005"];
+    "4036311" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/d6de149d537e44d32b7616d4998543c96c8bed5f", target="_blank", tooltip="title: Besifloxacin: A Critical Review of Its Characteristics, Properties, and
+Analytical Methods \nauthors: E. G. Tótoli, H. R. Salgado\npublished: 2018"];
+    "57954025" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/185e98f7c54f7d99aed0438617ed3b09f9ebcb4f", target="_blank", tooltip="title: Blood Hematocrit Still a Critical Parameter in Bioanalysis \nauthors: V. Samanidou\npublished: 2017"];
+    "220941813" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/373926be99c28b0e3ab92135e2251e5e9feac353", target="_blank", tooltip="title: Current trends in sample preparation by solid-phase extraction techniques for
+the determination of antibiotic residues in foodstuffs: a review \nauthors: S. A. Khatibi, Samin Hamidi, M. Siahi-Shadbad\npublished: 2020"];
+    "244811795" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/84af46c4929e031a0d0f1abf3d4bf2e84a51c04b", target="_blank", tooltip="title: Biological Effects of Quinolones: A Family of Broad-Spectrum Antimicrobial
+Agents \nauthors: Ana R Millanao, A. Y. Mora, N. Villagra, Sergio A. Bucarey, A. Hidalgo\npublished: 2021"];
+    "13214095" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/c4778d381d1e13b7025b3a831458a3f11876c18a", target="_blank", tooltip="title: New insights into liquid chromatography for more eco-friendly analysis of
+pharmaceuticals \nauthors: H. Shaaban\npublished: 2016"];
+    "235359793" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/7dc28980a3d4dab988b68f67e3765cc39e1cd9e0", target="_blank", tooltip="title: Nanoplatform-Integrated Miniaturized Solid-Phase Extraction Techniques: A
+Critical Review \nauthors: Sushmita Salve, Y. Bahiram, Amol Jadhav, R. Rathod, R. Tekade\npublished: 2021"];
+    "257290769" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/d2e41ae1d20ab67b77ac28d68822998f87d240f4", target="_blank", tooltip="title: Overview of Side-Effects of Antibacterial Fluoroquinolones: New Drugs versus
+Old Drugs, a Step Forward in the Safety Profile? \nauthors: Aura Rusu, Alexandra-Cristina Munteanu, Eliza-Mihaela Arbănași, V. Uivarosi\npublished: 2023"];
+    "237340603" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/e1d801df8155951ce8254c9f677efcb55dd2a70c", target="_blank", tooltip="title: Structural Characterization of the Millennial Antibacterial
+(Fluoro)Quinolones—Shaping the Fifth Generation \nauthors: Aura Rusu, Ioana-Andreea Lungu, Octavia-Laura Moldovan, C. Tanase, G. Hancu\npublished: 2021"];
+    "112928259" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/24f8bfd1ca361ac38f3b90e07ed5f2887899e950", target="_blank", tooltip="title: BIOMATERIALS FROM RENEWABLE SOURCES: BIOSURFACTANTS AND BIOPOLYMERS \nauthors: V. Ajao\npublished: 2015"];
+    "67754960" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/be57c0f82c0d110f5d2ddf1926742dea68ca92fc", target="_blank", tooltip="title: More than a Scientifi c Movement : Socio-Political Infl uences on Green
+Chemistry Research in the United States and France \nauthors: L. Maxim\npublished: 2018"];
+    "54733873" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/aa724e2c02a35fa21cd3b37e8a01f47cb9efb782", target="_blank", tooltip="title: A review of monitoring methods for triclosan and its occurrence in aquatic
+environments \nauthors: H. Montaseri, P. Forbes\npublished: 2016"];
+    "249128405" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/c85bd442176825e760b5ee811959d4744207bce1", target="_blank", tooltip="title: Development and Validation of a Novel Tool for Assessing the Environmental
+Impact of 3D Printing Technologies: A Pharmaceutical Perspective \nauthors: S. Youssef, Sadikalmahdi Abdella, S. Garg\npublished: 2022"];
+    "261592802" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/689ae799be9d6fc20fe4289817a6e84ddd841064", target="_blank", tooltip="title: Human health risk assessment of Triclosan in water: spatial analysis of a
+drinking water system \nauthors: M. Moazeni, K. Ebrahimpour, F. Mohammadi, Zahra Heidari, Afshin Ebrahimi\npublished: 2023"];
+    "248638130" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/b93df24fe24fc01e7efaf2e3020e517d46329a7c", target="_blank", tooltip="title: Green Extraction Techniques as Advanced Sample Preparation Approaches in
+Biological, Food, and Environmental Matrices: A Review \nauthors: J. Câmara, R. Perestrelo, Cristina V. Berenguer, Carolina Andrade, Telma M. Gomes, Basit Olayanju, A. Kabir, Cristina M. R. Rocha, J. Teixeira, Jorge A. M. Pereira\npublished: 2022"];
+    "89685535" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/ddb6d8abdc457e83ed057220c8a3cc4559d1bbb9", target="_blank", tooltip="title: The impact of estrogens on aquatic organisms and methods for their
+determination \nauthors: Karolina Czarny, D. Szczukocki, B. Krawczyk, M. Zieliński, E. Miękoś, R. Gadzała-Kopciuch\npublished: 2017"];
+    "220965234" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/23d94da5009c3a3958e050796ea298b1b37702e6", target="_blank", tooltip="title: Application of Liquid-Liquid Extraction for the Determination of Antibiotics in
+the Foodstuff: Recent Trends and Developments \nauthors: S. A. Khatibi, Samin Hamidi, M. Siahi-Shadbad\npublished: 2020"];
+    "95362344" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/290d74bbee2e826e1ec5574e999a980d00ae77f9", target="_blank", tooltip="title: The 12 principles of green analytical chemistry and the SIGNIFICANCE mnemonic
+of green analytical practices \nauthors: A. Gałuszka, Z. Migaszewski, J. Namieśnik\npublished: 2013"];
+    "99391250" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/913a000a1f2b3ff9f28371eeea125113620486a2", target="_blank", tooltip="title: Environmentally benign Iodometric method for estimation of copper \nauthors: S. Chawla, R. Parashar, R. Parashar\npublished: 2016"];
+    "232086644" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/1e50f4bc554b5254f923bfe4d1f2f72121d7ec0e", target="_blank", tooltip="title: Paper-Based Screen-Printed Electrodes: A New Generation of Low-Cost
+Electroanalytical Platforms \nauthors: E. Costa-Rama, M. Fernández-Abedul\npublished: 2021"];
+    "247860224" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/988e17fcd90016828db4583468850266434bd861", target="_blank", tooltip="title: Amine-functionalized MIL-101(Fe) for highly selective and efficient extraction
+of phenoxy carboxylic acid herbicides from environmental water and rice samples \nauthors: Huixian Zhang, Xizhou Hu, Hong Xia, Youxiang Zhou, Lijun Peng, Jianyuan Wu, Xitian Peng\npublished: 2022"];
+    "259155404" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/53977f2e3178cf04cc83b3773f1d306a4e1bbcaf", target="_blank", tooltip="title: Development and validation of an eco-compatible UV–Vis spectrophotometric
+method for the determination of Cu2+ in aqueous matrices \nauthors: P. Prete, Davide Iannaccone, A. Proto, M. Tobiszewski, R. Cucciniello\npublished: 2023"];
+    "25221326" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/7daca2127b4c3ce957271d17b7956fa1df65b809", target="_blank", tooltip="title: Eco-friendly LC–MS/MS method for analysis of multi-class micropollutants in
+tap, fountain, and well water from northern Portugal \nauthors: Marta O Barbosa, A. Ribeiro, Manuel F R Pereira, Adrián M. T. Silva\npublished: 2016"];
+    "254664089" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/92d32e78869413fb8d99337dcf45e88d2bb5c684", target="_blank", tooltip="title: Polyaniline and Polyaniline-Based Materials as Sorbents in Solid-Phase
+Extraction Techniques \nauthors: I. Sowa, M. Wójciak, K. Tyszczuk‐Rotko, T. Klepka, S. Dresler\npublished: 2022"];
+    "263670378" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/bce2f50c993afbf8e76591c1faf18fcb3627cd1a", target="_blank", tooltip="title: Fabricating a designer capsule phase microextraction platform based on sol–gel
+Carbowax 20M-zwitterionic ionic liquid composite sorbent for the extraction of
+lipid-lowering drugs from human urine samples \nauthors: Argyroula Kechagia, N. Manousi, A. Kabir, K. Furton, C. Zacharis\npublished: 2023"];
+    "25294419" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/72b9d6a538fc6aaaf6f35549bb20e4c92d79d4c0", target="_blank", tooltip="title: Ultrasound-assisted dispersive liquid–liquid microextraction of tetracycline
+drugs from egg supplements before flow injection analysis coupled to a liquid
+waveguide capillary cell \nauthors: M. Rodríguez, H. Pezza, L. Pezza\npublished: 2016"];
+    "104248713" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/1f66c01770f9af85336ac9ac7e7706573f9acaf0", target="_blank", tooltip="title: QSAR studies on partition coefficients of organic compounds for
+polydimethylsiloxane of solid-phase microextraction devices \nauthors: K. Chao, V. Wang, C.-W. Liu, Y.-T. Lu\npublished: 2018"];
+    "199585966" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/a59c24484317346b819b4303efb39fdd34421840", target="_blank", tooltip="title: INITIATION IN GREEN CHEMICAL PROCEDURES IN ANALYTICAL CHEMISTRY. A NEW APPROACH
+FOR PRACTICAL SUBJECT \nauthors: B. S. Rodríguez, Á. S. Mayor, R. Ramos, M. A. Delgado\npublished: 2019"];
+    "112901779" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/84416af428e28811632ddcbb90db18cae1e2340b", target="_blank", tooltip="title: Greening the chemistry curriculum in Maltese educational institutions: the
+reaction of pre-university students to the introduction of green chemistry. A
+case study from Malta \nauthors: M. Caruana\npublished: 2015"];
+    "227039896" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/fc01e8fb1f57563875d1ce47c78b6ea2d8b0b7de", target="_blank", tooltip="title: Implementing Green Analytical Methodologies Using Solid-Phase Microextraction:
+A Review \nauthors: Kayla M Billiard, Amanda R Dershem, Emanuela Gionfriddo\npublished: 2020"];
+    "238506905" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/f8767046a0a4c48c7234d36060e7faafb162c5ea", target="_blank", tooltip="title: Advanced Adsorbent Mediated Extraction Techniques for the Separation of
+Antibiotics from Food, Biological, and Environmental Matrices \nauthors: D. Sanyal, Purvi Mathur\npublished: 2021"];
+    "266497999" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/f7f97d3d9206b305cecd02e8335b069150360c4a", target="_blank", tooltip="title: Safety of fluoroquinolones \nauthors: José Barberán, Alicia de la Cuerda, María Isabel Tejeda González, Ana López Aparicio, Carlos Monfort Vinuesa, Alejandro Ramos Sánchez, Lourdes Cristina Barberán\npublished: 2023"];
+    "258437903" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/5dff7b378e7d4561f722118b91ff3f0770382002", target="_blank", tooltip="title: Approaches to determine pesticides in marine bivalves \nauthors: Thierno Diallo, Julia Leleu, Julien Parinet, T. Guérin, H. Thomas, A. Lerebours\npublished: 2023"];
+    "258820374" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/102f8506d0b0bfd74f4325a6663c5c2ff2d57efd", target="_blank", tooltip="title: Recent developments in sorbent based water samples treatments prior GC-MS
+analysis of polycyclic aromatic hydrocarbons \nauthors: Slobodan A. Ćirić, V. Mitić, J. Nikolić, M. Ilic, M. Dimitrijević, S. Simonović, V. S. Stankov Jovanović\npublished: 2018"];
+    "257582745" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/ad6f5dfaba212179f3c399fa6a1686d83967551d", target="_blank", tooltip="title: New Fluoroquinolone‐1,2,4‐triazoles as Potent Antibacterial Agents: Design,
+Synthesis, Docking Studies and in Silico ADME Profiles \nauthors: Venkateswara Rao Gollapalli, Hari Babu Bollikolla, Tejeswara Rao Allaka, Pandu Ranga Rao Vaddi, Sravanthi Basireddy, M. Ganivada, Santhosh Reddy Pindi\npublished: 2023"];
+    "209732365" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/360a4f6195d2e6a6609c66a2c32fd4bbff66cfde", target="_blank", tooltip="title: HPLC-MS/MS multiclass determination of steroid hormones in environmental waters
+after preconcentration on the carbonaceous sorbent HA-C@silica \nauthors: F. Merlo, Andrea Speltini, Federica Maraschi, Michela Sturini, A. Profumo\npublished: 2020"];
+    "38973021" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/2970c803890efac46a56ecd5a13c8340bb81a2d4", target="_blank", tooltip="title: Trends in Microextraction-Based Methods for the Determination of Sulfonamides
+in Milk \nauthors: M. Kechagia, V. Samanidou\npublished: 2017"];
+    "258951939" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/73ccbff4a5e32266f29ef8653528ed550f6282d6", target="_blank", tooltip="title: An unlikely bifurcation: history of sustainable (but not Green) chemistry \nauthors: Marcin Krasnodębski\npublished: 2023"];
+    "251569670" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/ce556f94c6a966767c5ba1a6c9922d528f5f8342", target="_blank", tooltip="title: Sustainable spectrophotometric determination of antihypertensive medicines
+reducing COVID-19 risk via paired wavelength data processing technique -
+Assessment of purity, greenness and whiteness \nauthors: Sara El-Hanboushy, H. Marzouk, Y. Fayez, M. Abdelkawy, H. Lotfy\npublished: 2022"];
+    "246664131" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/9ee80a238c45a0929d93e3c509ba71bd0e9ff837", target="_blank", tooltip="title: Natural Deep Eutectic Solvents as a Key Metal Extractant for Fractionation in
+Speciation Analysis \nauthors: L. Ruzik, Aleksandra Dyoniziak\npublished: 2022"];
+    "245882523" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/79b15e080360fa095e526a5ae8007a66f2d78c22", target="_blank", tooltip="title: Solventless Microextration Techniques for Pharmaceutical Analysis: The Greener
+Solution \nauthors: Heba M Mohamed\npublished: 2022"];
+    "244191396" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/1133929c82c6b2c7dd9b95d114ccfc3ce7cd8a27", target="_blank", tooltip="title: Validation of a simple and robust multi-residue gas chromatography-mass
+spectrometry method for the analysis of polycyclic aromatic hydrocarbons,
+phthalates and biocides in roofing material leachate and roof runoff \nauthors: Pieter-Jan De Buyck, Jonas Couvent, Yannick P Verheust, S. Hulle, D. Rousseau, A. Dumoulin\npublished: 2021"];
+    "237936479" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/92b46b5e24ea0e5df1d9a6ee062e059d0ce573e9", target="_blank", tooltip="title: Analytical Extraction Methods and Sorbents’ Development for Simultaneous
+Determination of Organophosphorus Pesticides’ Residues in Food and Water
+Samples: A Review \nauthors: K. V. Veloo, N. Ibrahim\npublished: 2021"];
+    "94335849" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/88719c5f2556c4c27758f0004f19d3f48cd1e264", target="_blank", tooltip="title: Miniaturized solid-phase extraction techniques \nauthors: J. Płotka-Wasylka, Natalia Szczepańska, M. Guardia, J. Namieśnik\npublished: 2015"];
+    "226242969" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/267c1bfd39852b017ccf2a752415cad449e78359", target="_blank", tooltip="title: Application of Hollow Fibre-Liquid Phase Microextraction Technique for
+Isolation and Pre-Concentration of Pharmaceuticals in Water \nauthors: L. Madikizela, V. Pakade, Somandla Ncube, H. Tutu, L. Chimuka\npublished: 2020"];
+    "115332167" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/3f6c58ab5aa350adbce103019f2bfeede950826b", target="_blank", tooltip="title: Dried Matrix Spots i LC-MS/MS-basert proteinanalyse: Metodeoptimalisering for
+kvantifisering av insulin og hCG i klinisk relevante konsentrasjoner. \nauthors: Elin Vyvy Tran\npublished: 2017"];
+    "99852126" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/c6cf14f6bfda01cb2341565d1ec6c330ece97793", target="_blank", tooltip="title: 4 Liquid-phase Microextraction Techniques \nauthors: Elena Fernández, L. Vidal\npublished: 2014"];
+    "238754799" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/62771ca36fe429d92f53427729563e5c6f8717e6", target="_blank", tooltip="title: Effect of Residual Oxygenated Functional Groups on the Behavior of Alternative
+Jet Fuel Properties \nauthors: M. García-Pérez\npublished: 2018"];
+    "257485736" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/e5fd066f7e1d27cd783cec66af92bc8a07305006", target="_blank", tooltip="title: Three developed spectrophotometric methods for determination of a mixture of
+ofloxacin and ornidazole; application of greenness assessment tools \nauthors: K. Kelani, Asmaa G. Gad, Y. Fayez, A. Mahmoud, Ahmed M. Abdel-raoof\npublished: 2023"];
+    "205688501" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/a503366b580e1d08fb71633b098813a19a76604b", target="_blank", tooltip="title: Metformin: A Review of Characteristics, Properties, Analytical Methods and
+Impact in the Green Chemistry \nauthors: Mariana Teixeira da Trindade, A. Kogawa, H. R. Salgado\npublished: 2018"];
+    "100787933" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/c547e702a584a58fd11c6f36c73f4252b575079d", target="_blank", tooltip="title: Creating Green Chemistry: Discursive Strategies of a Scientific Movement \nauthors: Jody A. Roberts, R. Burian, D. Breslau, R. Hirsh, T. Luke, J. Pitt\npublished: 2005"];
+    "139593835" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/389f603a2f3c2f6429ff842f118359e362f2f352", target="_blank", tooltip="title: Ionic liquids in magnetic-assisted microextraction procedures: A step forward
+for faster and selective sample preparation \nauthors: M. J. Trujillo-Rodríguez, Jared L. Anderson\npublished: 2017"];
+    "81986103" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/7c29e99e55baf13419d1d2b2ad589b2015ed2fcd", target="_blank", tooltip="title: Green Analytical Methods for the Separation of Seven Antihistamines:
+Application in Separation of Azelastine and Related Impurities in Nasal
+Solution \nauthors: L. D. da Costa, Heitor Oliveira de Almeida Leite, N. Kassab, Anil Kumar Singh\npublished: 2019"];
+     subgraph cluster_0 {
+           rank=same;
+           label="2005";
+      100787933;
+      98115214;
+      98115214;
+      100787933;
+      100787933;
+      100787933;
+      98115214;
+     }     subgraph cluster_1 {
+           rank=same;
+           label="2013";
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+      95362344;
+     }     subgraph cluster_2 {
+           rank=same;
+           label="2014";
+      99852126;
+     }     subgraph cluster_3 {
+           rank=same;
+           label="2015";
+      94335849;
+      94335849;
+      94335849;
+      94335849;
+      94335849;
+      94335849;
+      94335849;
+      112901779;
+      94335849;
+      94335849;
+      94335849;
+      112928259;
+      94335849;
+     }     subgraph cluster_4 {
+           rank=same;
+           label="2016";
+      13214095;
+      54733873;
+      25294419;
+      54733873;
+      25221326;
+      99391250;
+      13214095;
+     }     subgraph cluster_5 {
+           rank=same;
+           label="2017";
+      139593835;
+      115332167;
+      89685535;
+      57954025;
+      38973021;
+      139593835;
+      38973021;
+      89685535;
+     }     subgraph cluster_6 {
+           rank=same;
+           label="2018";
+      4036311;
+      104248713;
+      258820374;
+      67754960;
+      238754799;
+      4036311;
+      205688501;
+     }     subgraph cluster_7 {
+           rank=same;
+           label="2019";
+      81986103;
+      199585966;
+     }     subgraph cluster_8 {
+           rank=same;
+           label="2020";
+      220941813;
+      226242969;
+      220965234;
+      226242969;
+      220941813;
+      227039896;
+      209732365;
+      220941813;
+     }     subgraph cluster_9 {
+           rank=same;
+           label="2021";
+      232086644;
+      244811795;
+      238506905;
+      235359793;
+      237340603;
+      244811795;
+      237936479;
+      244191396;
+      238506905;
+      237340603;
+      235359793;
+      237340603;
+     }     subgraph cluster_10 {
+           rank=same;
+           label="2022";
+      245882523;
+      248638130;
+      254664089;
+      248638130;
+      246664131;
+      247860224;
+      249128405;
+      248638130;
+      251569670;
+     }     subgraph cluster_11 {
+           rank=same;
+           label="2023";
+      261592802;
+      257582745;
+      257290769;
+      266497999;
+      259155404;
+      258951939;
+      257290769;
+      258437903;
+      257485736;
+      263670378;
+     }    "81986103" -> "13214095";
+    "245882523" -> "94335849";
+    "261592802" -> "54733873";
+    "232086644" -> "95362344";
+    "257582745" -> "244811795";
+    "199585966" -> "95362344";
+    "139593835" -> "94335849";
+    "238506905" -> "94335849";
+    "4036311" -> "95362344";
+    "115332167" -> "94335849";
+    "89685535" -> "94335849";
+    "220941813" -> "94335849";
+    "226242969" -> "95362344";
+    "266497999" -> "257290769";
+    "25294419" -> "95362344";
+    "235359793" -> "94335849";
+    "254664089" -> "248638130";
+    "104248713" -> "95362344";
+    "54733873" -> "95362344";
+    "57954025" -> "95362344";
+    "99852126" -> "95362344";
+    "244811795" -> "237340603";
+    "112901779" -> "100787933";
+    "220965234" -> "38973021";
+    "25221326" -> "95362344";
+    "248638130" -> "226242969";
+    "259155404" -> "95362344";
+    "246664131" -> "95362344";
+    "95362344" -> "98115214";
+    "247860224" -> "94335849";
+    "100787933" -> "98115214";
+    "258820374" -> "95362344";
+    "237936479" -> "94335849";
+    "244191396" -> "95362344";
+    "139593835" -> "95362344";
+    "238506905" -> "220941813";
+    "258951939" -> "100787933";
+    "257290769" -> "237340603";
+    "38973021" -> "94335849";
+    "67754960" -> "100787933";
+    "227039896" -> "95362344";
+    "112928259" -> "98115214";
+    "238754799" -> "95362344";
+    "99391250" -> "95362344";
+    "209732365" -> "89685535";
+    "249128405" -> "95362344";
+    "258437903" -> "248638130";
+    "235359793" -> "220941813";
+    "237340603" -> "4036311";
+    "13214095" -> "95362344";
+    "94335849" -> "95362344";
+    "251569670" -> "95362344";
+    "257485736" -> "95362344";
+    "263670378" -> "95362344";
+    "205688501" -> "95362344";
+}

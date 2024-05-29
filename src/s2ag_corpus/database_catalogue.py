@@ -39,7 +39,6 @@ class CorpusDatabaseCatalogue(DatabaseCatalogue):
     CITATION_SQL = """
     select citingcorpusid from citations
                         where citedcorpusid = %s
-                        order by citingcorpusid
                         """
     REFERENCE_SQL = """
     select citedcorpusid from citations
