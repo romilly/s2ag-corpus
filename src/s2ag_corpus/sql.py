@@ -2,6 +2,16 @@ INSERT_PAPER_SQL = 'INSERT INTO papers(corpusid, paper_json) VALUES (%s, %s) on 
 
 INSERT_PAPER_IDS_SQL = 'INSERT INTO paperids(sha, corpusid, is_primary) VALUES (%s, %s, %s) on conflict do nothing'
 
+CREATE_TABLE_TLDRS = """
+CREATE TABLE IF NOT EXISTS tldrs
+    (corpusid int4  not null, tldr_json jsonb not null)
+"""
+
+ADD_KEY_TO_TLDRS = """
+alter table tldrs
+    add constraint tldrs_pk
+        primary key (corpusid);"""
+
 CREATE_PAPERS_TABLE_WITH_KEYS = """
 CREATE TABLE IF NOT EXISTS papers
     (corpusid int4  not null constraint papers_pk primary key, paper_json jsonb not null)

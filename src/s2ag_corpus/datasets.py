@@ -5,6 +5,7 @@ from s2ag_corpus.sql import CREATE_PAPERS_TABLE_WITHOUT_KEYS, ADD_KEY_TO_PAPERS
 from s2ag_corpus.sql import CREATE_CITATIONS_TABLE_WITHOUT_INDICES, ADD_KEYS_TO_CITATIONS
 from s2ag_corpus.sql import CREATE_PAPER_IDS_TABLE_WITHOUT_KEYS, ADD_KEYS_TO_PAPER_IDS
 from s2ag_corpus.sql import CREATE_TABLE_ABSTRACTS, ADD_KEYS_TO_ABSTRACTS
+from s2ag_corpus.sql import CREATE_TABLE_TLDRS, ADD_KEY_TO_TLDRS
 
 
 @dataclass(frozen=True)
@@ -14,6 +15,11 @@ class Dataset:
     create_table: str
     add_indices: str
 
+
+def tldrs_json_to_tuple(line):
+    jd = json.loads(line)
+    record = (jd['corpusid'], line)
+    return record
 
 def paper_json_to_tuple(line):
     jd = json.loads(line)
@@ -67,10 +73,15 @@ abstracts_dataset = Dataset(table="abstracts",
                             create_table=CREATE_TABLE_ABSTRACTS,
                             add_indices=ADD_KEYS_TO_ABSTRACTS)
 
+tldrs_dataset = Dataset(table="tldrs",
+                        json_to_tuple=tldrs_json_to_tuple,
+                        create_table=CREATE_TABLE_TLDRS,
+                        add_indices=ADD_KEY_TO_TLDRS)
 
 DATASETS = {
     "abstracts": abstracts_dataset,
     "citations" : citations_dataset,
     "papers" : papers_dataset,
-    "paper-ids" : paper_ids_dataset
+    "paper-ids" : paper_ids_dataset,
+    "tldrs" : tldrs_dataset
 }
