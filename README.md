@@ -80,7 +80,7 @@ mdkir <path-to-your-data-directory>
 
 #### Get an API key for Semantic Scholar.
 
-See [Do I  need an API key](https://www.semanticscholar.org/product/api#api-key) on the  Semantic Scholar website.
+See [Do I need an API key](https://www.semanticscholar.org/product/api#api-key) on the  Semantic Scholar website.
 
 You *will* need a key to download the datasets you'll need.
 
