@@ -177,7 +177,7 @@ which wil skip over the files that you have already downloaded.
 
 #### Update the database
 
-Run `load-production-corpus-papers.py`
+Run `load-production-papers.py`
 
 #### Repeat the previous steps for each dataset.
 
