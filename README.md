@@ -118,6 +118,8 @@ and the database tablespace. That works well.
 
 This needs much less space: 250 GB should be ample.
 
+Running automated tests needs its own README, and will get one _real soon now_(tm).
+
 #### Update the .env file to include credentials for the database(s).
 
 You'll need to add one or two rows to the `.env` file that you created earlier.
