@@ -17,7 +17,7 @@ def insert_dataset(dataset_name, datasets_dir, connection):
     Parameters
     ----------
     dataset_name : str
-        Name of the dataset to be inserted. The exact name should be present the DATASETS dictionary.
+        Name of the dataset to be inserted. The exact name should be present in the DATASETS dictionary.
     datasets_dir : str
         Path to the directory where dataset directories are located.
     connection : obj
