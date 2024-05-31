@@ -17,7 +17,7 @@ connection = production_connection()
 release_id = os.getenv('RELEASE_ID')
 
 datasets_dir = f"{base_dir}/{release_id}"
-dataset_name = 'publication_venues'
+dataset_name = 'publication-venues'
 
 insert_dataset(dataset_name, datasets_dir, connection)
 
