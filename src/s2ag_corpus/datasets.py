@@ -1,9 +1,9 @@
 import json
 from dataclasses import dataclass
 
-from s2ag_corpus.sql import CREATE_PAPERS_TABLE_WITHOUT_KEYS, ADD_KEY_TO_PAPERS
 from s2ag_corpus.sql import CREATE_CITATIONS_TABLE_WITHOUT_INDICES, ADD_KEYS_TO_CITATIONS
-from s2ag_corpus.sql import CREATE_PAPER_IDS_TABLE_WITHOUT_KEYS, ADD_KEYS_TO_PAPER_IDS
+from s2ag_corpus.sql import CREATE_PAPERS_TABLE_WITHOUT_KEYS, ADD_KEY_TO_PAPERS
+from s2ag_corpus.sql import CREATE_PAPER_IDS_TABLE, ADD_KEYS_TO_PAPER_IDS
 from s2ag_corpus.sql import CREATE_TABLE_ABSTRACTS, ADD_KEYS_TO_ABSTRACTS
 from s2ag_corpus.sql import CREATE_TABLE_TLDRS, ADD_KEY_TO_TLDRS
 
@@ -64,9 +64,9 @@ citations_dataset = Dataset(table="citations",
 
 paper_ids_dataset = Dataset(table="paperids",
                             json_to_tuple= paper_ids_json_to_tuple,
-                            create_table=CREATE_PAPER_IDS_TABLE_WITHOUT_KEYS,
+                            create_table=CREATE_PAPER_IDS_TABLE,
                             add_indices=ADD_KEYS_TO_PAPER_IDS
-                    )
+                            )
 
 abstracts_dataset = Dataset(table="abstracts",
                             json_to_tuple=abstract_json_to_tuple,

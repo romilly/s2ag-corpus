@@ -63,11 +63,11 @@ create index citations_citingcorpusid_index
     on citations (citingcorpusid);
 """
 
-CREATE_PAPER_IDS_TABLE_WITHOUT_KEYS = """
+CREATE_PAPER_IDS_TABLE = """
 create table public.paperids (
     sha text not null,
     corpusid integer not null,
-    "primary" boolean not null)
+    is_primary boolean not null)
 """
 
 ADD_KEYS_TO_PAPER_IDS = """
