@@ -62,7 +62,7 @@ CREATE TABLE publication_venues (
 """
 
 ADD_KEY_TO_PUBLICATION_VENUES = """
-alter table production_venues
+alter table publication_venues
     add constraint pv_pk
         primary key (id)
 """
