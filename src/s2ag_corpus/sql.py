@@ -1,4 +1,4 @@
-CREATE_TABLE_ABSTRACTS = """
+CREATE_ABSTRACTS_TABLE = """
 create table abstracts
 (
     corpusid       integer not null,
@@ -10,6 +10,20 @@ create table abstracts
 ADD_KEYS_TO_ABSTRACTS = """
 create index abstracts_idx on abstracts using btree(corpusid);
 """
+
+CREATE_AUTHORS_TABLE = """
+create table authors (
+    authorid bigint not null,
+    name text,
+    author_json jsonb
+);
+"""
+
+ADD_KEYS_TO_AUTHORS = """
+create index authors_idx on authors using btree(authorid);
+create index name_idx on authors (name);
+"""
+
 
 CREATE_CITATIONS_TABLE = """
 create table public.citations (
@@ -63,7 +77,7 @@ CREATE TABLE publication_venues (
 
 ADD_KEY_TO_PUBLICATION_VENUES = """
 alter table publication_venues
-    add constraint pv_pk
+    add constraint pubv_pk
         primary key (id)
 """
 

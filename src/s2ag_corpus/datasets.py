@@ -1,12 +1,13 @@
 import json
 from dataclasses import dataclass
 
+from s2ag_corpus.sql import CREATE_ABSTRACTS_TABLE, ADD_KEYS_TO_ABSTRACTS
+from s2ag_corpus.sql import CREATE_AUTHORS_TABLE, ADD_KEYS_TO_AUTHORS
 from s2ag_corpus.sql import CREATE_CITATIONS_TABLE, ADD_KEYS_TO_CITATIONS
 from s2ag_corpus.sql import CREATE_PAPERS_TABLE, ADD_KEY_TO_PAPERS
 from s2ag_corpus.sql import CREATE_PAPER_IDS_TABLE, ADD_KEYS_TO_PAPER_IDS
-from s2ag_corpus.sql import CREATE_TABLE_ABSTRACTS, ADD_KEYS_TO_ABSTRACTS
-from s2ag_corpus.sql import CREATE_TLDRS_TABLE, ADD_KEY_TO_TLDRS
 from s2ag_corpus.sql import CREATE_PUBLICATION_VENUES_TABLE, ADD_KEY_TO_PUBLICATION_VENUES
+from s2ag_corpus.sql import CREATE_TLDRS_TABLE, ADD_KEY_TO_TLDRS
 
 
 @dataclass(frozen=True)
@@ -17,11 +18,15 @@ class Dataset:
     add_indices: str
 
 
-
-
 def abstract_json_to_tuple(line):
     jd = json.loads(line)
     return jd['corpusid'], json.dumps(jd['openaccessinfo']),jd['abstract']
+
+
+def authors_json_to_tuple(line):
+    jd = json.loads(line)
+    return jd['authorid'], jd['name'], line
+
 
 def citation_json_to_tuple(line):
     jd = json.loads(line)
@@ -32,10 +37,13 @@ def citation_json_to_tuple(line):
               jd['contexts'],
               jd['intents']
             )
+
+
 def paper_json_to_tuple(line):
     jd = json.loads(line)
     record = (jd['corpusid'], line)
     return record
+
 
 def paper_ids_json_to_tuple(line):
     jd = json.loads(line)
@@ -59,8 +67,13 @@ def tldrs_json_to_tuple(line):
 
 abstracts_dataset = Dataset(table="abstracts",
                             json_to_tuple=abstract_json_to_tuple,
-                            create_table=CREATE_TABLE_ABSTRACTS,
+                            create_table=CREATE_ABSTRACTS_TABLE,
                             add_indices=ADD_KEYS_TO_ABSTRACTS)
+
+authors_dataset = Dataset(table="authors",
+                          json_to_tuple=authors_json_to_tuple,
+                          create_table=CREATE_AUTHORS_TABLE,
+                          add_indices=ADD_KEYS_TO_AUTHORS)
 
 citations_dataset = Dataset(table="citations",
                             json_to_tuple=citation_json_to_tuple,
@@ -92,6 +105,7 @@ tldrs_dataset = Dataset(table="tldrs",
 
 DATASETS = {
     "abstracts": abstracts_dataset,
+    "authors": authors_dataset,
     "citations" : citations_dataset,
     "papers" : papers_dataset,
     "paper-ids" : paper_ids_dataset,
