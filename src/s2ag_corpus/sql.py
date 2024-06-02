@@ -87,7 +87,6 @@ CREATE TABLE tldrs
 """
 
 ADD_KEY_TO_TLDRS = """
-alter table tldrs
-    add constraint tldrs_pk
-        primary key (corpusid);"""
-
+create index if not exists tldrs_idx
+    on tldrs (corpusid);
+"""
