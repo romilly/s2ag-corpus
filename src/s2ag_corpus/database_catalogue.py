@@ -24,7 +24,7 @@ def production_connection():
         get_connection_string('PROD_DB'))
 
 
-class DatabaseCatalogue(ABC):
+class Catalogue(ABC):
     @abstractmethod
     def fetch(self, sql: str, params=None) -> List[Tuple]:
         pass
@@ -33,9 +33,13 @@ class DatabaseCatalogue(ABC):
     def upsert(self, sql: str, data: List[Tuple]) -> None:
         pass
 
+    @abstractmethod
+    def find_citations_for(self, corpus_id: int, constraint: str = None) -> List[int]:
+        pass
+
 
 # TODO: rename this and parent class, and move methods up where appropriate
-class CorpusDatabaseCatalogue(DatabaseCatalogue):
+class DatabaseCatalogue(Catalogue):
     CITATION_SQL = """
     select citingcorpusid from citations
                         where citedcorpusid = %s

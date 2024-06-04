@@ -4,7 +4,7 @@
 # In[1]:
 
 
-from s2ag_corpus.database_catalogue import CorpusDatabaseCatalogue, production_connection
+from s2ag_corpus.database_catalogue import DatabaseCatalogue, production_connection
 from s2ag_corpus.dot_writer import write_dot_file
 
 
@@ -12,7 +12,7 @@ from s2ag_corpus.dot_writer import write_dot_file
 
 
 connection = production_connection()
-catalogue = CorpusDatabaseCatalogue(connection)
+catalogue = DatabaseCatalogue(connection)
 
 
 # In[3]:
