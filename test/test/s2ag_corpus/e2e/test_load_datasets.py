@@ -34,7 +34,6 @@ def check_table_count(i, table_name, connection):
         assert len(papers) == i
 
 
-
 def count_total_lines(directory):
     total_lines = 0
     # Walk through all files and subdirectories in the specified directory

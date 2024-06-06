@@ -38,7 +38,6 @@ class Catalogue(ABC):
         pass
 
 
-# TODO: rename this and parent class, and move methods up where appropriate
 class DatabaseCatalogue(Catalogue):
     CITATION_SQL = """
     select citingcorpusid from citations
@@ -80,20 +79,6 @@ class DatabaseCatalogue(Catalogue):
         rows = self.fetch(self.CITATION_SQL + constraint, (corpus_id,))
         return [row[0] for row in rows]
 
-    # TODO: remove or refactor
-    def transitive_closure(self, corpus_id: int) -> Set[int]:
-        visited = set()
-        to_visit = [corpus_id]
-
-        while to_visit:
-            current_id = to_visit.pop()
-            if current_id not in visited:
-                visited.add(current_id)
-                citations = self.find_citations_for(current_id)
-                for citation in citations:
-                    if citation not in visited:
-                        to_visit.append(citation)
-        return visited
 
     def find_links(self, corpusid: int, influential=True) -> Set[Tuple[int, int]]:
         visited = set()

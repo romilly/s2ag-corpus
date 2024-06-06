@@ -1,0 +1,15 @@
+strict digraph  {
+n0 [description="", label=1, shape_type=rectangle, x="274.0", y="64.0"];
+n1 [description="", label=2, shape_type=rectangle, x="214.0", y="141.0"];
+n2 [description="", label=3, shape_type=rectangle, x="343.0", y="141.0"];
+n3 [description="", label=4, shape_type=rectangle, x="170.0", y="224.0"];
+n4 [description="", label=5, shape_type=rectangle, x="287.0", y="224.0"];
+n5 [description="", label=6, shape_type=rectangle, x="378.0", y="224.0"];
+n1 -> n0  [description="", id=e0];
+n2 -> n0  [description="", id=e1, label=influential];
+n3 -> n1  [description="", id=e2];
+n3 -> n0  [description="", id=e3, label=influential];
+n4 -> n1  [description="", id=e4];
+n5 -> n2  [description="", id=e5];
+n5 -> n1  [description="", id=e6, label=influential];
+}

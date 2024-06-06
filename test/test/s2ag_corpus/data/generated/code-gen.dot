@@ -1,0 +1,231 @@
+digraph {
+     rankdir=BT;
+    "263671545" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/6d828a7aace632477c5d89c1d4e2182645030b85", target="_blank", tooltip="title: Balancing Autonomy and Alignment: A Multi-Dimensional Taxonomy for Autonomous
+LLM-powered Multi-Agent Architectures \nauthors: Thorsten Händler\npublished: 2023"];
+    "261064713" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/28c6ac721f54544162865f41c5692e70d61bccab", target="_blank", tooltip="title: A Survey on Large Language Model based Autonomous Agents \nauthors: Lei Wang, Chengbang Ma, Xueyang Feng, Zeyu Zhang, Hao-ran Yang, Jingsen Zhang, Zhi-Yang Chen, Jiakai Tang, Xu Chen, Yankai Lin, Wayne Xin Zhao, Zhewei Wei, Ji-rong Wen\npublished: 2023"];
+    "268680662" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/fbbb3fcb8b52a58108ca4d836038a1a0e2e8ba32", target="_blank", tooltip="title: Norm Violation Detection in Multi-Agent Systems using Large Language Models: A
+Pilot Study \nauthors: Shawn He, Surangika Ranathunga, Stephen Cranefield, B. Savarimuthu\npublished: 2024"];
+    "265368095" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/4365b9c433eadcf9633568a6e6ad019f5b147650", target="_blank", tooltip="title: A Taxonomy for Autonomous LLM-Powered Multi-Agent Architectures \nauthors: Thorsten Händler\npublished: 2023"];
+    "267211955" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/48fd140ea0f625471cb1018cbd743dc13eb7fca3", target="_blank", tooltip="title: Towards Uncertainty-Aware Language Agent \nauthors: Jiuzhou Han, W. Buntine, Ehsan Shareghi\npublished: 2024"];
+    "266874743" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/e767597995d4c9c2a70b4567de49579966f73e74", target="_blank", tooltip="title: Generative Agent for Teacher Training: Designing Educational Problem-Solving
+Simulations with Large Language Model-based Agents for Pre-Service Teachers \nauthors: Unggi Lee, Sanghyeok Lee, Junbo Koh, Yeil Jeong, Haewon Jung, Gyuri Byun, Jewoong Moon, Jieun Lim, †. HyeoncheolKim\npublished: Unknown"];
+    "269293007" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/5be7e6b04c5a240cff340034aae2b57c677e211f", target="_blank", tooltip="title: A Survey on Efficient Inference for Large Language Models \nauthors: Zixuan Zhou, Xuefei Ning, Ke Hong, Tianyu Fu, Jiaming Xu, Shiyao Li, Yuming Lou, Luning Wang, Zhihang Yuan, Xiuhong Li, Shengen Yan, Guohao Dai, Xiao-Ping Zhang, Yuhan Dong, Yu Wang\npublished: 2024"];
+    "267897510" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/e6100eb9dc6667b24c26fcea683c139451e89652", target="_blank", tooltip="title: On the Multi-turn Instruction Following for Conversational Web Agents \nauthors: Yang Deng, Xuan Zhang, Wenxuan Zhang, Yifei Yuan, See-kiong Ng, Tat-Seng Chua\npublished: 2024"];
+    "269187633" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/25ae2fce719c6f6f0b09de1e0f917a7b719e5e99", target="_blank", tooltip="title: The Landscape of Emerging AI Agent Architectures for Reasoning, Planning, and
+Tool Calling: A Survey \nauthors: Tula Masterman, Sandi Besen, Mason Sawtell, Alex Chao\npublished: 2024"];
+    "265212890" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/03f3801956fc4cc026860568670f9f65ed29b192", target="_blank", tooltip="title: Towards A Unified View of Answer Calibration for Multi-Step Reasoning \nauthors: Shumin Deng, Ningyu Zhang, Nay Oo, Bryan Hooi\npublished: 2023"];
+    "267412469" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/96e614f3dd764ede22f32d8c7e41a3ff0d41b2ab", target="_blank", tooltip="title: CodeAgent: Collaborative Agents for Software Engineering \nauthors: Daniel Tang, Zhenghan Chen, Kisub Kim, Yewei Song, Haoye Tian, Saad Ezzini, Yongfeng Huang, Jacques Klein, Tegawendé F. Bissyandé\npublished: 2024"];
+    "268680458" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/704cfb773c96f61697da2ee153d291940ebeda12", target="_blank", tooltip="title: Harnessing the power of LLMs for normative reasoning in MASs \nauthors: B. Savarimuthu, Surangika Ranathunga, Stephen Cranefield\npublished: 2024"];
+    "267312444" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/017069c05bf1362c3c593822fe9ee66b4dabb025", target="_blank", tooltip="title: Hierarchical Continual Reinforcement Learning via Large Language Model \nauthors: Chaofan Pan, Xin Yang, Hao Wang, Wei Wei, Tianrui Li\npublished: 2024"];
+    "269293320" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/b6ab16c8eade03a39830493071d99fc48a736fac", target="_blank", tooltip="title: A Survey on the Memory Mechanism of Large Language Model based Agents \nauthors: Zeyu Zhang, Xiaohe Bo, Chen Ma, Rui Li, Xu Chen, Quanyu Dai, Jieming Zhu, Zhenhua Dong, Ji-Rong Wen\npublished: 2024"];
+    "263620781" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/3fe940a1f121f083cb90c568fc6fa2951bb27dda", target="_blank", tooltip="title: Self-Taught Optimizer (STOP): Recursively Self-Improving Code Generation \nauthors: E. Zelikman, Eliana Lorch, Lester Mackey, A. Kalai\npublished: 2023"];
+    "266362356" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/592ac35991e583fc37c26ee6659d2deb85142ad9", target="_blank", tooltip="title: Large Language Models Empowered Agent-based Modeling and Simulation: A Survey
+and Perspectives \nauthors: Chen Gao, Xiaochong Lan, Nian Li, Yuan Yuan, Jingtao Ding, Zhilun Zhou, Fengli Xu, Yong Li\npublished: 2023"];
+    "268819803" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/ac8bc36c253c8593492afc2db620c01b152dc778", target="_blank", tooltip="title: LLM as a Mastermind: A Survey of Strategic Reasoning with Large Language Models \nauthors: Yadong Zhang, Shaoguang Mao, Tao Ge, Xun Wang, Adrian de Wynter, Yan Xia, Wenshan Wu, Ting Song, Man Lan, Furu Wei\npublished: 2024"];
+    "267626871" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/44847844e3709eebd55185d3afe20f3c3b28f269", target="_blank", tooltip="title: Conversational Crowdsensing: A Parallel Intelligence Powered Novel Sensing
+Approach \nauthors: Zhengqiu Zhu, Yong Zhao, Bin Chen, S. Qiu, Kai Xu, Quanjun Yin, Jin-Yu Huang, Zhong Liu, Fei-Yue Wang\npublished: 2024"];
+    "269214272" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/273b72d9998e06a7ceb1bf9405a0d274cd088800", target="_blank", tooltip="title: AgentCoord: Visually Exploring Coordination Strategy for LLM-based Multi-Agent
+Collaboration \nauthors: Bo Pan, Jiaying Lu, Ke Wang, Li Zheng, Zhen Wen, Yingchaojie Feng, Minfeng Zhu, Wei Chen\npublished: 2024"];
+    "267626970" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/cc6c0e6dda4f7f1cbef98fe73f618ce4f6163d51", target="_blank", tooltip="title: Towards Unified Alignment Between Agents, Humans, and Environment \nauthors: Zonghan Yang, An Liu, Zijun Liu, Kai Liu, Fangzhou Xiong, Yile Wang, Zeyuan Yang, Qingyuan Hu, Xinrui Chen, Zhenhe Zhang, Fuwen Luo, Zhicheng Guo, Peng Li, Yang Liu\npublished: 2024"];
+    "267028700" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/b746a0a800557e000c360f4f5cc01e8741624087", target="_blank", tooltip="title: AttackEval: How to Evaluate the Effectiveness of Jailbreak Attacking on Large
+Language Models \nauthors: Dong Shu, Mingyu Jin, Suiyuan Zhu, Beichen Wang, Zihao Zhou, Chong Zhang, Yongfeng Zhang\npublished: 2024"];
+    "267365525" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/2985af7568176c4c229e552cb0acaaf3502432df", target="_blank", tooltip="title: Computational Experiments Meet Large Language Model Based Agents: A Survey and
+Perspective \nauthors: Qun Ma, Xiao Xue, Deyu Zhou, Xiangning Yu, Donghua Liu, Xuwen Zhang, Zihan Zhao, Yifan Shen, Peilin Ji, Juanjuan Li, Gang Wang, Wanpeng Ma\npublished: 2024"];
+    "263608648" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/0bc95ed529fbc8a499dc6909937d5de04ed4266b", target="_blank", tooltip="title: Adapting LLM Agents with Universal Feedback in Communication \nauthors: Kuan Wang, Yadong Lu, Michael Santacroce, Yeyun Gong, Chao Zhang, Yelong Shen\npublished: 2023"];
+    "261556862" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/e4bb1b1f97711a7634bf4bff72c56891be2222e6", target="_blank", tooltip="title: Cognitive Architectures for Language Agents \nauthors: T. Sumers, Shunyu Yao, Karthik Narasimhan, Thomas L. Griffiths\npublished: 2023"];
+    "268510267" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/1404b3cf9649ed6a933d06cb9ea3610ff8bc031c", target="_blank", tooltip="title: A Survey on Game Playing Agents and Large Models: Methods, Applications, and
+Challenges \nauthors: Xinrun Xu, Yuxin Wang, Chaoyi Xu, Ziluo Ding, Jiechuan Jiang, Zhiming Ding, Börje F. Karlsson\npublished: 2024"];
+    "264935197" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/8d32c7b768dec2fd42b5730de7b15f0a708187b0", target="_blank", tooltip="title: SAGE: Smart home Agent with Grounded Execution \nauthors: D. Rivkin, Francois RobertHogan, Amal Feriani, Abhisek Konar, Adam Sigal, Steve Liu, Gregory Dudek\npublished: 2023"];
+    "266818453" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/efcb8cfc8db63c0e71461ea960e0d63882aca7ee", target="_blank", tooltip="title: From LLM to Conversational Agent: A Memory Enhanced Architecture with
+Fine-Tuning of Large Language Models \nauthors: Na Liu, Liangyu Chen, Xiaoyu Tian, Wei Zou, Kaijiang Chen, Ming Cui\npublished: 2024"];
+    "266899697" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/09d75875813ecee343f81bdd90667df41d7b2b54", target="_blank", tooltip="title: MobileAgent: enhancing mobile control via human-machine interaction and SOP
+integration \nauthors: Tinghe Ding\npublished: 2024"];
+    "261682230" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/443089da371f96f9d96d34f3f99179f3b251b050", target="_blank", tooltip="title: Unleashing the Power of Graph Learning through LLM-based Autonomous Agents \nauthors: Lanning Wei, Zhiqiang He, Huan Zhao, Quanming Yao\npublished: 2023"];
+    "269604964" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/1e8b9ed963a0f3c4268a609cea48d7527e6f088f", target="_blank", tooltip="title: A Philosophical Introduction to Language Models - Part II: The Way Forward \nauthors: Raphael Milliere, Cameron Buckner\npublished: 2024"];
+    "267751102" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/396ea10d3ab89da41d02693d7165c4b98ecbb5f3", target="_blank", tooltip="title: Puzzle Solving using Reasoning of Large Language Models: A Survey \nauthors: Panagiotis Giadikiaroglou, Maria Lymperaiou, Giorgos Filandrianos, G. Stamou\npublished: 2024"];
+    "267751452" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/e785b33b3367015db69657f37f98402f27a198df", target="_blank", tooltip="title: Towards Versatile Graph Learning Approach: from the Perspective of Large
+Language Models \nauthors: Lanning Wei, Jun Gao, Huan Zhao, Quanming Yao\npublished: 2024"];
+    "259936967" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/4747e72c5bc706c50e76953188f0144df18992d0", target="_blank", tooltip="title: Communicative Agents for Software Development \nauthors: Chen Qian, Xin Cong, Cheng Yang, Weize Chen, Yusheng Su, Juyuan Xu, Zhiyuan Liu, Maosong Sun, Wei Liu\npublished: 2023"];
+    "268856673" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/c35b8dad08e11a77c249c0aed2b2f7f9ba853acd", target="_blank", tooltip="title: A Survey on Large Language Model-Based Game Agents \nauthors: Sihao Hu, Tiansheng Huang, Fatih Ilhan, S. Tekin, Gaowen Liu, R. Kompella, Ling Liu\npublished: 2024"];
+    "268681456" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/df82a510c4a355506c4ec733a050570efe2ebe7d", target="_blank", tooltip="title: When LLM-based Code Generation Meets the Software Development Process \nauthors: Feng Lin, Dong Jae Kim, Tse-Husn Chen\npublished: 2024"];
+    "269005050" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/128b95f2bb77c8268e68e44c171e701221e7676f", target="_blank", tooltip="title: Exploring Autonomous Agents through the Lens of Large Language Models: A Review \nauthors: Saikat Barua\npublished: 2024"];
+    "268691664" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/006c4c7470566327e5b02b94936d0be0033fc9f5", target="_blank", tooltip="title: MAGIS: LLM-Based Multi-Agent Framework for GitHub Issue Resolution \nauthors: Wei Tao, Yucheng Zhou, Wenqiang Zhang, Yu-Xi Cheng\npublished: 2024"];
+    "267500832" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/7eff8e646fe0d76f196e637d8e86ee0ea64561af", target="_blank", tooltip="title: Hi-Core: Hierarchical Knowledge Transfer for Continual Reinforcement Learning \nauthors: Chaofan Pan, Xin Yang, Hao Wang, Wei Wei, Tianrui Li\npublished: 2024"];
+    "267412705" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/687397ab709d98476205ed36ecd3f1e01ee7dbae", target="_blank", tooltip="title: Large Language Model Agent for Hyper-Parameter Optimization \nauthors: Siyi Liu, Chen Gao, Yong Li\npublished: 2024"];
+    "264128263" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/01a5d0ed2300ec86aa82d0e56222932f200ad692", target="_blank", tooltip="title: LLaMA Rider: Spurring Large Language Models to Explore the Open World \nauthors: Yicheng Feng, Yuxuan Wang, Jiazheng Liu, Sipeng Zheng, Zongqing Lu\npublished: 2023"];
+    "268691360" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/b78adeffd4ab17a690e537ada53ddb85940f1015", target="_blank", tooltip="title: Depending on yourself when you should: Mentoring LLM with RL agents to become
+the master in cybersecurity games \nauthors: Yikuan Yan, Yaolun Zhang, Keman Huang\npublished: 2024"];
+    "268041451" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/203574cdbb7ae35a44c40abeed414093a58b74bf", target="_blank", tooltip="title: Prospect Personalized Recommendation on Large Language Model-based Agent
+Platform \nauthors: Jizhi Zhang, Keqin Bao, Wenjie Wang, Yang Zhang, Wentao Shi, Wanhong Xu, Fuli Feng, Tat-seng Chua\npublished: 2024"];
+    "267412980" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/8f070e301979732e0dd73f6aa6170309cf73aa7d", target="_blank", tooltip="title: Large Language Model based Multi-Agents: A Survey of Progress and Challenges \nauthors: Taicheng Guo, Xiuying Chen, Yaqi Wang, Ruidi Chang, Shichao Pei, N. Chawla, Olaf Wiest, Xiangliang Zhang\npublished: 2024"];
+    "265294905" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/263a58f4fd32caca1dad2351af4d711aec451fe6", target="_blank", tooltip="title: Evil Geniuses: Delving into the Safety of LLM-based Agents \nauthors: Yu Tian, Xiao Yang, Jingyuan Zhang, Yinpeng Dong, Hang Su\npublished: 2023"];
+    "266999556" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/3793a5f435fef59a901f5ba0d8ef43df88d97161", target="_blank", tooltip="title: CodeAgent: Enhancing Code Generation with Tool-Integrated Agent Systems for
+Real-World Repo-level Coding Challenges \nauthors: Kechi Zhang, Jia Li, Ge Li, Xianjie Shi, Zhi Jin\npublished: 2024"];
+    "267658120" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/e79671a83e25288fedd897e1c9e6152f70f7f52e", target="_blank", tooltip="title: Attacks, Defenses and Evaluations for LLM Conversation Safety: A Survey \nauthors: Zhichen Dong, Zhanhui Zhou, Chao Yang, Jing Shao, Yu Qiao\npublished: 2024"];
+    "263310339" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/c74e9642ec71c6dfaadd3b8638c110d4048ff53e", target="_blank", tooltip="title: Suspicion-Agent: Playing Imperfect Information Games with Theory of Mind Aware
+GPT-4 \nauthors: Jiaxian Guo, Bo Yang, Paul Yoo, Bill Yuchen Lin, Yusuke Iwasawa, Yutaka Matsuo\npublished: 2023"];
+    "265295180" [label=" ...", shape=circle, href="https://www.semanticscholar.org/paper/6fa0677731184444df0e1fc8070938419cd6da47", target="_blank", tooltip="title: Igniting Language Intelligence: The Hitchhiker's Guide From Chain-of-Thought
+Reasoning to Language Agents \nauthors: Zhuosheng Zhang, Yao Yao, Aston Zhang, Xiangru Tang, Xinbei Ma, Zhiwei He, Yiming Wang, Mark B. Gerstein, Rui Wang, Gongshen Liu, Hai Zhao\npublished: 2023"];
+     subgraph cluster_0 {
+           rank=same;
+           label="2023";
+      261064713;
+      259936967;
+      266362356;
+      261064713;
+      264935197;
+      261064713;
+      261682230;
+      261556862;
+      263620781;
+      259936967;
+      261064713;
+      263310339;
+      261064713;
+      261064713;
+      259936967;
+      261064713;
+      259936967;
+      261064713;
+      261064713;
+      264128263;
+      259936967;
+      261064713;
+      261556862;
+      265294905;
+      263671545;
+      265368095;
+      264128263;
+      259936967;
+      261064713;
+      261064713;
+      263310339;
+      261064713;
+      261682230;
+      266362356;
+      261064713;
+      261064713;
+      261556862;
+      263608648;
+      265294905;
+      259936967;
+      265294905;
+      264128263;
+      261556862;
+      265295180;
+      261556862;
+      261064713;
+      261064713;
+      265212890;
+      261064713;
+      261064713;
+      263310339;
+      261064713;
+      261556862;
+      261064713;
+      261064713;
+      263671545;
+      261064713;
+      259936967;
+      259936967;
+      261682230;
+      261064713;
+     }     subgraph cluster_1 {
+           rank=same;
+           label="2024";
+      269604964;
+      269293320;
+      267751452;
+      268819803;
+      266999556;
+      268691360;
+      266999556;
+      269293320;
+      269214272;
+      268041451;
+      267412469;
+      267412980;
+      267626970;
+      267658120;
+      268510267;
+      267365525;
+      268680458;
+      266818453;
+      267751102;
+      267500832;
+      267751452;
+      268819803;
+      266899697;
+      269293320;
+      267412980;
+      269293007;
+      267028700;
+      268856673;
+      267211955;
+      267897510;
+      267312444;
+      268680458;
+      268680662;
+      269005050;
+      266818453;
+      269187633;
+      267626871;
+      268681456;
+      268691664;
+      267412705;
+     }     subgraph cluster_2 {
+           rank=same;
+           label="Unknown";
+      266874743;
+     }    "269604964" -> "261064713";
+    "266362356" -> "259936967";
+    "264935197" -> "261064713";
+    "261682230" -> "261064713";
+    "263620781" -> "261556862";
+    "269293320" -> "259936967";
+    "267751452" -> "261064713";
+    "268819803" -> "263310339";
+    "266999556" -> "261064713";
+    "268691360" -> "261064713";
+    "269293320" -> "266999556";
+    "269214272" -> "259936967";
+    "268041451" -> "261064713";
+    "261064713" -> "259936967";
+    "264128263" -> "261064713";
+    "267412469" -> "259936967";
+    "267412980" -> "261064713";
+    "267626970" -> "261556862";
+    "267658120" -> "265294905";
+    "265368095" -> "263671545";
+    "268510267" -> "264128263";
+    "267365525" -> "259936967";
+    "268680458" -> "261064713";
+    "266818453" -> "261064713";
+    "267751102" -> "263310339";
+    "267500832" -> "261064713";
+    "267751452" -> "261682230";
+    "268819803" -> "266362356";
+    "266899697" -> "261064713";
+    "269293320" -> "261064713";
+    "263608648" -> "261556862";
+    "269293007" -> "267412980";
+    "267028700" -> "265294905";
+    "265294905" -> "259936967";
+    "268856673" -> "264128263";
+    "265295180" -> "261556862";
+    "267211955" -> "261556862";
+    "267897510" -> "261064713";
+    "265212890" -> "261064713";
+    "267312444" -> "261064713";
+    "263310339" -> "261064713";
+    "268680662" -> "268680458";
+    "261556862" -> "261064713";
+    "269005050" -> "261064713";
+    "263671545" -> "261064713";
+    "269187633" -> "266818453";
+    "267626871" -> "261064713";
+    "268681456" -> "259936967";
+    "268691664" -> "259936967";
+    "267412705" -> "261682230";
+    "266874743" -> "261064713";
+}

@@ -15,7 +15,6 @@ class CitationGraph:
 
         while to_visit:
             current_id = to_visit.pop()
-            # print(current_id)
             if current_id not in visited:
                 visited.add(current_id)
                 citations = self.catalogue.find_citations_for(current_id, constraint=constraint)
