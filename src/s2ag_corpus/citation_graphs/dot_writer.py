@@ -24,7 +24,7 @@ def write_dot_file(enriched_links: Set[Tuple[Paper, Paper]],
                    file_path: str,
                    show_labels: bool = False) -> None:
     with open(file_path, "w") as dot_file:
-        dot_file.write("digraph {\n")
+        dot_file.write("digraph Citations {\n")
         dot_file.write("     rankdir=BT;\n")
         cp = ClusteredPapers()
         for p1, p2 in enriched_links:
