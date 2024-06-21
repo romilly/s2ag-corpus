@@ -23,7 +23,7 @@ def download(dataset_name: str):
     if not os.path.exists(base_path):
         print(f"directory {base_path} does not exist")
         try:
-            os.mkdir(base_path)
+            os.makedirs(base_path)
         except Exception as e:
             print(f"could not create {base_path} - exception {e}")
     print(f"about to download release {release_id} of {dataset_name}: {len(download_links)} files.")
