@@ -8,13 +8,15 @@ The data that it downloads is subject to the Semantic Scholar Academic Graph Lic
 
 The first iteration is almost complete, but the documentation needs more work.
 
-For now, if you're interested, examine the code but don't attempt to create and populate a database
-unless you love to experiment and are willing to redo work if things change!
-
 The code is under active development, and the API may change.
 
+The project has been on hold for a couple of weeks while the team at Semantic Scholar
+fixed a problem with duplicated data.
+
 Future releases will support updating the database from the
-diffs created by the Semantic Scholar API, and I am investigating the idea of
+diffs created by the Semantic Scholar API. 
+
+Later I will investigate the idea of
 providing the application via docker. 
 
 
@@ -27,6 +29,20 @@ The datasets supported are:
 - `publication-venues` and 
 - `tldrs`
 
+The first dataset release in which a duplaiced data anomaly was fixed is the `2024-06-18` release.
+
+The project contains the code that I used to download a dataset release
+and load the data into Postgres. It also contains experimental code to explore
+citations and present them graphically.
+
+The first example shows a relatively simple citation graph.
+
+![Example 1](notebooks/citations/martyn.svg)
+
+The second shows a much more complex graph.
+
+![Example 2](notebooks/citations/jonathan.svg)
+
 ## Installation
 
 ### Summary:
@@ -35,7 +51,7 @@ The datasets supported are:
 2.  Create and activate a Python virtual environment.
 3.  Install the required Python packages.
 4.  Create a base directory for the files that the software will download from Semantic Scholar.
-5.  Obtain an API key for Semantic Scholar.
+5.  Get an API key for Semantic Scholar.
 6.  Create and populate a `.env` file in the root directory of the downloaded repository.
 7.  If necessary, install PostgreSQL.
 8.  Create a Postgres database to hold the production data.
@@ -43,10 +59,9 @@ The datasets supported are:
 10. Update the .env file to include credentials for the database(s).
 11. Decide which weekly dataset snapshot you'll use.
 12. Update the .env file to specify the weekly snapshot that you chose.
-13. Download a dataset from Semantic Scholar. 
-14. Import the dataset into the production database.
-15. Repeat stages 11 and 12 for the remaining datasets.
-16. Query the database. 
+13. Download the datasets from Semantic Scholar. 
+14. Import the datasets into the production database.
+15. Query the database. 
 
 
 #### Clone this repository into a directory of your choice.
@@ -88,7 +103,7 @@ You *will* need a key to download the datasets you'll need.
 
 The code in this repository assumes that you have created a `.env` file in the root directory of the project.
 This will contain various credentials.
-Initially you'll just need the private Semantic Scholar API key that you obtained in the previous step. 
+Initially, you'll need the private Semantic Scholar API key that you got in the previous step. 
 
 The initial contents of the `.env` file should look like this:
 
@@ -174,8 +189,8 @@ python download-papers.py
 
 This may take some time to run, depending on the speed of your computer and your internet connection.
 
-The download links will eventually expire. If this happens, just repeat the download program
-which wil skip over the files that you have already downloaded.
+The download links will eventually expire. If this happens, repeat the download program
+which will skip over the files that you have already downloaded.
 
 #### Update the database
 
