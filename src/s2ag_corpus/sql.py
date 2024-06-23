@@ -8,7 +8,8 @@ create table abstracts
 """
 
 ADD_KEYS_TO_ABSTRACTS = """
-create index abstracts_idx on abstracts using btree(corpusid);
+ALTER TABLE abstracts
+ADD PRIMARY KEY (corpusid);
 """
 
 CREATE_AUTHORS_TABLE = """
@@ -20,7 +21,9 @@ create table authors (
 """
 
 ADD_KEYS_TO_AUTHORS = """
-create index authors_idx on authors using btree(authorid);
+alter table public.authors
+    add constraint authors_pk
+        primary key (authorid);;
 create index name_idx on authors (name);
 """
 
@@ -37,8 +40,9 @@ create table public.citations (
 """
 
 ADD_KEYS_TO_CITATIONS = """
-create index citations_citationid_index
-    on citations (citationid);
+alter table citations
+    add constraint citations_pk
+        primary key (citationid);
 
 create index citations_citedcorpusid_index
     on citations (citedcorpusid);
@@ -65,8 +69,10 @@ create table public.paperids (
 """
 
 ADD_KEYS_TO_PAPER_IDS = """
-create index sha_index on public.paperids (sha);
-create index corpus_index on public.paperids using btree(corpusid);
+alter table paperids
+    add constraint paperids_pk
+        primary key (sha);
+create index corpus_index on paperids(corpusid);
 """
 
 CREATE_PUBLICATION_VENUES_TABLE = """
@@ -87,6 +93,7 @@ CREATE TABLE tldrs
 """
 
 ADD_KEY_TO_TLDRS = """
-create index if not exists tldrs_idx
-    on tldrs (corpusid);
+alter table tldrs
+ add constraint tldrs_pk
+    primary key (corpusid);
 """
