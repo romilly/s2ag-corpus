@@ -1,48 +1,54 @@
-import os
-import requests
-from dotenv import load_dotenv
 import datetime
 
-# Define base URL for datasets API
-base_url = "https://api.semanticscholar.org/datasets/v1/release/"
+from s2ag_corpus.file_manager import AbstractFileManager
+from s2ag_corpus.monitor import Monitor
+from s2ag_corpus.requester import DownloadRequester
 
 
-load_dotenv()
-api_key = os.getenv('S2_API_KEY')
-headers = {"x-api-key": api_key}
-base_dir = os.getenv('BASE_DIR')
-release_id = os.getenv('RELEASE_ID')
+class DatasetDownloader:
+    def __init__(self, requester: DownloadRequester, file_manager: AbstractFileManager, monitor: Monitor):
+        self.requester = requester
+        self.file_manager = file_manager
+        self.monitor = monitor
 
+    def download(self, dataset_name: str, permitted_attempts = 3):
+        base_path = self.requester.base_path_for(dataset_name)
+        self.create_path(base_path)
+        download_links = self.requester.get_links_for(dataset_name)
+        self.monitor.info(
+            f"downloading {self.requester.download_target(dataset_name)} : {len(download_links)} files.")
+        successful = False
+        for i in range(permitted_attempts):
+            try:
+                for (link_index, link) in enumerate(download_links):
+                    self.attempt_download(dataset_name, link_index, link)
+                self.monitor.info('completed download')
+                successful = True
+                break
+            except TimeoutError:
+                self.monitor.warn("retrying after attempt {i}")
+                continue
+        if not successful:
+            self.monitor.error(f"failed to complete {dataset_name} download after {permitted_attempts} attempts")
+            raise TimeoutError()
 
-def download(dataset_name: str):
-    download_links_response = requests.get(base_url + release_id + '/dataset/' + dataset_name, headers=headers)
-    if download_links_response.status_code != 200:
-        raise Exception(f"downloading links: status code {download_links_response.status_code}")
-    download_links = download_links_response.json()["files"]
-    base_path = f"{base_dir}/{release_id}/{dataset_name}"
-    if not os.path.exists(base_path):
-        print(f"directory {base_path} does not exist")
-        try:
-            os.makedirs(base_path)
-        except Exception as e:
-            print(f"could not create {base_path} - exception {e}")
-    print(f"about to download release {release_id} of {dataset_name}: {len(download_links)} files.")
-    for (i, link) in enumerate(download_links):
-        file_name = f"{dataset_name}{i:03}.gz"
-        print(f"Downloading {file_name}")
-        file_path = f"{base_dir}/{release_id}/{dataset_name}/{file_name}"
-        if os.path.exists(file_path):
-            print (f"skipping {file_path}")
-            continue
+    def create_path(self, base_path):
+        self.file_manager.create_path(base_path)
+
+    def attempt_download(self, dataset_name, link_index, link):
+        file_name = f"{dataset_name}{link_index:03}.gz"
+        self.monitor.info(f"Downloading {file_name}")
+        file_path = f"{self.requester.base_path_for(dataset_name)}/{file_name}"
+        if self.file_manager.exists(file_path):
+            self.monitor.info(f"skipping {file_path}")
+            return
         start = datetime.datetime.now()
-        response = requests.get(link)
-        if response.status_code != 200:
-            print(f"could not download {file_name} from {link}")
-            break
-        with open(file_path,"wb") as pf:
-            pf.write(response.content)
+        code, content = self.requester.get_content_from(link)
+        if code != 200:
+            raise TimeoutError('Link expired')
+        self.file_manager.write_content(file_path, content)
         end = datetime.datetime.now()
-        print(f"duration: {end - start}")
-    print('completed download')
+        self.monitor.debug(f"download duration for {file_name}: {end - start}")
+
 
 
