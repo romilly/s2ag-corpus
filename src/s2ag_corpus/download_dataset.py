@@ -1,8 +1,9 @@
 import datetime
 
-from s2ag_corpus.file_manager import AbstractFileManager
+from s2ag_corpus.file_manager import AbstractFileManager, FileManager
+from s2ag_corpus.logging_monitor import LoggingMonitor
 from s2ag_corpus.monitor import Monitor
-from s2ag_corpus.requester import DownloadRequester
+from s2ag_corpus.requester import DownloadRequester, WebDownloadRequester
 
 
 class DatasetDownloader:
@@ -51,4 +52,7 @@ class DatasetDownloader:
         self.monitor.debug(f"download duration for {file_name}: {end - start}")
 
 
-
+def download(dataset_name, permitted_attempts=3):
+    monitor = LoggingMonitor()
+    downloader = DatasetDownloader(WebDownloadRequester(monitor), FileManager(monitor), monitor)
+    downloader.download(dataset_name, permitted_attempts)
