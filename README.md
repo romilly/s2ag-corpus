@@ -10,7 +10,7 @@ The first iteration is almost complete, but the documentation needs more work.
 
 The code is under active development, and the API may change.
 
-The project has been on hold for a couple of weeks while the team at Semantic Scholar
+The project was on hold for a couple of weeks while the team at Semantic Scholar
 fixed a problem with duplicated data.
 
 Future releases will support updating the database from the
@@ -29,11 +29,11 @@ The datasets supported are:
 - `publication-venues` and 
 - `tldrs`
 
-The first dataset release in which a duplaiced data anomaly was fixed is the `2024-06-18` release.
+The first dataset release in which a duplicated data anomaly was fixed is the `2024-06-18` release.
 
 The project contains the code that I used to download a dataset release
 and load the data into Postgres. It also contains experimental code to explore
-citations and present them graphically.
+references and citations and present them graphically.
 
 The first example shows a relatively simple citation graph.
 
@@ -103,7 +103,8 @@ You *will* need a key to download the datasets you'll need.
 
 The code in this repository assumes that you have created a `.env` file in the root directory of the project.
 This will contain various credentials.
-Initially, you'll need the private Semantic Scholar API key that you got in the previous step. 
+
+You'll need the private Semantic Scholar API key that you got in the previous step. 
 
 The initial contents of the `.env` file should look like this:
 
@@ -164,15 +165,17 @@ The entry for the optional test database follows a similar format.
 With the virtual environment still activated, start Jupyter.
 Navigate to the notebooks directory and run `explore-datasets.ipynb`.
 It should list the datasets available. They are named by the date on which they were created.
-You'll almost certainly want the latest dataset which wll be the last in the list.
+You'll almost certainly want the latest dataset which will be the last in the list.
 Remember the name of the dataset you've decided to use.
+
+As mentioned above, the first dataset release without a duplicated data anomaly is the `2024-06-18` release.
 
 #### Update the .env file to specify the weekly snapshot that you chose.
 
-Edit the .env file, add a line like this. and save the updated file.
+Edit the .env file, add a line like this, and save the updated file.
 
 ```text
-RELEASE_ID = 2024-04-02
+RELEASE_ID = 2024-06-18
 ```
 
 #### Download the `papers` dataset.
@@ -189,8 +192,8 @@ python download-papers.py
 
 This may take some time to run, depending on the speed of your computer and your internet connection.
 
-The download links will eventually expire. If this happens, repeat the download program
-which will skip over the files that you have already downloaded.
+The download links will eventually expire. If this happens, the download program will refresh the dwonload,
+skipping over the files that have already been downloaded. By default, it will try the download process up to three times.
 
 #### Update the database
 
