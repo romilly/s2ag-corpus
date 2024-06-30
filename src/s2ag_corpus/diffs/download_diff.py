@@ -13,7 +13,6 @@ BASE_DIR = os.getenv('BASE_DIR')
 BASE_URL = "https://api.semanticscholar.org/datasets/v1/diffs"
 start_release_id = "2024-04-02"
 end_release_id = "2024-04-09"
-dataset_name = "authors"
 
 
 def download_diffs_for(start_release_id: str, end_release_id: str, dataset_name: str):
