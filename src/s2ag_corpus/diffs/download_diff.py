@@ -1,19 +1,12 @@
-import os
-
-from dotenv import load_dotenv
 import requests
-
-from s2ag_corpus.datasets import DATASETS
+import os
+from dotenv import load_dotenv
 
 load_dotenv()
 api_key = os.getenv('S2_API_KEY')
 HEADERS = {"x-api-key": api_key}
 BASE_DIR = os.getenv('BASE_DIR')
-
 BASE_URL = "https://api.semanticscholar.org/datasets/v1/diffs"
-start_release_id = "2024-04-02"
-end_release_id = "2024-04-09"
-
 
 def download_diffs_for(start_release_id: str, end_release_id: str, dataset_name: str):
     url = f"{BASE_URL}/{start_release_id}/to/{end_release_id}/{dataset_name}"
@@ -33,10 +26,7 @@ def download_diffs_for(start_release_id: str, end_release_id: str, dataset_name:
                     continue
                 with open(file_path,"wb") as uf:
                     uf.write(response.content)
-
-
-for dataset_name in DATASETS.keys():
-    download_diffs_for(start_release_id, end_release_id, dataset_name)
+                    print(f'writing {file_name}')
 
 
 
