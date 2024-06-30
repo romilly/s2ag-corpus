@@ -1,10 +1,8 @@
-create table if not exists public.paperids
+create table if not exists paperids
 (
     sha        text    not null
         constraint paperids_pk
             unique,
-    corpusid   text    not null
-        constraint paperids_pk_2
-            unique,
+    corpusid   text    not null,
     is_primary boolean not null
 );

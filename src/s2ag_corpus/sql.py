@@ -115,7 +115,7 @@ INSERT INTO paperids (sha, corpusid, is_primary)
 VALUES (%s, %s, %s)
 ON CONFLICT (sha)
 DO UPDATE SET corpusid = EXCLUDED.corpusid,
-              is_primary = EXCLUDED.is_primary;
+              is_primary = EXCLUDED.is_primary
 """
 
 CREATE_PUBLICATION_VENUES_TABLE = """

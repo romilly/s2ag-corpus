@@ -13,8 +13,10 @@ The code is under active development, and the API may change.
 The project was on hold for a couple of weeks while the team at Semantic Scholar
 fixed a problem with duplicated data.
 
-Future releases will support updating the database from the
-diffs created by the Semantic Scholar API. 
+I am currently testing the code that will update the database from the
+diffs created by the Semantic Scholar API.
+
+There is a [description of the first batch of test data](diff-test-data.md) 
 
 Later I will investigate the idea of
 providing the application via docker. 
