@@ -15,6 +15,7 @@ class ApplyDiffs:
 
     def apply_diffs_for(self, release_id: str, dataset_name: str):
         self.count = 0
+        self.monitor.info(f"Applying diffs for {dataset_name} in {release_id}")
         dataset_path = os.path.join(self.diff_directory, release_id, dataset_name)
         for file_name in sorted(os.listdir(dataset_path)):
             file_path = os.path.join(dataset_path, file_name)
