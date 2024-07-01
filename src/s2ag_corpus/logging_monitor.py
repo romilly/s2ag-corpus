@@ -4,7 +4,7 @@ from datetime import date
 
 from s2ag_corpus.monitor import Monitor
 
-os.mkdir('../logs', exist_ok=True)
+os.makedirs('../logs', exist_ok=True)
 filename = f'../logs/{date.today().isoformat()}.log'
 log_format = '%(asctime)s - %(levelname)-7s - %(message)s'
 logging.basicConfig(filename=filename, level=logging.INFO, format=log_format)
