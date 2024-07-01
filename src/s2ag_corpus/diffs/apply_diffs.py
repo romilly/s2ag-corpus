@@ -13,9 +13,9 @@ class ApplyDiffs:
         self.diff_directory = diff_directory
         self.count = 0
 
-    def apply_diffs_for(self, dataset_name):
+    def apply_diffs_for(self, release_id: str, dataset_name: str):
         self.count = 0
-        dataset_path = os.path.join(self.diff_directory, dataset_name)
+        dataset_path = os.path.join(self.diff_directory, release_id, dataset_name)
         for file_name in os.listdir(dataset_path):
             file_path = os.path.join(dataset_path, file_name)
             if file_name.startswith("update_files"):
@@ -24,6 +24,7 @@ class ApplyDiffs:
             if file_name.startswith("delete_files"):
                 self.monitor.info(f"deleting from {file_name}")
                 self.delete_rows(dataset_name, file_path)
+        self.monitor.info(f"{self.count} rows processed")
         return self.count
 
     def upsert(self, dataset_name: str, path_to_file):

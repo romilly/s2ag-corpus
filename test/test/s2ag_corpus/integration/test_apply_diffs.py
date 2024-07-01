@@ -61,7 +61,7 @@ def test_diffs():
     populate_paperids_table(connection)
     monitor = MockMonitor()
     applier = ApplyDiffs(connection, monitor,'test/s2ag_corpus/data/diffs')
-    count = applier.apply_diffs_for('paper-ids')
+    count = applier.apply_diffs_for('2024-04-02', 'paper-ids')
     expected = read_csv_file('test/s2ag_corpus/data/expected/expected-table-contents.csv')
     actual = fetch_data(connection)
     assert count == 6
@@ -70,7 +70,7 @@ def test_diffs():
     connection.close()
     print(monitor.infos)
     print(monitor.debugs)
-    assert len(monitor.infos) == 2
+    assert len(monitor.infos) == 3
     assert len(monitor.debugs) == 2
 
 
