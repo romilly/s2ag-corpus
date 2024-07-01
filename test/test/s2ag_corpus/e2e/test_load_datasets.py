@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from s2ag_corpus.database_catalogue import local_connection
 from s2ag_corpus.datasets import DATASETS
 from s2ag_corpus.import_dataset import insert_dataset
+from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
 
 load_dotenv()
 base_dir = os.getenv("BASE_DIR")
@@ -19,10 +20,11 @@ def drop_table(table_name: str, connection):
 
 def test_copy_json_to_table():
     connection = local_connection()
+    monitor = MockMonitor()
     for dataset_name in sorted(DATASETS.keys()):
         table = DATASETS[dataset_name].table
         drop_table(table, connection)
-        insert_dataset(dataset_name, test_dir, connection)
+        insert_dataset(dataset_name, test_dir, connection, monitor)
         check_table_count(count_total_lines(f"{test_dir}/{dataset_name}"), table, connection)
     connection.close()
 

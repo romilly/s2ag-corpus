@@ -9,6 +9,7 @@ from io import StringIO
 from dotenv import load_dotenv
 
 from s2ag_corpus.datasets import Dataset
+from s2ag_corpus.monitor import Monitor
 from s2ag_corpus.sql import CREATE_PAPERS_TABLE, ADD_KEY_TO_PAPERS
 
 load_dotenv()
@@ -42,9 +43,10 @@ class JsonFileInserter:
         index_table(self)
             Adds indices to the table in the database using the dataset's index specification.
         """
-    def __init__(self, dataset: Dataset, connection):
-        self.connection = connection
+    def __init__(self, dataset: Dataset, connection, monitor: Monitor):
         self.dataset = dataset
+        self.connection = connection
+        self.monitor = monitor
         self.generator = None
         self.buffer = ''
         self.count = 0
@@ -61,7 +63,7 @@ class JsonFileInserter:
             writer.writerow(record)
             self.count += 1
             if self.count % 1000000 == 0:
-                print('loaded', self.count)
+                self.monitor.debug('loaded', self.count)
             yield output.getvalue()
 
     def read(self, size=-1):
@@ -75,7 +77,7 @@ class JsonFileInserter:
         return to_return
 
     def copy_json_to_table(self, file_path):
-        print("Copying json file to table", file_path)
+        self.monitor.info(f"Copying json file {file_path} to table {self.dataset.table}")
         # Use a gzip reader if the file is zipped
         if file_path.endswith('.gz'):
             input_file = gzip.open(file_path, 'rt')
@@ -86,7 +88,7 @@ class JsonFileInserter:
             with self.connection.cursor() as cursor:
                 cursor.copy_from(self, self.dataset.table, sep=',', null='')
                 self.connection.commit()
-        print('done')
+        self.monitor.info('done')
 
     def create_table(self):
         with self.connection.cursor() as cursor:
@@ -94,10 +96,10 @@ class JsonFileInserter:
             self.connection.commit()
 
     def index_table(self):
-        print('starting indexing')
+        self.monitor.info('starting indexing')
         with self.connection.cursor() as cursor:
             cursor.execute(self.dataset.add_indices)
             self.connection.commit()
-        print('done indexing')
+        self.monitor.info('done indexing')
 
 

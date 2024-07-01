@@ -1,10 +1,8 @@
 import csv
-import gzip
-import json
 
 from s2ag_corpus.database_catalogue import local_connection
-from s2ag_corpus.datasets import DATASETS
-from s2ag_corpus.diffs.apply_diffs import upsert, delete_rows
+from s2ag_corpus.diffs.apply_diffs import ApplyDiffs
+from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
 
 CREATE_PAPERIDS = """
 create table if not exists paperids
@@ -16,6 +14,7 @@ create table if not exists paperids
     is_primary boolean not null
 )"""
 
+
 def create_empty_paperids_table(connection):
     cursor = connection.cursor()
     cursor.execute('drop table if exists paperids')
@@ -23,8 +22,9 @@ def create_empty_paperids_table(connection):
     connection.commit()
     cursor.close()
 
+
 def populate_paperids_table(connection):
-    csv_file_path = "/home/romilly/git/active/s2ag-corpus/data/diffs/initial-diff-data-for-test-db.csv"
+    csv_file_path = "test/s2ag_corpus/data/initial-diff-data-for-test-db.csv"
     cursor = connection.cursor()
     with open(csv_file_path, 'r') as file:
         reader = csv.reader(file)
@@ -59,15 +59,19 @@ def test_diffs():
     connection = local_connection()
     create_empty_paperids_table(connection)
     populate_paperids_table(connection)
-    upsert(connection, DATASETS['paper-ids'], '/home/romilly/git/active/s2ag-corpus/data/diffs/update_files-000.gz')
-    delete_rows(connection, DATASETS['paper-ids'],
-            '/home/romilly/git/active/s2ag-corpus/data/diffs/delete_files-000.gz')
-
-    expected = read_csv_file('/home/romilly/git/active/s2ag-corpus/data/diffs/expected-table-contents.csv')
+    monitor = MockMonitor()
+    applier = ApplyDiffs(connection, monitor,'test/s2ag_corpus/data/diffs')
+    count = applier.apply_diffs_for('paper-ids')
+    expected = read_csv_file('test/s2ag_corpus/data/expected/expected-table-contents.csv')
     actual = fetch_data(connection)
+    assert count == 6
     for e,a in zip(expected, actual):
         assert e == a
     connection.close()
+    print(monitor.infos)
+    print(monitor.debugs)
+    assert len(monitor.infos) == 2
+    assert len(monitor.debugs) == 2
 
 
 
