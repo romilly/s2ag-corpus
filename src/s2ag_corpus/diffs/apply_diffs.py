@@ -6,6 +6,7 @@ from s2ag_corpus.datasets import DATASETS
 from s2ag_corpus.monitor import Monitor
 
 
+
 class ApplyDiffs:
     def __init__(self, connection, monitor: Monitor, diff_directory: str):
         self.connection = connection

@@ -70,7 +70,7 @@ def test_diffs():
     connection.close()
     print(monitor.infos)
     print(monitor.debugs)
-    assert len(monitor.infos) == 3
+    assert len(monitor.infos) == 4
     assert len(monitor.debugs) == 2
 
 
