@@ -16,7 +16,7 @@ class ApplyDiffs:
     def apply_diffs_for(self, release_id: str, dataset_name: str):
         self.count = 0
         dataset_path = os.path.join(self.diff_directory, release_id, dataset_name)
-        for file_name in os.listdir(dataset_path):
+        for file_name in sorted(os.listdir(dataset_path)):
             file_path = os.path.join(dataset_path, file_name)
             if file_name.startswith("update_files"):
                 self.monitor.info(f"upserting from {file_name}")
