@@ -35,7 +35,12 @@ class ApplyDiffs:
         with gzip.open(path_to_file, 'rt') as upsert_file:
             for (index, line) in enumerate(upsert_file):
                 row = dataset.json_to_tuple(line)
-                cursor.execute(dataset.upsert, row)
+                try:
+                    cursor.execute(dataset.upsert, row)
+                except Exception as e:
+                    self.monitor.error(f"Error {e} in {dataset_name} {path_to_file} ")
+                    self.monitor.error(f"line[{index}]: {line}")
+                    continue
                 self.count += 1
                 if 0 == index % 10000:
                     self.connection.commit()
