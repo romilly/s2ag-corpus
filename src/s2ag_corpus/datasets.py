@@ -41,8 +41,8 @@ def citation_json_to_tuple(line):
               jd['citingcorpusid'],
               jd['citedcorpusid'],
               jd['isinfluential'],
-              jd['contexts'],
-              jd['intents']
+              json.dumps(jd['contexts']),
+              json.dumps(jd['intents'])
             )
 
 
