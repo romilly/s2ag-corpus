@@ -10,11 +10,22 @@ The first iteration is almost complete, but the documentation needs more work.
 
 The code is under active development, and the API may change.
 
-The project was on hold for a couple of weeks while the team at Semantic Scholar
-fixed a problem with duplicated data.
-
-I am currently testing the code that will update the database from the
+I have just added the code that updates the database from the
 diffs created by the Semantic Scholar API.
+
+As a result, the API and setup have changed slightly.
+
+I will update the detailed instructions soon.
+
+## Changes to running the application
+
+You no longer need to add a release id to .env, and you no longer need to run individual scripts
+to load downloaded datasets into the datbase.
+
+Instead, for now, you'll need to change the release_id in 
+download-all-datasets.pt and load-all-datasets.py before you run them.
+
+I plan to remove that requirement over the next few days.
 
 There is a [description of the first batch of test data](diff-test-data.md) 
 

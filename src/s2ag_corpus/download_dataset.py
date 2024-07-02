@@ -52,7 +52,7 @@ class DatasetDownloader:
         self.monitor.debug(f"download duration for {file_name}: {end - start}")
 
 
-def download(dataset_name, permitted_attempts=3):
+def download(release_id, dataset_name, permitted_attempts=3):
     monitor = LoggingMonitor()
-    downloader = DatasetDownloader(WebDownloadRequester(monitor), FileManager(monitor), monitor)
+    downloader = DatasetDownloader(WebDownloadRequester(release_id, monitor), FileManager(monitor), monitor)
     downloader.download(dataset_name, permitted_attempts)

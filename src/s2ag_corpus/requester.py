@@ -27,14 +27,14 @@ class DownloadRequester(ABC):
 
 
 class WebDownloadRequester(DownloadRequester):
-    def __init__(self, monitor: Monitor) -> None:
+    def __init__(self, release_id: str, monitor: Monitor) -> None:
+        self.release_id = release_id
         self.monitor = monitor
         load_dotenv()
         self.base_url = "https://api.semanticscholar.org/datasets/v1/release/"
         self.api_key = os.getenv('S2_API_KEY')
         self.headers = {"x-api-key": self.api_key}
         self.base_dir = os.getenv('BASE_DIR')
-        self.release_id = os.getenv('RELEASE_ID')
 
     def url_for_downloads_of(self, dataset_name):
         return f"{self.base_url}{self.release_id}/dataset/{dataset_name}"
@@ -43,7 +43,7 @@ class WebDownloadRequester(DownloadRequester):
         return f"{self.release_id}/{dataset_name}"
 
     def base_path_for(self, dataset_name) -> str:
-        return f"{self.base_dir}/{self.download_target(dataset_name)}"
+        return f"{self.base_dir}/datasets/{self.download_target(dataset_name)}"
 
     def get_links_for(self, dataset_name) -> List:
         response = requests.get(self.url_for_downloads_of(dataset_name),
