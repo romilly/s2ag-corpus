@@ -1,6 +1,6 @@
 import gzip
 import json
-import os
+import sys
 
 from s2ag_corpus.datasets import DATASETS
 from s2ag_corpus.monitor import Monitor
@@ -40,7 +40,7 @@ class ApplyDiffs:
                 except Exception as e:
                     self.monitor.error(f"Error {e} in {dataset_name} {path_to_file} ")
                     self.monitor.error(f"line[{index}]: {line}")
-                    continue
+                    sys.exit(1)
                 self.count += 1
                 if 0 == index % 10000:
                     self.connection.commit()
