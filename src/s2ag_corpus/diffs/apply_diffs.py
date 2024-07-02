@@ -60,44 +60,6 @@ class ApplyDiffs:
             self.monitor.debug(f"{self.count} rows processed")
             self.connection.commit()
 
-    def apply_test_diffs_for(self, release_id: str, dataset_name: str):
-        self.count = 0
-        self.monitor.info(f"Applying diffs for {dataset_name} in {release_id}")
-        dataset_path = os.path.join(self.diff_directory, release_id, dataset_name)
-        for file_name in sorted(os.listdir(dataset_path)):
-            file_path = os.path.join(dataset_path, file_name)
-            if file_name.startswith("update_files"):
-                self.monitor.info(f"upserting from {file_name}")
-                self.upsert_for_test(dataset_name, file_path)
-            if file_name.startswith("delete_files"):
-                self.monitor.info(f"deleting from {file_name}")
-                self.delete_rows(dataset_name, file_path)
-        self.monitor.info(f"{self.count} rows processed")
-        return self.count
-
-    def upsert_for_test(self, dataset_name, path_to_file):
-        cursor = self.connection.cursor()
-        dataset = DATASETS[dataset_name]
-        with gzip.open(path_to_file, 'rt') as upsert_file:
-            for (index, line) in enumerate(upsert_file):
-                row = dataset.json_to_tuple(line)
-                key = row[0]
-                cursor.execute('select count(*) from citations where citationid = (%s)', (key,))
-                n = cursor.fetchone()[0]
-                try:
-                    if n == 0:
-                        cursor.execute('INSERT INTO citations VALUES (%s, %s, %s, %s, %s, %s)', row)
-                    else:
-                        cursor.execute('UPDATE citations where citationid = (%s) VALUES (%s, %s, %s, %s, %s, %s)', (key, row))
-                except Exception as e:
-                    self.monitor.error(f"Error {e} in {dataset_name} {path_to_file} ")
-                    self.monitor.error(f"line[{index}]: {line}")
-                    sys.exit(1)
-                self.count += 1
-                if 0 == index % 10000:
-                    self.connection.commit()
-            self.monitor.debug(f"{self.count} rows processed")
-            self.connection.commit()
 
 
 
