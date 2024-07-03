@@ -1,0 +1,29 @@
+.
+├── datasets
+    └── 2024-06-18
+        ├── abstracts
+        │   ├── abstracts000.gz
+        │   ├── ...
+        │   └── abstracts059.gz
+        ├── authors
+        │   ├── authors000.gz
+        │   ├── ...
+        │   └── authors029.gz
+        ├── citations
+        │   ├── citations000.gz
+        │   ├── ...
+        │   └── citations217.gz
+        ├── paper-ids
+        │   ├── paper-ids000.gz
+        │   ├── ...
+        │   └── paper-ids029.gz
+        ├── papers
+        │   ├── papers000.gz
+        │   ├── ...
+        │   └── papers059.gz
+        ├── publication-venues
+        │   └── publication-venues000.gz
+        └── tldrs
+            ├── tldrs000.gz
+            ├── ...
+            └── tldrs029.gz
