@@ -5,8 +5,8 @@ from typing import List, Tuple, Set
 import psycopg2
 from psycopg2.extras import execute_batch
 
-from s2ag_corpus.paper import Paper
-from s2ag_corpus.parser import get_connection_string
+from s2ag_corpus.helpers.paper import Paper
+from s2ag_corpus.database.parser import get_connection_string
 
 
 def test_connection():
@@ -65,7 +65,7 @@ class DatabaseCatalogue(Catalogue):
         else:
             return rows[0][0]
 
-    # TODO: eliminate repeated code
+    # TODO: eliminate repeated  code
     def find_references_for(self, corpus_id: int, constraint: str = None) -> List[int]:
         if constraint is None:
             constraint = ''

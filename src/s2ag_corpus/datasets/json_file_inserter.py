@@ -2,15 +2,13 @@
 # coding: utf-8
 import gzip
 import os
-import json
 import csv
 from io import StringIO
 
 from dotenv import load_dotenv
 
-from s2ag_corpus.datasets import Dataset
-from s2ag_corpus.monitor import Monitor
-from s2ag_corpus.sql import CREATE_PAPERS_TABLE, ADD_KEY_TO_PAPERS
+from s2ag_corpus.datasets.dataset_definitions import Dataset
+from s2ag_corpus.helpers.monitor import Monitor
 
 load_dotenv()
 base_dir = os.getenv("BASE_DIR")

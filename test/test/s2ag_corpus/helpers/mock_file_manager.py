@@ -1,4 +1,4 @@
-from s2ag_corpus.file_manager import AbstractFileManager
+from s2ag_corpus.helpers.file_manager import AbstractFileManager
 
 
 class MockFileManager(AbstractFileManager):

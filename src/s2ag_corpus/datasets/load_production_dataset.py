@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from s2ag_corpus.import_dataset import insert_dataset
+from s2ag_corpus.datasets.import_dataset import insert_dataset
 from s2ag_corpus.database_catalogue import production_connection
 
 

@@ -1,13 +1,21 @@
 from typing import List, Tuple
 
-from s2ag_corpus.download_dataset import DownloadRequester
+from s2ag_corpus.datasets.download_dataset import DownloadRequester
 
 
 class MockDownloadRequester(DownloadRequester):
-    def __init__(self, target: str, base_path: str, links: List[str], responses: List[bytes]):
+    def diff_links(self, dataset_name, start_release_id, end_release_id):
+        return
+
+    def __init__(self, target: str,
+                 base_path: str,
+                 links: List[str],
+                 diff_links: List[str],
+                 responses: List[bytes]):
         self.target = target
         self.base_path = base_path
         self.links = links
+        self.diff_links = diff_links
         self.responses = responses
 
     def get_links_for(self, dataset_name):

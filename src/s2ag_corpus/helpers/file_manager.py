@@ -1,7 +1,7 @@
 import os
 from abc import ABC, abstractmethod
 
-from s2ag_corpus.monitor import Monitor
+from s2ag_corpus.helpers.monitor import Monitor
 
 
 class AbstractFileManager(ABC):

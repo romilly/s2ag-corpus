@@ -3,9 +3,8 @@ from typing import List, Tuple, Set
 from dataclasses import dataclass, field
 
 import pydot
-from pydot import Subgraph
 
-from s2ag_corpus.paper import Paper
+from s2ag_corpus.helpers.paper import Paper
 
 
 @dataclass(frozen=True)

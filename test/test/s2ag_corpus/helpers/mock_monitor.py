@@ -1,4 +1,4 @@
-from s2ag_corpus.monitor import Monitor
+from s2ag_corpus.helpers.monitor import Monitor
 
 
 class MockMonitor(Monitor):

@@ -2,9 +2,9 @@ import os
 import gzip
 from dotenv import load_dotenv
 
-from s2ag_corpus.database_catalogue import local_connection
-from s2ag_corpus.datasets import DATASETS
-from s2ag_corpus.import_dataset import insert_dataset
+from s2ag_corpus.database.database_catalogue import local_connection
+from s2ag_corpus.datasets.dataset_definitions import DATASETS
+from s2ag_corpus.datasets.import_dataset import insert_dataset
 from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
 
 load_dotenv()

@@ -1,8 +1,8 @@
 import os
 
-from s2ag_corpus.datasets import DATASETS
-from s2ag_corpus.json_file_inserter import JsonFileInserter
-from s2ag_corpus.monitor import Monitor
+from s2ag_corpus.datasets.dataset_definitions import DATASETS
+from s2ag_corpus.datasets.json_file_inserter import JsonFileInserter
+from s2ag_corpus.helpers.monitor import Monitor
 
 
 def insert_dataset(dataset_name, datasets_dir, connection, monitor: Monitor):

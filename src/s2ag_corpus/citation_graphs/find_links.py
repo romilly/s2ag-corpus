@@ -1,6 +1,6 @@
 from typing import Set, Tuple
 
-from s2ag_corpus.database_catalogue import Catalogue
+from s2ag_corpus.database.database_catalogue import Catalogue
 
 
 class CitationGraph:

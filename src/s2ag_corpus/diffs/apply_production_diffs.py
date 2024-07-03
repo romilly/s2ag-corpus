@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 from s2ag_corpus.database_catalogue import production_connection
 from s2ag_corpus.diffs.apply_diffs import ApplyDiffs
-from s2ag_corpus.logging_monitor import LoggingMonitor
+from s2ag_corpus.helpers.logging_monitor import LoggingMonitor
 
 def apply_diffs_for_dataset(dataset_name, release_id):
     connection = production_connection()

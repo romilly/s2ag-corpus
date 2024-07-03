@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from s2ag_corpus.database_catalogue import DatabaseCatalogue, production_connection
+from s2ag_corpus.database.database_catalogue import DatabaseCatalogue, production_connection
 from s2ag_corpus.citation_graphs.dot_writer import write_dot_file
 # from s2ag_corpus.citation_graphs.new_dot_writer import write_dot_file
 

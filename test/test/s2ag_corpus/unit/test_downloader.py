@@ -1,4 +1,4 @@
-from s2ag_corpus.download_dataset import DatasetDownloader
+from s2ag_corpus.datasets.download_dataset import DatasetDownloader
 from test.test.s2ag_corpus.helpers.mock_file_manager import MockFileManager
 
 from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
@@ -15,6 +15,7 @@ def test_dataset_downloader():
                                           'http://example.com/b',
                                           'http://example.com/c',
                                       ],
+                                      diff_links = [],
                                       responses = [
                                           b'content of a',
                                           b'content of b',

@@ -1,6 +1,6 @@
 import csv
 
-from s2ag_corpus.database_catalogue import local_connection
+from s2ag_corpus.database.database_catalogue import local_connection
 from s2ag_corpus.diffs.apply_diffs import ApplyDiffs
 from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
 

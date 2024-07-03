@@ -2,7 +2,7 @@ import logging
 import os
 from datetime import date
 
-from s2ag_corpus.monitor import Monitor
+from s2ag_corpus.helpers.monitor import Monitor
 
 os.makedirs('../logs', exist_ok=True)
 filename = f'../logs/{date.today().isoformat()}.log'

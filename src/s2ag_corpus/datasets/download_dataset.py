@@ -1,8 +1,8 @@
 import datetime
 
-from s2ag_corpus.file_manager import AbstractFileManager, FileManager
-from s2ag_corpus.logging_monitor import LoggingMonitor
-from s2ag_corpus.monitor import Monitor
+from s2ag_corpus.helpers.file_manager import AbstractFileManager, FileManager
+from s2ag_corpus.helpers.logging_monitor import LoggingMonitor
+from s2ag_corpus.helpers.monitor import Monitor
 from s2ag_corpus.requester import DownloadRequester, WebDownloadRequester
 
 

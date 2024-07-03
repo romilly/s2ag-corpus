@@ -2,7 +2,7 @@ from collections import defaultdict
 from typing import List, Tuple
 
 from s2ag_corpus.citation_graphs.citation import Citation
-from s2ag_corpus.database_catalogue import Catalogue
+from s2ag_corpus.database.database_catalogue import Catalogue
 
 
 class MockCatalogue(Catalogue):

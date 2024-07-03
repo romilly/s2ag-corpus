@@ -1,7 +1,7 @@
 from collections import defaultdict
 from typing import List, Tuple, Set
 from dataclasses import dataclass, field
-from s2ag_corpus.paper import Paper
+from s2ag_corpus.helpers.paper import Paper
 
 
 @dataclass(frozen=True)
