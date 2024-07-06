@@ -45,7 +45,7 @@ class WebDownloadRequester(DownloadRequester):
         response = requests.get(f"{self.base_url}/release/")
         if response.status_code != 200:
             raise Exception("could not download releases")
-        return response.json()[-2]
+        return response.json()[-1]
 
     def url_for_downloads_of(self, release_id, dataset_name):
         return f"{self.base_url}release/{release_id}/dataset/{dataset_name}"
