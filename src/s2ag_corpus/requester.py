@@ -57,6 +57,7 @@ class WebDownloadRequester(DownloadRequester):
         if response.status_code != 200:
             raise Exception(f"could not download links for {release_id}-{dataset_name}: status code {response.status_code}")
         download_links = response.json()["files"]
+        self.monitor.info(f"got {len(download_links)} links for {release_id}-{dataset_name}")
         return download_links
 
     def diff_links(self, start_release_id, end_release_id, dataset_name):
