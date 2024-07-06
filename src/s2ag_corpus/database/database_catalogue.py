@@ -65,20 +65,17 @@ class DatabaseCatalogue(Catalogue):
         else:
             return rows[0][0]
 
-    # TODO: eliminate repeated  code
-    def find_references_for(self, corpus_id: int, constraint: str = None) -> List[int]:
+    def find_linked_papers(self, corpus_id, sql, constraint):
         if constraint is None:
             constraint = ''
-        rows = self.fetch(self.REFERENCE_SQL + constraint, (corpus_id,))
+        rows = self.fetch(sql + constraint, (corpus_id,))
         return [row[0] for row in rows]
+
+    def find_references_for(self, corpus_id: int, constraint: str = None) -> List[int]:
+        return self.find_linked_papers(corpus_id, self.REFERENCE_SQL, constraint)
 
     def find_citations_for(self, corpus_id: int, constraint: str = None) -> List[int]:
-        # print(corpus_id)
-        if constraint is None:
-            constraint = ''
-        rows = self.fetch(self.CITATION_SQL + constraint, (corpus_id,))
-        return [row[0] for row in rows]
-
+        return self.find_linked_papers(corpus_id, self.CITATION_SQL, constraint)
 
     def find_links(self, corpusid: int, influential=True) -> Set[Tuple[int, int]]:
         visited = set()
@@ -88,7 +85,6 @@ class DatabaseCatalogue(Catalogue):
 
         while to_visit:
             current_id = to_visit.pop()
-            # print(current_id)
             if current_id not in visited:
                 visited.add(current_id)
                 citations = self.find_citations_for(current_id, constraint=constraint)

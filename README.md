@@ -13,21 +13,15 @@ The code is under active development, and the API may change.
 I have just added the code that updates the database from the
 diffs created by the Semantic Scholar API.
 
-As a result, the API and setup have changed slightly.
+As a result, the API and setup have changed.
 
-I will update the detailed instructions soon.
 
 ## Changes to running the application
 
 You no longer need to add a release id to .env, and you no longer need to run individual scripts
-to load downloaded datasets into the datbase.
+to load downloaded datasets into the database.
 
-Instead, for now, you'll need to change the release_id in 
-download-all-datasets.pt and load-all-datasets.py before you run them.
-
-I plan to remove that requirement over the next few days.
-
-There is a [description of the first batch of test data](diff-test-data.md) 
+I have described [the first batch of test data](diff-test-data.md) 
 
 Later I will investigate the idea of
 providing the application via docker. 
@@ -44,8 +38,10 @@ The datasets supported are:
 
 The first dataset release in which a duplicated data anomaly was fixed is the `2024-06-18` release.
 
-The project contains the code that I used to download a dataset release
-and load the data into Postgres. It also contains experimental code to explore
+The project contains the code that I use to download a dataset release, 
+load the data into Postgres, and aply subsequent diffs.
+
+It also contains experimental code to explore
 references and citations and present them graphically.
 
 The first example shows a relatively simple citation graph.
@@ -70,11 +66,8 @@ The second shows a much more complex graph.
 8.  Create a Postgres database to hold the production data.
 9.  If you plan on modifying or extending the code, create a database to hold test data.
 10. Update the .env file to include credentials for the database(s).
-11. Decide which weekly dataset snapshot you'll use.
-12. Update the .env file to specify the weekly snapshot that you chose.
-13. Download the datasets from Semantic Scholar. 
-14. Import the datasets into the production database.
-15. Query the database. 
+11. Run synchronise.py
+12. Query the database. 
 
 
 #### Clone this repository into a directory of your choice.
@@ -169,54 +162,42 @@ You should replace that by the name of the Postgres user who owns the database t
 `semantic` is the password for the database. gain, replace that with the password for the database that you created.
 `pi5-postgres` is the hostname where your Postgres server is installed.
 If you are running the software on the same computer, you can replace that by `localhost`
-`ss-corpus` is the name of the database. Replace it y the name of the database that you create earlier.
+`ss-corpus` is the name of the database. Replace it by the name of the database that you create earlier.
 
 The entry for the optional test database follows a similar format.
 
-#### Decide which weekly dataset snapshot you'll use.
+#### Synchronize the database with the Semnatic Scholar repository.
 
-With the virtual environment still activated, start Jupyter.
-Navigate to the notebooks directory and run `explore-datasets.ipynb`.
-It should list the datasets available. They are named by the date on which they were created.
-You'll almost certainly want the latest dataset which will be the last in the list.
-Remember the name of the dataset you've decided to use.
-
-As mentioned above, the first dataset release without a duplicated data anomaly is the `2024-06-18` release.
-
-#### Update the .env file to specify the weekly snapshot that you chose.
-
-Edit the .env file, add a line like this, and save the updated file.
-
-```text
-RELEASE_ID = 2024-06-18
-```
-
-#### Download the `papers` dataset.
-
-Change directory to the `src` directory for the project and run `download-papers.py`.
+Change directory to the `src` directory for the project and run `synchronise.py`.
 
 You'll need to run it using python.
-For some Linus distributions you may need to replace `python` by `python3` in the entries below.
+For some Linux distributions you may need to replace `python` by `python3` in the entries below.
 
 ```shell
 cd src
-python download-papers.py
+python synchronise.py
 ```
 
-This may take some time to run, depending on the speed of your computer and your internet connection.
+This will take some time to run, depending on the speed of your computer and your internet connection.
 
-The download links will eventually expire. If this happens, the download program will refresh the dwonload,
-skipping over the files that have already been downloaded. By default, it will try the download process up to three times.
+On the first run, it's going to download about a terabyte of data and then do a series of
+very large inserts into the database. There are over 220 Million papers, and over 2.6 Billion citations.
 
-#### Update the database
+On the [hardware that I use](Hardware.md) for production, the process takes over a day to complete.
 
-Run `load-production-papers.py`
-
-#### Repeat the previous steps for each dataset.
+You can follow progress by tailing the log dile in the `logs` directory.
 
 #### Query the database
 
-You'll find some example code in the notebooks.
+If you know a paper's sha or corpus_id, it takes milliseconds to query the database for the paper,
+its references and citations.
+
+Querying a title or abstract would be very slow. 
+It would also be very slow to search for all the papers by a given author.
+
+I may add code to do those queries via the web API.
+
+You'll find some example code in the notebooks and tests.
 
 The notebook that I find most useful is the `citations.ipynb` notebook.
 

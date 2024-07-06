@@ -1,7 +1,8 @@
 import csv
 
 from s2ag_corpus.database.database_catalogue import local_connection
-from s2ag_corpus.diffs.apply_diffs import ApplyDiffs
+from s2ag_corpus.diffs.apply_diffs import DiffApplicator
+from s2ag_corpus.synchronisation.config import SyncConfig
 from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
 
 CREATE_PAPERIDS = """
@@ -60,16 +61,17 @@ def test_diffs():
     create_empty_paperids_table(connection)
     populate_paperids_table(connection)
     monitor = MockMonitor()
-    applier = ApplyDiffs(connection, monitor,'test/s2ag_corpus/data/diffs')
-    count = applier.apply_diffs_for('2024-04-02', 'paper-ids')
+    config = SyncConfig(base_dir='test/s2ag_corpus/data/',
+                        monitor=monitor,
+                        connection=connection)
+    applier = DiffApplicator(config)
+    count = applier.apply_diff_for('2024-04-02', 'paper-ids')
     expected = read_csv_file('test/s2ag_corpus/data/expected/expected-table-contents.csv')
     actual = fetch_data(connection)
     assert count == 6
+    connection.close()
     for e,a in zip(expected, actual):
         assert e == a
-    connection.close()
-    print(monitor.infos)
-    print(monitor.debugs)
     assert len(monitor.infos) == 4
     assert len(monitor.debugs) == 2
 

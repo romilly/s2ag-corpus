@@ -5,16 +5,17 @@ import os
 
 from s2ag_corpus.datasets.dataset_definitions import DATASETS
 from s2ag_corpus.helpers.monitor import Monitor
+from s2ag_corpus.synchronisation.config import SyncConfig
 
 
-class ApplyDiffs:
-    def __init__(self, connection, monitor: Monitor, diff_directory: str):
-        self.connection = connection
-        self.monitor = monitor
-        self.diff_directory = diff_directory
+class DiffApplicator:
+    def __init__(self, config: SyncConfig):
+        self.connection = config.connection
+        self.monitor = config.monitor
+        self.diff_directory = config.diffs_dir
         self.count = 0
 
-    def apply_diffs_for(self, release_id: str, dataset_name: str):
+    def apply_diff_for(self, release_id: str, dataset_name: str):
         self.count = 0
         self.monitor.info(f"Applying diffs for {dataset_name} in {release_id}")
         dataset_path = os.path.join(self.diff_directory, release_id, dataset_name)

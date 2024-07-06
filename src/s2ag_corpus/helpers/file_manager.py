@@ -31,7 +31,7 @@ class FileManager(AbstractFileManager):
 
     def create_path(self, base_path):
         if not os.path.exists(base_path):
-            self.monitor.warn(f"directory {base_path} does not exist")
+            self.monitor.debug(f"directory {base_path} does not exist")
             try:
                 os.makedirs(base_path)
             except Exception as e:

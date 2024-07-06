@@ -146,5 +146,4 @@ Link.md
 /_static/
 /_templates/
 /test/test/s2ag_corpus/data/generated/
-!/logs/
 /logs/*'log

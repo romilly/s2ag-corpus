@@ -20,3 +20,9 @@ class MockMonitor(Monitor):
     def error(self, message):
         self.errors.append(message)
 
+    def dump(self):
+        print(f'infos: {self.infos}')
+        print(f'warnings: {self.warnings}')
+        print(f'debugs: {self.debugs}')
+        print(f'errors: {self.errors}')
+

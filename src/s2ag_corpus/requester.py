@@ -6,14 +6,14 @@ from dotenv import load_dotenv
 
 from s2ag_corpus.helpers.monitor import Monitor
 
+# TODO: change signatures
 class DownloadRequester(ABC):
 
-    @abstractmethod
-    def base_path_for(self, dataset_name) -> str:
-        pass
+    def base_path_for(self, release_id, dataset_name) -> str:
+        return f"{self.base_dir}/datasets/{release_id}/{dataset_name}"
 
     @abstractmethod
-    def get_links_for(self, dataset_name) -> List[str]:
+    def get_links_for(self, release_id, dataset_name) -> List[str]:
         pass
 
     @abstractmethod
@@ -21,17 +21,19 @@ class DownloadRequester(ABC):
         pass
 
     @abstractmethod
-    def download_target(self, dataset_name) -> str:
+    def diff_links(self, start_release_id, end_release_id, dataset_name):
         pass
 
     @abstractmethod
-    def diff_links(self, dataset_name, start_release_id, end_release_id):
+    def find_latest_release_id(self) -> str:
         pass
+
+    def download_target(self, release_id, dataset_name) -> str:
+        return f"{release_id}/{dataset_name}"
 
 
 class WebDownloadRequester(DownloadRequester):
-    def __init__(self, release_id: str, monitor: Monitor) -> None:
-        self.release_id = release_id
+    def __init__(self, monitor: Monitor) -> None:
         self.monitor = monitor
         load_dotenv()
         self.base_url = "https://api.semanticscholar.org/datasets/v1/"
@@ -39,25 +41,25 @@ class WebDownloadRequester(DownloadRequester):
         self.headers = {"x-api-key": self.api_key}
         self.base_dir = os.getenv('BASE_DIR')
 
-    def url_for_downloads_of(self, dataset_name):
-        return f"{self.base_url}/release/{self.release_id}/dataset/{dataset_name}"
+    def find_latest_release_id(self) -> str:
+        response = requests.get(f"{self.base_url}/release/")
+        if response.status_code != 200:
+            raise Exception("could not download releases")
+        return response.json()[-1]
 
-    def download_target(self, dataset_name) -> str:
-        return f"{self.release_id}/{dataset_name}"
+    def url_for_downloads_of(self, release_id, dataset_name):
+        return f"{self.base_url}/release/{release_id}/dataset/{dataset_name}"
 
-    def base_path_for(self, dataset_name) -> str:
-        return f"{self.base_dir}/datasets/{self.download_target(dataset_name)}"
-
-    def get_links_for(self, dataset_name) -> List:
-        response = requests.get(self.url_for_downloads_of(dataset_name),
+    def get_links_for(self, release_id, dataset_name) -> List:
+        response = requests.get(self.url_for_downloads_of(release_id, dataset_name),
                                 headers=self.headers)
         if response.status_code != 200:
-            raise Exception(f"could not download links for {dataset_name}: status code {response.status_code}")
+            raise Exception(f"could not download links for {release_id}-{dataset_name}: status code {response.status_code}")
         download_links = response.json()["files"]
         return download_links
 
-    def diff_links(self, dataset_name, start_release_id, end_release_id):
-        url = f"{self.base_url}/diffs/{start_release_id}/to/{end_release_id}/{dataset_name}"
+    def diff_links(self, start_release_id, end_release_id, dataset_name):
+        url = f"{self.base_url}diffs/{start_release_id}/to/{end_release_id}/{dataset_name}"
         response = requests.get(url, headers=self.headers)
         diffs = response.json()['diffs']
         return diffs

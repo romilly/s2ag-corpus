@@ -100,7 +100,7 @@ After downloading the diff files that span 2024-06-18 to 2024-06-25, the tree wo
 ```
 
 
-The Synchronise  class will work like this:
+The Synchronizer  class will work like this:
 
 Its constructor will find the base directory by loading the BASE_DIR environment variable
 which is defined in the `.env` file and save it in a field. It will also store some helper objects in fields.
@@ -125,7 +125,7 @@ If there is no `datasets` directory, it will
 If there is a `datasets` directory, it will contain one or more subdirectories 
 named after the release_id of the diffs within.
 
-The Synchroniser will find the last release_id and
+The Synchronizer will find the last release_id and
 1. dowwload the diffs that span the last downloaded release_id and the latest release_id, and 
 2. apply each set of diffs.
 
