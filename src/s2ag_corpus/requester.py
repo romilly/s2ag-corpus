@@ -52,7 +52,7 @@ class WebDownloadRequester(DownloadRequester):
 
     def get_links_for(self, release_id, dataset_name) -> List:
         url = self.url_for_downloads_of(release_id, dataset_name)
-        self.monitor.info("downloading links for {release_id}-{dataset_name} from {url}")
+        self.monitor.info(f"downloading links for {release_id}-{dataset_name} from {url}")
         response = requests.get(url, headers=self.headers)
         if response.status_code != 200:
             raise Exception(f"could not download links for {release_id}-{dataset_name}: status code {response.status_code}")
