@@ -20,3 +20,5 @@ def synchronise():
     config = SyncConfig(base_dir, connection, monitor, requester, filemanager)
     synchronizer = Synchronizer(config)
     synchronizer.synchronise()
+
+synchronise()
