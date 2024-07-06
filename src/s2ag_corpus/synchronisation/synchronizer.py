@@ -36,11 +36,11 @@ class Synchronizer:
             self.load_datasets(latest_release_id)
             return
 
-        if self.original_release_id() == latest_release_id:
-            self.monitor.info("already up to date")
-            return
 
         if self.diffs_not_yet_downloaded():
+            if self.original_release_id() == latest_release_id:
+                self.monitor.info("already up to date")
+                return
             self.download_and_apply_diffs(self.original_release_id(), latest_release_id, self.config)
 
     def diffs_not_yet_downloaded(self):
