@@ -10,7 +10,7 @@ def test_do_diffs():
     base_dir = 'test/s2ag_corpus/data/generated'
     connection = local_connection()
     monitor = MockMonitor()
-    requester = WebDownloadRequester(monitor)
+    requester = WebDownloadRequester(base_dir, monitor)
     filemanager = FileManager(monitor)
     config = SyncConfig(base_dir, connection, monitor, requester, filemanager)
     start_release_id = '2024-06-18'
