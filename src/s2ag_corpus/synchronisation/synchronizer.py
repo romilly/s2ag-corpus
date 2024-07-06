@@ -63,5 +63,5 @@ class Synchronizer:
         return subdirectories[0]
 
     def find_latest_diff_downloaded(self):
-        diff_names = sorted(os.listdir(self.diffs_dir)
+        diff_names = sorted(os.listdir(self.diffs_dir))
         return diff_names[-1]
