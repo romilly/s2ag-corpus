@@ -36,12 +36,16 @@ class Synchronizer:
             self.load_datasets(latest_release_id)
             return
 
-
         if self.diffs_not_yet_downloaded():
             if self.original_release_id() == latest_release_id:
                 self.monitor.info("already up to date")
                 return
             self.download_and_apply_diffs(self.original_release_id(), latest_release_id, self.config)
+            return
+
+        latest_diff = self.find_latest_diff_downloaded()
+        self.monitor.info(f"latest diff downloaded is {latest_diff}")
+        self.download_and_apply_diffs(latest_diff, latest_release_id, self.config)
 
     def diffs_not_yet_downloaded(self):
         return not os.path.isdir(self.diffs_dir)
@@ -57,3 +61,7 @@ class Synchronizer:
         if len(subdirectories) != 1:
             raise ValueError(f"{self.datasets_dir} should contain exactly one subdirectory")
         return subdirectories[0]
+
+    def find_latest_diff_downloaded(self):
+        diff_names = sorted(os.listdir(self.diffs_dir)
+        return diff_names[-1]
