@@ -1,5 +1,9 @@
 This Python project imports the [Semantic Scholar Academic Graph Corpus]() into a PostgreSQL database.
 
+WARNING: **I'm getting strange behaviour running the new code in production.**
+
+Do not install or use this release until further notice!
+
 It has been developed in a Linux environment, and I do not have the resources to support it under Windows or MacOS.
 
 It is a personal project, and it has no official connection with the Allen Institute for AI.
