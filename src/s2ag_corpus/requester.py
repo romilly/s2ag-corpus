@@ -51,8 +51,9 @@ class WebDownloadRequester(DownloadRequester):
         return f"{self.base_url}/release/{release_id}/dataset/{dataset_name}"
 
     def get_links_for(self, release_id, dataset_name) -> List:
-        response = requests.get(self.url_for_downloads_of(release_id, dataset_name),
-                                headers=self.headers)
+        url = self.url_for_downloads_of(release_id, dataset_name)
+        self.monitor.info("downloading links for {release_id}-{dataset_name} from {url}")
+        response = requests.get(url, headers=self.headers)
         if response.status_code != 200:
             raise Exception(f"could not download links for {release_id}-{dataset_name}: status code {response.status_code}")
         download_links = response.json()["files"]
