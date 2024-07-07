@@ -13,10 +13,10 @@ from s2ag_corpus.synchronisation.synchronizer import Synchronizer
 
 def synchronise():
     force_download = (len(sys.argv) > 2 and sys.argv[2] == 'force')
+    monitor = LoggingMonitor()
     load_dotenv()
     connection = production_connection()
     base_dir = os.getenv('BASE_DIR')
-    monitor = LoggingMonitor()
     requester = WebDownloadRequester(base_dir, monitor)
     filemanager = FileManager(monitor)
     config = SyncConfig(base_dir, connection, monitor, requester, filemanager)
