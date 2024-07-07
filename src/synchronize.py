@@ -12,7 +12,6 @@ from s2ag_corpus.synchronisation.synchronizer import Synchronizer
 
 
 def synchronise():
-    force_download = (len(sys.argv) > 1 and sys.argv[1] == 'force')
     monitor = LoggingMonitor()
     load_dotenv()
     connection = production_connection()
@@ -21,7 +20,7 @@ def synchronise():
     filemanager = FileManager(monitor)
     config = SyncConfig(base_dir, connection, monitor, requester, filemanager)
     synchronizer = Synchronizer(config)
-    synchronizer.synchronise(force_download)
+    synchronizer.synchronise()
     monitor.info("sync completed")
 
 synchronise()

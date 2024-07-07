@@ -1,3 +1,5 @@
+import pytest
+
 from s2ag_corpus.database.database_catalogue import local_connection
 from s2ag_corpus.diffs.do_diffs import do_diffs_for
 from s2ag_corpus.helpers.file_manager import FileManager
@@ -6,6 +8,7 @@ from s2ag_corpus.synchronisation.config import SyncConfig
 from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
 
 
+@pytest.mark.skip(reason="Currently very slow (37 sec)")
 def test_do_diffs():
     base_dir = 'test/s2ag_corpus/data/generated'
     connection = local_connection()

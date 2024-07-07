@@ -13,14 +13,16 @@ class Synchronizer:
         self.datasets_dir = config.datasets_dir
         self.diffs_dir = config.diffs_dir
         self.monitor = config.monitor
+        self.release_catalogue = config.requester
+        self.dataset_downloader = DatasetDownloader(config)
 
     def find_latest_release_id(self):
-        release_id = self.config.requester.find_latest_release_id()
+        release_id = self.release_catalogue.find_latest_release_id()
         self.monitor.info(f"latest release id: {release_id}")
         return release_id
 
     def download_datasets(self, release_id):
-        DatasetDownloader(self.config).download_all_datasets(release_id)
+        self.dataset_downloader.download_all_datasets(release_id)
 
     def load_datasets(self, release_id):
         load_all_datasets(release_id, self.config)
@@ -28,12 +30,10 @@ class Synchronizer:
     def download_and_apply_diffs(self, start_release_id, end_release_id, config):
         download_and_apply_all_diffs_for(start_release_id, end_release_id, config)
 
-    def synchronise(self, force_download):
+    def synchronise(self,):
         self.monitor.info("starting synchronization")
-        if force_download:
-            self.monitor.info("dataset download forced")
         latest_release_id = self.find_latest_release_id()
-        if self.datasets_not_yet_downloaded() or force_download:
+        if self.datasets_not_yet_downloaded():
             os.makedirs(self.datasets_dir, exist_ok=True)
             self.download_datasets(latest_release_id)
             self.load_datasets(latest_release_id)
@@ -58,9 +58,6 @@ class Synchronizer:
 
     def datasets_not_yet_downloaded(self):
         return not os.path.isdir(self.datasets_dir)
-
-    def find_latest_local_release_id(self):
-        pass
 
     def original_release_id(self):
         subdirectories = [name for name in os.listdir(self.datasets_dir) if os.path.isdir(os.path.join(self.datasets_dir, name))]
