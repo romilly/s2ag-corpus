@@ -27,6 +27,7 @@ class DatasetDownloader:
                 break
             except TimeoutError:
                 self.monitor.warn("retrying after attempt {i}")
+                download_links = self.requester.get_links_for(release_id, dataset_name)
                 continue
         if not successful:
             self.monitor.error(f"failed to complete {dataset_name} download after {permitted_attempts} attempts")

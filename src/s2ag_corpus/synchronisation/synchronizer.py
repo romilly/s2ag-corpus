@@ -28,9 +28,9 @@ class Synchronizer:
     def download_and_apply_diffs(self, start_release_id, end_release_id, config):
         download_and_apply_all_diffs_for(start_release_id, end_release_id, config)
 
-    def synchronise(self):
+    def synchronise(self, force_download):
         latest_release_id = self.find_latest_release_id()
-        if self.datasets_not_yet_downloaded():
+        if self.datasets_not_yet_downloaded() or (force_download):
             os.makedirs(self.datasets_dir)
             self.download_datasets(latest_release_id)
             self.load_datasets(latest_release_id)

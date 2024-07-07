@@ -1,4 +1,5 @@
 import os
+import sys
 
 from dotenv import load_dotenv
 
@@ -11,6 +12,7 @@ from s2ag_corpus.synchronisation.synchronizer import Synchronizer
 
 
 def synchronise():
+    force_download = (len(sys.argv) > 2 and sys.argv[2] == 'force')
     load_dotenv()
     connection = production_connection()
     base_dir = os.getenv('BASE_DIR')
@@ -19,6 +21,6 @@ def synchronise():
     filemanager = FileManager(monitor)
     config = SyncConfig(base_dir, connection, monitor, requester, filemanager)
     synchronizer = Synchronizer(config)
-    synchronizer.synchronise()
+    synchronizer.synchronise(force_download)
 
 synchronise()
