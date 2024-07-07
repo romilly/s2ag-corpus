@@ -48,6 +48,9 @@ class Synchronizer:
 
         latest_diff = self.find_latest_diff_downloaded()
         self.monitor.info(f"latest diff downloaded is {latest_diff}")
+        if latest_diff == latest_release_id:
+            self.monitor.info("diffs up to date")
+            return
         self.download_and_apply_diffs(latest_diff, latest_release_id, self.config)
 
     def diffs_not_yet_downloaded(self):
