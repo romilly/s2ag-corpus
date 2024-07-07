@@ -45,4 +45,6 @@ def download_diff(config, dataset_name, diff):
 
 def download_and_apply_all_diffs_for(start_release_id, end_release_id, config: SyncConfig):
     for dataset_name in DATASETS.keys():
+        monitor = config.monitor
+        monitor.info(f"downloading and applying diffs from {start_release_id} to {end_release_id} for {dataset_name}")
         do_diffs_for(start_release_id, end_release_id, dataset_name, config)
