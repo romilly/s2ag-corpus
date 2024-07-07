@@ -29,11 +29,12 @@ class Synchronizer:
         download_and_apply_all_diffs_for(start_release_id, end_release_id, config)
 
     def synchronise(self, force_download):
+        self.monitor.info("starting synchronization")
         if force_download:
             self.monitor.info("dataset download forced")
         latest_release_id = self.find_latest_release_id()
-        if self.datasets_not_yet_downloaded() or (force_download):
-            os.makedirs(self.datasets_dir)
+        if self.datasets_not_yet_downloaded() or force_download:
+            os.makedirs(self.datasets_dir, exist_ok=True)
             self.download_datasets(latest_release_id)
             self.load_datasets(latest_release_id)
             return

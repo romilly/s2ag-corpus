@@ -12,7 +12,7 @@ from s2ag_corpus.synchronisation.synchronizer import Synchronizer
 
 
 def synchronise():
-    force_download = (len(sys.argv) > 2 and sys.argv[2] == 'force')
+    force_download = (len(sys.argv) > 1 and sys.argv[1] == 'force')
     monitor = LoggingMonitor()
     load_dotenv()
     connection = production_connection()
