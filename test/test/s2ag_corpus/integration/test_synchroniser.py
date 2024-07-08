@@ -8,7 +8,7 @@ from s2ag_corpus.helpers.file_manager import FileManager
 from s2ag_corpus.synchronisation.config import SyncConfig
 from s2ag_corpus.synchronisation.synchronizer import Synchronizer
 from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
-from test.test.s2ag_corpus.helpers.mock_requester import MockDownloadRequester
+from test.test.s2ag_corpus.helpers.mock_api import MockAPI
 
 
 @pytest.fixture(scope="function")
@@ -16,12 +16,12 @@ def test_config():
     base_dir = 'test/s2ag_corpus/data/generated'
     monitor: MockMonitor = MockMonitor()
     filemanager = FileManager(monitor)
-    requester = MockDownloadRequester(base_dir=base_dir, links=[], diff_links=[], responses=[],
-                                      latest_release_id='2024-06-18')
+    api = MockAPI(base_dir=base_dir, links=[], diff_links=[], responses=[],
+                        latest_release_id='2024-06-18')
     config = SyncConfig(base_dir,
                         connection=local_connection(),
                         monitor=monitor,
-                        requester=requester,
+                        api=api,
                         filemanager=filemanager)
     drop_all_test_tables(config.connection)
     shutil.rmtree(config.datasets_dir, ignore_errors=True)
@@ -55,7 +55,7 @@ def test_synchroniser_does_nothing_if_up_to_date(test_config):
 def test_synchroniser_dowloads_and_applies_diffs(test_config):
     synchroniser = Synchronizer(test_config)
     synchroniser.synchronise()
-    test_config.requester.latest_release_id = '2024-06-25'
+    test_config.api.latest_release_id = '2024-06-25'
     synchroniser.synchronise()
     # TODO: add tests!
     monitor: MockMonitor = test_config.monitor

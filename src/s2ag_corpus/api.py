@@ -7,12 +7,7 @@ from dotenv import load_dotenv
 from s2ag_corpus.helpers.monitor import Monitor
 
 
-class DownloadRequester(ABC):
-    def __init__(self, base_dir):
-        self.base_dir = base_dir
-
-    def base_path_for(self, release_id, dataset_name) -> str:
-        return f"{self.base_dir}/datasets/{release_id}/{dataset_name}"
+class AbstractAPI(ABC):
 
     @abstractmethod
     def get_links_for(self, release_id, dataset_name) -> List[str]:
@@ -34,9 +29,8 @@ class DownloadRequester(ABC):
         return f"{release_id}/{dataset_name}"
 
 
-class WebDownloadRequester(DownloadRequester):
-    def __init__(self, base_dir: str, monitor: Monitor) -> None:
-        super().__init__(base_dir)
+class S2API(AbstractAPI):
+    def __init__(self, monitor: Monitor, requester = None) -> None:
         self.monitor = monitor
         load_dotenv()
         self.base_url = "https://api.semanticscholar.org/datasets/v1/"

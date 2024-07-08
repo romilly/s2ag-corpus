@@ -9,7 +9,7 @@ def do_diffs_for(start_release_id: str,
                  end_release_id: str,
                  dataset_name: str,
                  config: SyncConfig):
-    requester = config.requester
+    requester = config.api
     diffs = requester.diff_links(start_release_id, end_release_id, dataset_name)
     applicator = DiffApplicator(config)
     for diff in diffs:
@@ -20,7 +20,7 @@ def do_diffs_for(start_release_id: str,
 
 def download_diff(config, dataset_name, diff):
     monitor = config.monitor
-    requester = config.requester
+    requester = config.api
     filemanager = config.filemanager
     from_release = diff['from_release']
     to_release = diff['to_release']

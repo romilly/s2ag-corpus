@@ -1,9 +1,9 @@
 from typing import List, Tuple
 
-from s2ag_corpus.requester import DownloadRequester
+from s2ag_corpus.api import AbstractAPI
 
 
-class MockDownloadRequester(DownloadRequester):
+class MockAPI(AbstractAPI):
 
     def __init__(self, base_dir: str, links: List[str], diff_links: List[str], responses: List[bytes],
                  latest_release_id: str):

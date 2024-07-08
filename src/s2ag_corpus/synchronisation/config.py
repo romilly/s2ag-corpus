@@ -6,7 +6,7 @@ import psycopg2.extensions
 
 from s2ag_corpus.helpers.file_manager import AbstractFileManager
 from s2ag_corpus.helpers.monitor import Monitor
-from s2ag_corpus.requester import DownloadRequester
+from s2ag_corpus.api import AbstractAPI
 
 
 @dataclass
@@ -14,7 +14,7 @@ class SyncConfig:
     base_dir: Optional[str]  = field(default=None)
     connection: Optional[psycopg2.extensions.connection] = field(default=None)
     monitor: Optional[Monitor] = field(default=None)
-    requester: Optional[DownloadRequester] = field(default=None)
+    api: Optional[AbstractAPI] = field(default=None)
     filemanager: Optional[AbstractFileManager] = field(default=None)
 
     @property

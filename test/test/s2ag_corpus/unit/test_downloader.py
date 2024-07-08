@@ -3,14 +3,14 @@ from s2ag_corpus.synchronisation.config import SyncConfig
 from test.test.s2ag_corpus.helpers.mock_file_manager import MockFileManager
 
 from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
-from test.test.s2ag_corpus.helpers.mock_requester import MockDownloadRequester
+from test.test.s2ag_corpus.helpers.mock_api import MockAPI
 
 
 def test_dataset_downloader():
     dataset = 'gubbins'
     release_id = '2021-01-01'
     base_dir = 'some_path'
-    requester = MockDownloadRequester(base_dir=base_dir, links=[
+    api = MockAPI(base_dir=base_dir, links=[
         'http://example.com/a',
         'http://example.com/b',
         'http://example.com/c',
@@ -23,7 +23,7 @@ def test_dataset_downloader():
     filemanager = MockFileManager()
     monitor = MockMonitor()
     config = SyncConfig(base_dir,
-                        requester = requester,
+                        api= api,
                         connection = None,
                         monitor=monitor,
                         filemanager=filemanager)

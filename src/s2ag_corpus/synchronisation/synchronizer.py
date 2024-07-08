@@ -13,7 +13,7 @@ class Synchronizer:
         self.datasets_dir = config.datasets_dir
         self.diffs_dir = config.diffs_dir
         self.monitor = config.monitor
-        self.release_catalogue = config.requester
+        self.release_catalogue = config.api
         self.dataset_downloader = DatasetDownloader(config)
         self.dataset_loader = DatasetLoader(config)
 

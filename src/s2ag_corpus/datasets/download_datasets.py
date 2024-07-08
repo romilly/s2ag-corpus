@@ -7,12 +7,16 @@ from s2ag_corpus.synchronisation.config import SyncConfig
 class DatasetDownloader:
     def __init__(self, config: SyncConfig):
         self.config = config
-        self.requester = config.requester
+        self.requester = config.api
         self.monitor = config.monitor
         self.file_manager = config.filemanager
+        self.base_dir = config.base_dir
+
+    def base_path_for(self, release_id, dataset_name) -> str:
+        return f"{self.base_dir}/datasets/{release_id}/{dataset_name}"
 
     def download(self, release_id: str, dataset_name: str, permitted_attempts=3):
-        base_path = self.requester.base_path_for(release_id, dataset_name)
+        base_path = self.base_path_for(release_id, dataset_name)
         self.create_path(base_path)
         download_links = self.requester.get_links_for(release_id, dataset_name)
         self.monitor.info(
@@ -39,7 +43,7 @@ class DatasetDownloader:
     def attempt_download(self, release_id, dataset_name, link_index, link):
         file_name = f"{dataset_name}{link_index:03}.gz"
         self.monitor.info(f"Downloading {file_name}")
-        file_path = f"{self.requester.base_path_for(release_id, dataset_name)}/{file_name}"
+        file_path = f"{self.base_path_for(release_id, dataset_name)}/{file_name}"
         if self.file_manager.exists(file_path):
             self.monitor.info(f"skipping {file_path}")
             return
