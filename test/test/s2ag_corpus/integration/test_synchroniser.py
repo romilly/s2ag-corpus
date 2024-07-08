@@ -50,7 +50,7 @@ def test_synchroniser_does_nothing_if_up_to_date(test_config):
     synchroniser.synchronise()
     synchroniser.synchronise()
     monitor: MockMonitor = test_config.monitor
-    assert 'already up to date' in monitor.infos
+    assert 'diffs are up to date' in monitor.infos
 
 def test_synchroniser_dowloads_and_applies_diffs(test_config):
     synchroniser = Synchronizer(test_config)

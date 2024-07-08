@@ -1,6 +1,6 @@
 import os
 
-from s2ag_corpus.datasets.dataset_loader import load_all_datasets
+from s2ag_corpus.datasets.dataset_loader import DatasetLoader
 from s2ag_corpus.datasets.download_datasets import DatasetDownloader
 from s2ag_corpus.diffs.do_diffs import download_and_apply_all_diffs_for
 from s2ag_corpus.synchronisation.config import SyncConfig
@@ -15,6 +15,7 @@ class Synchronizer:
         self.monitor = config.monitor
         self.release_catalogue = config.requester
         self.dataset_downloader = DatasetDownloader(config)
+        self.dataset_loader = DatasetLoader(config)
 
     def find_latest_release_id(self):
         release_id = self.release_catalogue.find_latest_release_id()
@@ -25,33 +26,38 @@ class Synchronizer:
         self.dataset_downloader.download_all_datasets(release_id)
 
     def load_datasets(self, release_id):
-        load_all_datasets(release_id, self.config)
+        self.dataset_loader.load_all_datasets(release_id)
 
     def download_and_apply_diffs(self, start_release_id, end_release_id, config):
-        download_and_apply_all_diffs_for(start_release_id, end_release_id, config)
+        if start_release_id == end_release_id:
+            self.monitor.info(f"diffs are up to date")
+        else:
+            download_and_apply_all_diffs_for(start_release_id, end_release_id, config)
 
     def synchronise(self,):
         self.monitor.info("starting synchronization")
         latest_release_id = self.find_latest_release_id()
         if self.datasets_not_yet_downloaded():
-            os.makedirs(self.datasets_dir, exist_ok=True)
-            self.download_datasets(latest_release_id)
-            self.load_datasets(latest_release_id)
-            return
+            self.download_and_load_latest_datasets(latest_release_id)
+        elif self.diffs_not_yet_downloaded():
+            self.download_all_available_diffs(latest_release_id)
+        else:
+            self.download_later_diffs(latest_release_id)
 
-        if self.diffs_not_yet_downloaded():
-            if self.original_release_id() == latest_release_id:
-                self.monitor.info("already up to date")
-                return
-            self.download_and_apply_diffs(self.original_release_id(), latest_release_id, self.config)
-            return
+    def download_later_diffs(self, latest_release_id):
+        start_id = self.find_latest_diff_downloaded()
+        self.monitor.info(f"latest diff downloaded is {start_id}")
+        self.download_and_apply_diffs(start_id, latest_release_id, self.config)
 
-        latest_diff = self.find_latest_diff_downloaded()
-        self.monitor.info(f"latest diff downloaded is {latest_diff}")
-        if latest_diff == latest_release_id:
-            self.monitor.info("diffs up to date")
-            return
-        self.download_and_apply_diffs(latest_diff, latest_release_id, self.config)
+    def download_all_available_diffs(self, latest_release_id):
+        start_id = self.original_release_id()
+        self.monitor.info(f"applying diffs after original download {start_id}")
+        self.download_and_apply_diffs(start_id, latest_release_id, self.config)
+
+    def download_and_load_latest_datasets(self, latest_release_id):
+        os.makedirs(self.datasets_dir, exist_ok=True)
+        self.download_datasets(latest_release_id)
+        self.load_datasets(latest_release_id)
 
     def diffs_not_yet_downloaded(self):
         return not os.path.isdir(self.diffs_dir)

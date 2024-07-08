@@ -6,8 +6,10 @@ from dotenv import load_dotenv
 
 from s2ag_corpus.helpers.monitor import Monitor
 
-# TODO: change signatures
+
 class DownloadRequester(ABC):
+    def __init__(self, base_dir):
+        self.base_dir = base_dir
 
     def base_path_for(self, release_id, dataset_name) -> str:
         return f"{self.base_dir}/datasets/{release_id}/{dataset_name}"
@@ -34,12 +36,12 @@ class DownloadRequester(ABC):
 
 class WebDownloadRequester(DownloadRequester):
     def __init__(self, base_dir: str, monitor: Monitor) -> None:
+        super().__init__(base_dir)
         self.monitor = monitor
         load_dotenv()
         self.base_url = "https://api.semanticscholar.org/datasets/v1/"
         self.api_key = os.getenv('S2_API_KEY')
         self.headers = {"x-api-key": self.api_key}
-        self.base_dir = base_dir
 
     def find_latest_release_id(self) -> str:
         response = requests.get(f"{self.base_url}/release/")
@@ -75,3 +77,5 @@ class WebDownloadRequester(DownloadRequester):
         else:
             content = response.content
         return response.status_code, content
+
+
