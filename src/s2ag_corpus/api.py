@@ -5,6 +5,7 @@ import requests
 from dotenv import load_dotenv
 
 from s2ag_corpus.helpers.monitor import Monitor
+from s2ag_corpus.requester.requester import ThrottledRequester
 
 
 class AbstractAPI(ABC):
@@ -30,7 +31,7 @@ class AbstractAPI(ABC):
 
 
 class S2API(AbstractAPI):
-    def __init__(self, monitor: Monitor, requester = None) -> None:
+    def __init__(self, monitor: Monitor, requester = ThrottledRequester()) -> None:
         self.monitor = monitor
         load_dotenv()
         self.base_url = "https://api.semanticscholar.org/datasets/v1/"
