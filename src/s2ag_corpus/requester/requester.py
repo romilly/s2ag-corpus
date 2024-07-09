@@ -1,6 +1,8 @@
 import os
 import time
 from abc import ABC, abstractmethod
+from typing import Optional
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -18,11 +20,11 @@ class ThrottledRequesterException(Exception):
 class Requester(ABC):
 
     @abstractmethod
-    def get(self, url: str) -> dict:
+    def get(self, url: str):
         pass
 
     @abstractmethod
-    def post(self, url: str, ids: dict) -> dict:
+    def post(self, url: str, ids: dict):
         pass
 
 
@@ -37,7 +39,7 @@ class ThrottledRequester(Requester):
         self.headers = {"x-api-key": api_key}
 
     # TODO: handle gateway codes - see webinar info
-    def get(self, url: str) -> dict:
+    def get(self, url: str):
         for i in range(20):
             self.throttle(i)
             response = requests.get(url, headers=self.headers)
@@ -49,7 +51,7 @@ class ThrottledRequester(Requester):
                 print('error ',response.status_code)
                 raise ThrottledRequesterException(response.reason)
             else:
-                result = response.json()
+                result = response
                 break
         return result
 
@@ -74,4 +76,4 @@ class ThrottledRequester(Requester):
                 raise ThrottledRequesterException(response.reason)
             else:
                 break
-        return response.json()
+        return response

@@ -7,7 +7,7 @@ from s2ag_corpus.synchronisation.config import SyncConfig
 class DatasetDownloader:
     def __init__(self, config: SyncConfig):
         self.config = config
-        self.requester = config.api
+        self.api = config.api
         self.monitor = config.monitor
         self.file_manager = config.filemanager
         self.base_dir = config.base_dir
@@ -18,9 +18,9 @@ class DatasetDownloader:
     def download(self, release_id: str, dataset_name: str, permitted_attempts=3):
         base_path = self.base_path_for(release_id, dataset_name)
         self.create_path(base_path)
-        download_links = self.requester.get_links_for(release_id, dataset_name)
+        download_links = self.api.get_links_for(release_id, dataset_name)
         self.monitor.info(
-            f"downloading {self.requester.download_target(release_id, dataset_name)} : {len(download_links)} files.")
+            f"downloading {self.api.download_target(release_id, dataset_name)} : {len(download_links)} files.")
         successful = False
         for i in range(permitted_attempts):
             try:
@@ -31,7 +31,7 @@ class DatasetDownloader:
                 break
             except TimeoutError:
                 self.monitor.warn("retrying after attempt {i}")
-                download_links = self.requester.get_links_for(release_id, dataset_name)
+                download_links = self.api.get_links_for(release_id, dataset_name)
                 continue
         if not successful:
             self.monitor.error(f"failed to complete {dataset_name} download after {permitted_attempts} attempts")
@@ -48,7 +48,7 @@ class DatasetDownloader:
             self.monitor.info(f"skipping {file_path}")
             return
         start = datetime.datetime.now()
-        code, content = self.requester.get_content_from(link)
+        code, content = self.api.get_content_from(link)
         if code != 200:
             raise TimeoutError('Link expired')
         self.file_manager.write_content(file_path, content)
