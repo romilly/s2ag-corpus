@@ -1,11 +1,7 @@
-import os
 from typing import List, Tuple
-from abc import ABC, abstractmethod
 from dotenv import load_dotenv
 
 from s2ag_corpus.helpers.monitor import Monitor
-from s2ag_corpus.requester.requester import ThrottledRequester
-from test.test.s2ag_corpus.helpers.mock_requester import MockRequester
 
 
 
