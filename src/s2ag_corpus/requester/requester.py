@@ -23,11 +23,6 @@ class Requester(ABC):
     def get(self, url: str):
         pass
 
-    @abstractmethod
-    def post(self, url: str, ids: dict):
-        pass
-
-
 class ThrottledRequester(Requester):
     # STANDARD_THROTTLING_DELAY = 10.1
     STANDARD_THROTTLING_DELAY = 0.15
@@ -63,17 +58,4 @@ class ThrottledRequester(Requester):
             time.sleep(wait_time)
         self._last_request = time.monotonic()
 
-    def post(self, url: str,  ids: dict) -> dict:
-        for i in range(20):
-            self.throttle(i)
-            response = requests.post(url, json=ids, headers=self.headers)
-            if response.status_code == TOO_MANY_REQUESTS:
-                continue
-            if response.status_code == BAD_REQUEST:
-                raise ValueError(response.reason)
-            if response.status_code != REQUEST_OK:
-                print('error ',response.status_code)
-                raise ThrottledRequesterException(response.reason)
-            else:
-                break
-        return response
+

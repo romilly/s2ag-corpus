@@ -8,34 +8,18 @@ from s2ag_corpus.requester.requester import ThrottledRequester
 from test.test.s2ag_corpus.helpers.mock_requester import MockRequester
 
 
-class AbstractAPI(ABC):
-
-    @abstractmethod
-    def get_links_for(self, release_id, dataset_name) -> List[str]:
-        pass
-
-    @abstractmethod
-    def get_content_from(self, link) -> Tuple[int, bytes]:
-        pass
-
-    @abstractmethod
-    def diff_links(self, start_release_id, end_release_id, dataset_name):
-        pass
-
-    @abstractmethod
-    def find_latest_release_id(self) -> str:
-        pass
-
-    def download_target(self, release_id, dataset_name) -> str:
-        return f"{release_id}/{dataset_name}"
 
 
-class S2API(AbstractAPI):
+
+class S2API:
     def __init__(self, monitor: Monitor, requester = MockRequester()) -> None:
         self.monitor = monitor
         load_dotenv()
         self.requester = requester
         self.base_url = "https://api.semanticscholar.org/datasets/v1"
+
+    def download_target(self, release_id, dataset_name) -> str:
+        return f"{release_id}/{dataset_name}"
 
     def find_latest_release_id(self) -> str:
         response = self.requester.get(f"{self.base_url}/release/")

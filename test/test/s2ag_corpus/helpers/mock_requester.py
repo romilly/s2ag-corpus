@@ -1,30 +1,36 @@
 import re
+from typing import Union, List
 
 from s2ag_corpus.requester.requester import Requester
 
 
 class MockResponse:
-    def __init__(self, status_code, json):
+    def __init__(self, status_code, contents: Union[str, bytes]):
         self.status_code = status_code
-        self._json = json
+        self._contents= contents
 
     def json(self):
-        return self._json
+        return self._contents
+
+    @property
+    def content(self):
+        return self._contents
 
 
 class MockRequester(Requester):
-    def __init__(self, response_map = None):
-        self.response_map: dict[str, MockResponse] = response_map or {}
+    def __init__(self, response_map: Union[List[MockResponse], MockResponse] = None):
+        self.response_map = response_map or {}
 
-    def post(self, url: str, ids: dict):
-        raise NotImplementedError()
 
     def get(self, url: str) -> MockResponse:
         for key, value in self.response_map.items():
             if re.fullmatch(key, url):
-                return value
+                if isinstance(value, MockResponse):
+                    return value
+                else:
+                    return value.pop(0)
         raise KeyError(f"No match found for {url}")
 
-    def upsert(self, url: str, response: MockResponse):
+    def upsert(self, url: str, response: Union[List[MockResponse], MockResponse]):
         self.response_map[url] = response
 

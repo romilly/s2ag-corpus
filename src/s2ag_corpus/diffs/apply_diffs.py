@@ -4,7 +4,6 @@ import sys
 import os
 
 from s2ag_corpus.datasets.dataset_definitions import DATASETS
-from s2ag_corpus.helpers.monitor import Monitor
 from s2ag_corpus.synchronisation.config import SyncConfig
 
 

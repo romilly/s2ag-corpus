@@ -6,8 +6,7 @@ import psycopg2.extensions
 
 from s2ag_corpus.helpers.file_manager import AbstractFileManager
 from s2ag_corpus.helpers.logging_monitor import LoggingMonitor
-from s2ag_corpus.helpers.monitor import Monitor
-from s2ag_corpus.api import AbstractAPI
+from s2ag_corpus.api import S2API
 from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
 
 
@@ -16,7 +15,7 @@ class SyncConfig:
     base_dir: Optional[str]  = field(default=None)
     connection: Optional[psycopg2.extensions.connection] = field(default=None)
     monitor: Optional[Union[MockMonitor|LoggingMonitor]] = field(default=None)
-    api: Optional[AbstractAPI] = field(default=None)
+    api: Optional[S2API] = field(default=None)
     filemanager: Optional[AbstractFileManager] = field(default=None)
 
     @property
