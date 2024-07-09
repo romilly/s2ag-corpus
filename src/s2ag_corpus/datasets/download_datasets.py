@@ -15,7 +15,7 @@ class DatasetDownloader:
     def base_path_for(self, release_id, dataset_name) -> str:
         return f"{self.base_dir}/datasets/{release_id}/{dataset_name}"
 
-    def download(self, release_id: str, dataset_name: str, permitted_attempts=3):
+    def download(self, release_id: str, dataset_name: str, permitted_attempts=7):
         base_path = self.base_path_for(release_id, dataset_name)
         self.create_path(base_path)
         download_links = self.api.get_links_for(release_id, dataset_name)

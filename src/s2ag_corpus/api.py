@@ -12,7 +12,7 @@ from test.test.s2ag_corpus.helpers.mock_requester import MockRequester
 
 
 class S2API:
-    def __init__(self, monitor: Monitor, requester = MockRequester()) -> None:
+    def __init__(self, monitor: Monitor, requester) -> None:
         self.monitor = monitor
         load_dotenv()
         self.requester = requester

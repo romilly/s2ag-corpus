@@ -34,10 +34,11 @@ class Synchronizer:
         else:
             download_and_apply_all_diffs_for(start_release_id, end_release_id, config)
 
-    def synchronize(self, ):
-        self.monitor.info("starting synchronization")
+    def synchronize(self, force_download = False):
+        if force_download:
+            self.monitor.info("dataset download forced")
         latest_release_id = self.find_latest_release_id()
-        if self.datasets_not_yet_downloaded():
+        if self.datasets_not_yet_downloaded() or force_download:
             self.download_and_load_latest_datasets(latest_release_id)
         elif self.diffs_not_yet_downloaded():
             self.download_all_available_diffs(latest_release_id)
