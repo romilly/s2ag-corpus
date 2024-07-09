@@ -1,11 +1,11 @@
 import re
-from typing import Union, List
+from typing import Union, List, Any
 
 from s2ag_corpus.requester.requester import Requester
 
 
 class MockResponse:
-    def __init__(self, status_code, contents: Union[str, bytes]):
+    def __init__(self, status_code, contents: Any):
         self.status_code = status_code
         self._contents= contents
 
