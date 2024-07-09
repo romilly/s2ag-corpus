@@ -5,7 +5,7 @@ from s2ag_corpus.diffs.do_diffs import do_diffs_for
 from s2ag_corpus.helpers.file_manager import FileManager
 from s2ag_corpus.api import S2API
 from s2ag_corpus.synchronisation.config import SyncConfig
-from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
+from s2ag_corpus.helpers.mock_monitor import MockMonitor
 
 
 @pytest.mark.skip(reason="Currently very slow (37 sec)")

@@ -9,8 +9,8 @@ from s2ag_corpus.datasets.dataset_definitions import DATASETS
 from s2ag_corpus.helpers.file_manager import FileManager
 from s2ag_corpus.synchronisation.config import SyncConfig
 from s2ag_corpus.synchronisation.synchronizer import Synchronizer
+from s2ag_corpus.helpers.mock_monitor import MockMonitor
 from test.test.s2ag_corpus.helpers.mock_requester import MockRequester, MockResponse
-from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
 
 
 RELEASE_URL = "https://api.semanticscholar.org/datasets/v1/release/"

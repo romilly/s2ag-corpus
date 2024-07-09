@@ -1,11 +1,11 @@
 from s2ag_corpus.api import S2API
 from s2ag_corpus.datasets.download_datasets import DatasetDownloader
 from s2ag_corpus.synchronisation.config import SyncConfig
+from s2ag_corpus.helpers.mock_monitor import MockMonitor
 from test.test.s2ag_corpus.helpers.mock_requester import MockResponse
 from test.test.s2ag_corpus.helpers.mock_requester import MockRequester
 from test.test.s2ag_corpus.helpers.mock_file_manager import MockFileManager
 
-from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
 
 
 def test_dataset_downloader():

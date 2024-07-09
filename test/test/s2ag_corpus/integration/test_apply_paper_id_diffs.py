@@ -3,7 +3,7 @@ import csv
 from s2ag_corpus.database.database_catalogue import local_connection
 from s2ag_corpus.diffs.apply_diffs import DiffApplicator
 from s2ag_corpus.synchronisation.config import SyncConfig
-from test.test.s2ag_corpus.helpers.mock_monitor import MockMonitor
+from s2ag_corpus.helpers.mock_monitor import MockMonitor
 
 CREATE_PAPERIDS = """
 create table if not exists paperids
