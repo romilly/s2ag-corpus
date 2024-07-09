@@ -12,16 +12,6 @@ def test_dataset_downloader():
     dataset = 'gubbins'
     release_id = '2021-01-01'
     base_dir = 'some_path'
-    # api = MockAPI(base_dir=base_dir, links=[
-    #     'http://example.com/a',
-    #     'http://example.com/b',
-    #     'http://example.com/c',
-    # ], diff_links=[], responses=[
-    #     b'content of a',
-    #     b'content of b',
-    #     b'',
-    #     b'content of c',
-    # ], latest_release_id='does not matter')
     dataset_response = MockResponse(
         200, {
             'files': [
