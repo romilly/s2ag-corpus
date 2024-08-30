@@ -65,17 +65,17 @@ class DatabaseCatalogue(Catalogue):
         else:
             return rows[0][0]
 
-    def find_linked_papers(self, corpus_id, sql, constraint):
+    def _find_linked_papers(self, corpus_id, sql, constraint):
         if constraint is None:
             constraint = ''
         rows = self.fetch(sql + constraint, (corpus_id,))
         return [row[0] for row in rows]
 
     def find_references_for(self, corpus_id: int, constraint: str = None) -> List[int]:
-        return self.find_linked_papers(corpus_id, self.REFERENCE_SQL, constraint)
+        return self._find_linked_papers(corpus_id, self.REFERENCE_SQL, constraint)
 
     def find_citations_for(self, corpus_id: int, constraint: str = None) -> List[int]:
-        return self.find_linked_papers(corpus_id, self.CITATION_SQL, constraint)
+        return self._find_linked_papers(corpus_id, self.CITATION_SQL, constraint)
 
     def find_links(self, corpusid: int, influential=True) -> Set[Tuple[int, int]]:
         visited = set()

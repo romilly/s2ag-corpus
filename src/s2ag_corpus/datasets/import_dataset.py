@@ -13,7 +13,8 @@ def insert_dataset(dataset_name, datasets_dir, connection, monitor: Monitor):
     dataset = DATASETS[dataset_name]
     inserter = JsonFileInserter(dataset, connection, monitor)
     inserter.create_table()
-    for source_file in sorted(os.listdir(data_dir)):
+    sorted_files = sorted(os.listdir(data_dir))
+    for source_file in sorted_files:
         full_path = f"{data_dir}/{source_file}"
         monitor.info(f"inserting into {dataset.table} from {full_path}")
         inserter.copy_json_to_table(full_path)
