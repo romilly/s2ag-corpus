@@ -1,24 +1,24 @@
 This Python project imports the [Semantic Scholar Academic Graph Corpus]() into a PostgreSQL database.
 
-WARNING: **I'm getting strange behaviour running the new code in production.**
-
-Do not install or use this release until further notice!
-
-It has been developed in a Linux environment, and I do not have the resources to support it under Windows or MacOS.
+The project has been developed in a Linux environment, and I do not have the resources to support it under Windows or MacOS.
 
 It is a personal project, and it has no official connection with the Allen Institute for AI.
 
 The data that it downloads is subject to the Semantic Scholar Academic Graph Licence.
 
-The first iteration is almost complete, but the documentation needs more work.
+The second iteration is almost complete.
+
+I have added code that updates the database from the
+diffs created by the Semantic Scholar API.
+
+The current technique for tracking the data that needs to be imported is
+not as robust as it could be, but seems to work.
+
+I'm working on a better approach which I will release once I have satisfactory passing tests.
 
 The code is under active development, and the API may change.
 
-I have just added the code that updates the database from the
-diffs created by the Semantic Scholar API.
-
 As a result, the API and setup have changed.
-
 
 ## Changes to running the application
 
@@ -43,7 +43,7 @@ The datasets supported are:
 The first dataset release in which a duplicated data anomaly was fixed is the `2024-06-18` release.
 
 The project contains the code that I use to download a dataset release, 
-load the data into Postgres, and aply subsequent diffs.
+load the data into Postgres, and apply later diffs if they are available.
 
 It also contains experimental code to explore
 references and citations and present them graphically.
